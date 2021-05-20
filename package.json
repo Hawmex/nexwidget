@@ -1,0 +1,43 @@
+{
+  "name": "nexwidget",
+  "version": "0.1.0",
+  "description": "An ESNext Web Component library.",
+  "main": "src/nexwidget.js",
+  "type": "module",
+  "module": "src/nexwidget.js",
+  "engines": {
+    "node": ">=14.6.0",
+    "npm": ">=6.0.0"
+  },
+  "files": [
+    "src/**/*"
+  ],
+  "scripts": {
+    "test": "web-test-runner \"test/**/*.js\" --node-resolve",
+    "prepublishOnly": "npm test",
+    "version": "git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hawmex/nexwidget.git"
+  },
+  "keywords": [
+    "web components",
+    "ESNext"
+  ],
+  "author": "Hamed Aarab",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Hawmex/nexwidget/issues"
+  },
+  "homepage": "https://github.com/Hawmex/nexwidget#readme",
+  "dependencies": {
+    "lit-html": "^1.4.1",
+    "nexbounce": "^1.0.14"
+  },
+  "devDependencies": {
+    "@esm-bundle/chai": "^4.3.4",
+    "@web/test-runner": "^0.13.4"
+  }
+}
