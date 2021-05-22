@@ -1,6 +1,6 @@
 'use strict';
 
-import { noChange, render } from 'lit-html';
+import { noChange } from 'lit-html';
 import { render } from 'lit-html/lib/shady-render.js';
 import { Nexbounce } from 'nexbounce';
 
@@ -71,7 +71,7 @@ export class Nexwidget extends HTMLElement {
     customElements.define(tagName, this);
   }
 
-  static createReactive(properties) {
+  static createReactives(properties) {
     Nexwidget.#ensureReactives(this);
 
     properties.forEach((key) => {
