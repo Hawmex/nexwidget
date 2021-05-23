@@ -1,6 +1,6 @@
 'use strict';
 
-class CSSResult {
+export class CSSResult {
   static #checkValue(value) {
     if (value instanceof CSSResult) return value.CSSText;
     else if (typeof value === 'number') return value;
@@ -25,9 +25,17 @@ class CSSResult {
     this.#CSSText = CSSResult.#refine(strings, values);
   }
 
+  /**
+   * @returns {string}
+   */
+
   get CSSText() {
     return this.#CSSText;
   }
+
+  /**
+   * @returns {CSSStyleSheet}
+   */
 
   get styleSheet() {
     if (this.#styleSheet === undefined) {
@@ -38,5 +46,12 @@ class CSSResult {
     return this.#styleSheet;
   }
 }
+
+/**
+ *
+ * @param {string[]} strings
+ * @param  {...unknown} values
+ * @returns {CSSResult}
+ */
 
 export const css = (strings, ...values) => new CSSResult(strings, values);
