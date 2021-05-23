@@ -19,7 +19,7 @@ npm i nexwidget
 ## Example
 
 ```js
-import { Nexwidget, css } from 'nexwidget';
+import { Nexwidget, css, html } from 'nexwidget';
 
 class TestElement extends Nexwidget {
   // Using the stage-3 "class static initialization block" proposal syntax.
