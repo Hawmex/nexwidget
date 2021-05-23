@@ -340,21 +340,21 @@ export class Nexwidget extends HTMLElement {
   updatedCallback() {
     this.#animation?.cancel?.();
 
-    if (this.updateOrSlotChangeAnimation?.length > 0)
+    if (this.updateOrSlotChangeAnimation.length > 0)
       this.#animation = this.animate(...this.updateOrSlotChangeAnimation);
   }
 
   slotChangedCallback() {
     this.#animation?.cancel?.();
 
-    if (this.updateOrSlotChangeAnimation?.length > 0)
+    if (this.updateOrSlotChangeAnimation.length > 0)
       this.#animation = this.animate(...this.updateOrSlotChangeAnimation);
   }
 
   mountedCallback() {
     this.#animation?.cancel?.();
 
-    if (this.mountAnimation?.length > 0) this.#animation = this.animate(...this.mountAnimation);
+    if (this.mountAnimation.length > 0) this.#animation = this.animate(...this.mountAnimation);
 
     this.#unmountedController = new AbortController();
   }
