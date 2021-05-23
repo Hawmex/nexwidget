@@ -89,7 +89,6 @@ export class Nexwidget extends HTMLElement {
   }
 
   /**
-   *
    * @param {string} tagName
    */
 
@@ -98,7 +97,6 @@ export class Nexwidget extends HTMLElement {
   }
 
   /**
-   *
    * @param {string[]} properties
    */
 
@@ -133,7 +131,6 @@ export class Nexwidget extends HTMLElement {
   }
 
   /**
-   *
    * @param {{ [key: string]: typeof Number | typeof String | typeof Boolean }} attributes
    */
 
@@ -309,7 +306,6 @@ export class Nexwidget extends HTMLElement {
   }
 
   /**
-   *
    * @param {string} _key
    * @param {string} oldValue
    * @param {string} newValue
@@ -376,7 +372,6 @@ export class Nexwidget extends HTMLElement {
   }
 
   /**
-   *
    * @param {string} key
    * @returns {string} The given CSS property value.
    */

@@ -48,7 +48,6 @@ export class CSSResult {
 }
 
 /**
- *
  * @param {string[]} strings
  * @param  {...unknown} values
  * @returns {CSSResult}
