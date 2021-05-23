@@ -8,7 +8,7 @@
     <script type="module">
       import { runTests } from '@web/test-runner-mocha';
       import { expect } from '@esm-bundle/chai';
-      import { Nexwidget, css } from '../src/nexwidget.js';
+      import { Nexwidget, css, html } from '../src/nexwidget.js';
 
       runTests(async () =>
         it('creates web components', () => {
@@ -62,23 +62,39 @@
           TestElement.createReactives(['timeCounter']);
           TestElement.register();
 
-          const element = document.querySelector('test-element');
+          requestAnimationFrame(() => {
+            const element = document.querySelector('test-element');
+            const span = document.querySelector('span');
 
-          expect(element.timeCounter).to.equal(0);
-          expect(element.getAttribute('time-counter')).to.equal('0');
-          requestAnimationFrame(() => expect(element.shadowRoot.textContent).to.equal('0'));
+            expect(getComputedStyle(element).getPropertyValue('background-color')).to.equal(
+              'rgb(255, 0, 0)',
+            );
 
-          setTimeout(() => {
-            expect(element.timeCounter).to.equal(1);
-            expect(element.getAttribute('time-counter')).to.equal('1');
-            requestAnimationFrame(() => expect(element.shadowRoot.textContent).to.equal('1'));
-          }, 1000);
+            expect(element.timeCounter).to.equal(0);
+            expect(element.getAttribute('time-counter')).to.equal('0');
 
-          setTimeout(() => {
-            expect(element.timeCounter).to.equal(2);
-            expect(element.getAttribute('time-counter')).to.equal('2');
-            requestAnimationFrame(() => expect(element.shadowRoot.textContent).to.equal('2'));
-          }, 2000);
+            requestAnimationFrame(() =>
+              expect(span.textContent).to.equal('Seconds passed since I was first rendered:0'),
+            );
+
+            setTimeout(() => {
+              expect(element.timeCounter).to.equal(1);
+              expect(element.getAttribute('time-counter')).to.equal('1');
+
+              requestAnimationFrame(() =>
+                expect(span.textContent).to.equal('Seconds passed since I was first rendered:1'),
+              );
+            }, 1000);
+
+            setTimeout(() => {
+              expect(element.timeCounter).to.equal(2);
+              expect(element.getAttribute('time-counter')).to.equal('2');
+
+              requestAnimationFrame(() =>
+                expect(span.textContent).to.equal('Seconds passed since I was first rendered:2'),
+              );
+            }, 2000);
+          });
         }),
       );
     </script>
