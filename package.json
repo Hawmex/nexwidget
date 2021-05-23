@@ -13,7 +13,7 @@
     "src/**/*"
   ],
   "scripts": {
-    "test": "web-test-runner \"test/**/*.js\" --node-resolve",
+    "test": "web-test-runner \"test/**/*.{js,html}\" --node-resolve",
     "prepublishOnly": "npm test",
     "version": "git add -A src",
     "postversion": "git push && git push --tags"
