@@ -14,15 +14,13 @@ npm i nexwidget
 
 ## Example
 
-The [Demo]() of this example.
-
 ```js
 import { Nexwidget, css } from 'nexwidget';
 
 class TestElement extends Nexwidget {
   static {
-    this.createAttributes({ testAttr: String });
-    this.createReactives(['testAttr']);
+    this.createAttributes({ timeCounter: Number });
+    this.createReactives(['timeCounter']);
     this.register(); // If no tagname is passed, it uses the constructor name. In this case, it's "test-element".
   }
 
@@ -43,18 +41,18 @@ class TestElement extends Nexwidget {
 
   mountedCallback() {
     super.mountedCallback();
-    setInterval(() => (this.testAttr += 1));
+    setInterval(() => (this.timeCounter += 1), 1000);
   }
 
   get template() {
-    return html`<h1>Seconds passed since I was first rendered: ${this.testAttr}</h1>`;
+    return html`<h1>${this.testAttr}</h1>`;
   }
 
   get mountAnimation() {
     return [
       [
-        { transform: 'rotateX(-90deg)', opacity: '0' },
-        { transform: 'rotateX(0deg)', opacity: '1' },
+        { transform: 'scale(0)', opacity: '0' },
+        { transform: 'scale(1)', opacity: '1' },
       ],
       { duration: 250, fill: 'forwards' },
     ];
@@ -63,8 +61,8 @@ class TestElement extends Nexwidget {
   get updateOrSlotChangeAnimation() {
     return [
       [
-        { transform: 'rotateZ(-90deg)', opacity: '0' },
-        { transform: 'rotateZ(0deg)', opacity: '1' },
+        { transform: 'rotateX(-90deg)', opacity: '0' },
+        { transform: 'rotateX(0deg)', opacity: '1' },
       ],
       { duration: 250, fill: 'forwards' },
     ];
@@ -73,5 +71,8 @@ class TestElement extends Nexwidget {
 ```
 
 ```html
-<test-element test-attr="Hello World"></test-element>
+<span>
+  Seconds passed since I was first rendered:
+  <test-element time-counter="0"></test-element>
+</span>
 ```
