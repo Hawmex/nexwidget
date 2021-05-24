@@ -40,11 +40,16 @@ class TestElement extends Nexwidget {
       ...super.styles,
       css`
         :host {
-          background: red;
+          background: black;
           color: white;
-          display: block;
-          padding: 8px;
-          margin: 8px;
+          display: inline-block;
+          border-radius: 4px;
+          padding: 4px 8px;
+          margin: 0px 8px;
+        }
+
+        :host h5 {
+          margin: 0px;
         }
       `,
     ];
@@ -56,7 +61,7 @@ class TestElement extends Nexwidget {
   }
 
   get template() {
-    return html`<h1>${this.testAttr}</h1>`;
+    return html`<h5>${this.timeCounter}</h5>`;
   }
 
   get mountAnimation() {
@@ -65,17 +70,14 @@ class TestElement extends Nexwidget {
         { transform: 'scale(0)', opacity: '0' },
         { transform: 'scale(1)', opacity: '1' },
       ],
-      { duration: 250, fill: 'forwards' },
+      { duration: 200, fill: 'forwards' },
     ];
   }
 
   get updateOrSlotChangeAnimation() {
     return [
-      [
-        { transform: 'rotateX(-90deg)', opacity: '0' },
-        { transform: 'rotateX(0deg)', opacity: '1' },
-      ],
-      { duration: 250, fill: 'forwards' },
+      [{ transform: 'rotateX(-90deg)' }, { transform: 'rotateX(0deg)' }],
+      { duration: 200, fill: 'forwards' },
     ];
   }
 }
