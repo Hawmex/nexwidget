@@ -8,6 +8,74 @@ import { Nexbounce } from 'nexbounce';
 export * from 'lit-html';
 export * from './lib/css-tag.js';
 
+/**
+ * @classdesc A base class to create web components.
+ * @example
+ * import { Nexwidget, css, html } from 'nexwidget';
+ *
+ * class TestElement extends Nexwidget {
+ *   // Using the stage-3 "class static initialization block" proposal syntax.
+ *
+ *   static {
+ *     this.createAttributes({ timeCounter: Number });
+ *     this.createReactives(['timeCounter']);
+ *
+ *     // If no tagname is passed, it uses the constructor name
+ *     // to register in CustomElementsRegistery.
+ *     // In this case, it's "test-element".
+ *
+ *     this.register();
+ *   }
+ *
+ *   static get styles() {
+ *     return [
+ *       ...super.styles,
+ *       css`
+ *         :host {
+ *           background: black;
+ *           color: white;
+ *           display: inline-block;
+ *           border-radius: 4px;
+ *           padding: 4px 8px;
+ *           margin: 0px 8px;
+ *         }
+ *
+ *         :host h5 {
+ *           margin: 0px;
+ *         }
+ *       `,
+ *     ];
+ *   }
+ *
+ *   mountedCallback() {
+ *     super.mountedCallback();
+ *     setInterval(() => (this.timeCounter += 1), 1000);
+ *   }
+ *
+ *   get template() {
+ *     return html`<h5>${this.timeCounter}</h5>`;
+ *   }
+ *
+ *   get mountAnimation() {
+ *     return [
+ *       [
+ *         { transform: 'scale(0)', opacity: '0' },
+ *         { transform: 'scale(1)', opacity: '1' },
+ *       ],
+ *       { duration: 200, fill: 'forwards' },
+ *     ];
+ *   }
+ *
+ *   get updateOrSlotChangeAnimation() {
+ *     return [
+ *       [{ transform: 'rotateX(-90deg)' }, { transform: 'rotateX(0deg)' }],
+ *       { duration: 200, fill: 'forwards' },
+ *     ];
+ *   }
+ * }
+ *
+ */
+
 export class Nexwidget extends HTMLElement {
   static #reactives = new WeakMap([[Nexwidget, new Set()]]);
   static #attributes = new WeakMap([[Nexwidget, new Map()]]);
