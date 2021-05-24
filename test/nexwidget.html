@@ -62,7 +62,7 @@
           TestElement.createReactives(['timeCounter']);
           TestElement.register();
 
-          requestAnimationFrame(() => {
+          setTimeout(() => {
             const element = document.querySelector('test-element');
             const span = document.querySelector('span');
 
