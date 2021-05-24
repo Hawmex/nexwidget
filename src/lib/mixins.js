@@ -1,4 +1,4 @@
-import { addPendingTask } from './pending-task';
+import { addPendingTask } from './pending-task.js';
 import { Nexwidget } from '../nexwidget.js';
 
 /**
@@ -24,8 +24,13 @@ export const WithPendingTaskEmitter = (Base) =>
  * @returns {typeof WithPendingTaskHandler}
  */
 
-export const WithPendingTaskHandler = (Base) => {
+export const WithPendingTaskHandler = (Base) =>
   class WithPendingTaskHandler extends Base {
+    static {
+      this.createAttributes({ hasPendingTask: Boolean });
+      this.createReactive(['hasPendingTask']);
+    }
+
     #pendingTaskCount = 0;
 
     #handlePendingTask({ detail: { task } }) {
@@ -44,13 +49,7 @@ export const WithPendingTaskHandler = (Base) => {
         signal: this.removedSignal,
       });
     }
-  }
-
-  WithPendingTaskHandler.createAttributes({ hasPendingTask: Boolean });
-  WithPendingTaskHandler.createReactive(['hasPendingTask']);
-
-  return WithPendingTaskHandler;
-};
+  };
 
 /**
  * @param {new () => Nexwidget} Base

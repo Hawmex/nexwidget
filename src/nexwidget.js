@@ -1,12 +1,14 @@
 'use strict';
 
 import { noChange } from 'lit-html';
+import { Nexbounce } from 'nexbounce';
 import { render } from 'lit-html/lib/shady-render.js';
 import { CSSResult } from './lib/css-tag.js';
-import { Nexbounce } from 'nexbounce';
 
 export * from 'lit-html';
 export * from './lib/css-tag.js';
+export * from './lib/directives.js';
+export * from './lib/mixins.js';
 
 /**
  * @classdesc A base class to create web components.
