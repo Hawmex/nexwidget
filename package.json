@@ -13,7 +13,7 @@
     "src/**/*"
   ],
   "scripts": {
-    "test": "web-test-runner \"test/**/*.{js,html}\" --node-resolve",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "prepublishOnly": "npm test",
     "version": "git add -A src",
     "postversion": "git push && git push --tags"
@@ -34,10 +34,6 @@
   "homepage": "https://github.com/Hawmex/nexwidget#readme",
   "dependencies": {
     "lit-html": "^1.4.1",
-    "nexbounce": "^1.0.14"
-  },
-  "devDependencies": {
-    "@esm-bundle/chai": "^4.3.4",
-    "@web/test-runner": "^0.13.4"
+    "nexbounce": "^1.0.20"
   }
 }

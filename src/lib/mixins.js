@@ -1,28 +1,11 @@
 import { addPendingTask } from './pending-task.js';
-import { Nexwidget } from '../nexwidget.js';
-
-/**
- * @param {new () => Nexwidget} Base
- * @returns {typeof WithPendingTaskEmitter}
- */
 
 export const WithPendingTaskEmitter = (Base) =>
   class WithPendingTaskEmitter extends Base {
-    /**
-     *
-     * @param {Promise<unknown>} task
-     * @returns {Promise<unknown>}
-     */
-
     addPendingTask(task) {
       return addPendingTask(this, task);
     }
   };
-
-/**
- * @param {new () => Nexwidget} Base
- * @returns {typeof WithPendingTaskHandler}
- */
 
 export const WithPendingTaskHandler = (Base) => {
   class WithPendingTaskHandler extends Base {
@@ -52,18 +35,8 @@ export const WithPendingTaskHandler = (Base) => {
   return WithPendingTaskHandler;
 };
 
-/**
- * @param {new () => Nexwidget} Base
- * @returns {typeof WithDependencyConsumer}
- */
-
 export const WithDependencyConsumer = (Base) =>
   class WithDependencyConsumer extends Base {
-    /**
-     * @param {string} key
-     * @returns {unknown}
-     */
-
     requestDependency(key) {
       const dependencyRequest = new CustomEvent('dependency-request', {
         detail: { key },
@@ -77,11 +50,6 @@ export const WithDependencyConsumer = (Base) =>
       else throw new Error(`No such dependency is provided.`);
     }
   };
-
-/**
- * @param {new () => Nexwidget} Base
- * @returns {typeof WithDependencyProvider}
- */
 
 export const WithDependencyProvider = (Base) =>
   class WithDependencyProvider extends Base {
@@ -102,11 +70,6 @@ export const WithDependencyProvider = (Base) =>
         signal: this.removedSignal,
       });
     }
-
-    /**
-     * @param {string} key
-     * @param {unknown} value
-     */
 
     provideDependency(key, value) {
       this.#dependencies.set(key, value);

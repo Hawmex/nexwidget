@@ -3,7 +3,6 @@
 import { noChange } from 'lit-html';
 import { Nexbounce } from 'nexbounce';
 import { render } from 'lit-html/lib/shady-render.js';
-import { CSSResult } from './lib/css-tag.js';
 
 export * from 'lit-html';
 export * from './lib/css-tag.js';
@@ -82,44 +81,24 @@ export class Nexwidget extends HTMLElement {
   static #reactives = new WeakMap([[Nexwidget, new Set()]]);
   static #attributes = new WeakMap([[Nexwidget, new Map()]]);
 
-  /**
-   * @returns {CSSResult[]} Styles.
-   */
-
   static get styles() {
     return [];
   }
-
-  /**
-   * @returns {string[]} Reactive property keys.
-   */
 
   static get reactives() {
     Nexwidget.#ensureReactives(this);
     return [...Nexwidget.#reactives.get(this)];
   }
 
-  /**
-   * @returns {string[]} Property keys for attributes.
-   */
-
   static get attributes() {
     Nexwidget.#ensureAttributes(this);
     return [...Nexwidget.#attributes.get(this).keys()];
   }
 
-  /**
-   * @returns {string[]} Property keys for observed attributes.
-   */
-
   static get propertyKeysForObservedAttributes() {
     const reactives = new Set(this.reactives);
     return this.attributes.filter((key) => reactives.has(key));
   }
-
-  /**
-   * @returns {string[]} Observed attributes' keys.
-   */
 
   static get observedAttributes() {
     return this.propertyKeysForObservedAttributes.map(Nexwidget.#camelToKebab);
@@ -158,17 +137,9 @@ export class Nexwidget extends HTMLElement {
     }
   }
 
-  /**
-   * @param {string} tagName
-   */
-
   static register(tagName = Nexwidget.#camelToKebab(this.name)) {
     customElements.define(tagName, this);
   }
-
-  /**
-   * @param {string[]} properties
-   */
 
   static createReactives(properties) {
     Nexwidget.#ensureReactives(this);
@@ -199,10 +170,6 @@ export class Nexwidget extends HTMLElement {
       });
     });
   }
-
-  /**
-   * @param {{ [key: string]: typeof Number | typeof String | typeof Boolean }} attributes
-   */
 
   static createAttributes(attributes) {
     Nexwidget.#ensureAttributes(this);
@@ -246,49 +213,25 @@ export class Nexwidget extends HTMLElement {
     this.#adoptStyles();
   }
 
-  /**
-   * @returns {AbortSignal} a signal for `removedCallback()`.
-   */
-
   get removedSignal() {
     return this.#removedController.signal;
   }
-
-  /**
-   * @returns {AbortSignal} a signal for `willUnmountCallback()`.
-   */
 
   get willUnmountSignal() {
     return this.#willUnmountController.signal;
   }
 
-  /**
-   * @returns {AbortSignal} a signal for `unmountedCallback()`.
-   */
-
   get unmountedSignal() {
     return this.#unmountedController.signal;
   }
-
-  /**
-   * @returns {unknown} content to be rendered.
-   */
 
   get template() {
     return noChange;
   }
 
-  /**
-   * @returns {[keyframes: Keyframe[] | PropertyIndexedKeyframes, options?: number | KeyframeAnimationOptions] | []} Animation on `mountedCallback()`.
-   */
-
   get mountAnimation() {
     return this.updateOrSlotChangeAnimation;
   }
-
-  /**
-   * @returns {[keyframes: Keyframe[] | PropertyIndexedKeyframes, options?: number | KeyframeAnimationOptions] | []} Animation on `updatedCallback()` or `slotChangedCallback()`.
-   */
 
   get updateOrSlotChangeAnimation() {
     return [];
@@ -375,12 +318,6 @@ export class Nexwidget extends HTMLElement {
     this.unmountedCallback();
   }
 
-  /**
-   * @param {string} _key
-   * @param {string} oldValue
-   * @param {string} newValue
-   */
-
   attributeChangedCallback(_key, oldValue, newValue) {
     if (oldValue !== newValue) this.#render();
   }
@@ -440,11 +377,6 @@ export class Nexwidget extends HTMLElement {
   unmountedCallback() {
     this.#unmountedController.abort();
   }
-
-  /**
-   * @param {string} key
-   * @returns {string} The given CSS property value.
-   */
 
   getCSSProperty(key) {
     return getComputedStyle(this).getPropertyValue(key);

@@ -25,18 +25,6 @@ export class CSSResult {
     this.#CSSText = CSSResult.#refine(strings, values);
   }
 
-  /**
-   * @returns {string}
-   */
-
-  get CSSText() {
-    return this.#CSSText;
-  }
-
-  /**
-   * @returns {CSSStyleSheet}
-   */
-
   get styleSheet() {
     if (this.#styleSheet === undefined) {
       this.#styleSheet = new CSSStyleSheet();
@@ -46,11 +34,5 @@ export class CSSResult {
     return this.#styleSheet;
   }
 }
-
-/**
- * @param {string[]} strings
- * @param  {...unknown} values
- * @returns {CSSResult}
- */
 
 export const css = (strings, ...values) => new CSSResult(strings, values);
