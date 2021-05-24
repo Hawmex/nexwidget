@@ -40,8 +40,8 @@ class TestElement extends Nexwidget {
       ...super.styles,
       css`
         :host {
-          background: black;
-          color: white;
+          background: white;
+          color: black;
           display: inline-block;
           border-radius: 4px;
           padding: 4px 8px;
@@ -88,4 +88,18 @@ class TestElement extends Nexwidget {
   Seconds passed since I was first rendered:
   <test-element time-counter="0"></test-element>
 </span>
+```
+
+```css
+body {
+  background: black;
+  color: white;
+  font-family: Roboto;
+  margin: 0px;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 ```
