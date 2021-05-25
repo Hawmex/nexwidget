@@ -1,6 +1,6 @@
 'use strict';
 
-export class CSSResult {
+class CSSResult {
   static #checkValue(value) {
     if (value instanceof CSSResult) return value.CSSText;
     else if (typeof value === 'number') return value;
