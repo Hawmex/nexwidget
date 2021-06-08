@@ -32,7 +32,7 @@ export const WithPendingTaskHandler = (Base) => {
   }
 
   WithPendingTaskHandler.createAttributes({ hasPendingTask: Boolean });
-  WithPendingTaskHandler.createReactive(['hasPendingTask']);
+  WithPendingTaskHandler.createReactives(['hasPendingTask']);
 
   return WithPendingTaskHandler;
 };
