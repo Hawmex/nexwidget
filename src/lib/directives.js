@@ -1,3 +1,5 @@
+'use strict';
+
 import { directive } from 'lit-html';
 import { Nexbounce } from 'nexbounce';
 
