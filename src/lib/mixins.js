@@ -1,5 +1,3 @@
-'use strict';
-
 import { addPendingTask } from './pending-task.js';
 
 export const WithPendingTaskEmitter = (Base) =>

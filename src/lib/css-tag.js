@@ -1,5 +1,3 @@
-'use strict';
-
 class CSSResult {
   static #checkValue(value) {
     if (value instanceof CSSResult) return value.CSSText;
@@ -34,25 +32,5 @@ class CSSResult {
     return this.#styleSheet;
   }
 }
-
-/**
- * @classdesc A tagged template literal function to write css.
- * @example
- * import { Nexwidget, css } from 'nexwidget';
- *
- * class TestElement extends Nexwidget {
- *   static get styles() {
- *     return [
- *       ...super.styles,
- *       css`
- *         :host {
- *           background: black;
- *         }
- *       `,
- *     ];
- *   }
- * }
- *
- */
 
 export const css = (strings, ...values) => new CSSResult(strings, values);
