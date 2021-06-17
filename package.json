@@ -32,6 +32,6 @@
   "homepage": "https://github.com/Hawmex/nexwidget#readme",
   "dependencies": {
     "lit-html": "^1.4.1",
-    "nexbounce": "^1.0.21"
+    "nexbounce": "^1.0.22"
   }
 }
