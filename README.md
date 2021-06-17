@@ -22,19 +22,6 @@ npm i nexwidget
 import { Nexwidget, css, html } from 'nexwidget';
 
 class TestElement extends Nexwidget {
-  // Using the stage-3 "class static initialization block" proposal syntax.
-
-  static {
-    this.createAttributes({ timeCounter: Number });
-    this.createReactives(['timeCounter']);
-
-    // If no tagname is passed, it uses the constructor name
-    // to register in CustomElementsRegistery.
-    // In this case, it's "test-element".
-
-    this.register();
-  }
-
   static get styles() {
     return [
       ...super.styles,
@@ -81,6 +68,15 @@ class TestElement extends Nexwidget {
     ];
   }
 }
+
+TestElement.createAttributes({ timeCounter: Number });
+TestElement.createReactives(['timeCounter']);
+
+// If no tagname is passed, it uses the constructor name
+// to register in CustomElementsRegistery.
+// In this case, it's "test-element".
+
+TestElement.register();
 ```
 
 ```html
