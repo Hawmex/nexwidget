@@ -91,8 +91,8 @@ export const WithStore = (Base) =>
       this.#store = this.requestDependency('store');
     }
 
-    willMountCallback() {
-      super.willMountCallback();
+    async willMountCallback() {
+      await super.willMountCallback();
       this.stateChangedCallback(this.#store.state);
     }
 
