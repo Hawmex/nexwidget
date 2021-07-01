@@ -299,15 +299,15 @@ export class Nexwidget extends HTMLElement {
   }
 
   removedCallback() {
-    this.#removedController.abort();
+    this.#removedController?.abort?.();
   }
 
   async willUnmountCallback() {
-    this.#willUnmountController.abort();
+    this.#willUnmountController?.abort?.();
   }
 
   unmountedCallback() {
-    this.#unmountedController.abort();
+    this.#unmountedController?.abort?.();
   }
 
   getCSSProperty(key) {
