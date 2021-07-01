@@ -129,6 +129,7 @@ export class Nexwidget extends HTMLElement {
 
   #isRenderEnabled = false;
   #isMounted = false;
+  #willMountEnabled = false;
 
   #removedController;
   #willUnmountController;
@@ -254,14 +255,18 @@ export class Nexwidget extends HTMLElement {
 
   connectedCallback() {
     this.addedCallback();
+    this.#willMountEnabled = true;
     this.willMountCallback().then(() => {
-      this.#isRenderEnabled = true;
-      this.#render();
+      if (this.#willMountEnabled) {
+        this.#isRenderEnabled = true;
+        this.#render();
+      }
     });
   }
 
   disconnectedCallback() {
     this.removedCallback();
+    this.#willMountEnabled = false;
     this.willUnmountCallback().then(() => {
       this.#isRenderEnabled = false;
       this.#cleanupRender();
