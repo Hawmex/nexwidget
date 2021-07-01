@@ -254,23 +254,25 @@ export class Nexwidget extends HTMLElement {
 
   connectedCallback() {
     this.addedCallback();
-    this.willMountCallback();
-    this.#isRenderEnabled = true;
-    this.#render();
+    this.willMountCallback().then(() => {
+      this.#isRenderEnabled = true;
+      this.#render();
+    });
   }
 
   disconnectedCallback() {
     this.removedCallback();
-    this.willUnmountCallback();
-    this.#isRenderEnabled = false;
-    this.#cleanupRender();
+    this.willUnmountCallback().then(() => {
+      this.#isRenderEnabled = false;
+      this.#cleanupRender();
+    });
   }
 
   addedCallback() {
     this.#removedController = new AbortController();
   }
 
-  willMountCallback() {
+  async willMountCallback() {
     this.#willUnmountController = new AbortController();
   }
 
@@ -300,7 +302,7 @@ export class Nexwidget extends HTMLElement {
     this.#removedController.abort();
   }
 
-  willUnmountCallback() {
+  async willUnmountCallback() {
     this.#willUnmountController.abort();
   }
 
