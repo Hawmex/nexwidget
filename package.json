@@ -1,6 +1,6 @@
 {
   "name": "nexwidget",
-  "version": "2.1.3",
+  "version": "2.2.0",
   "description": "An ESNext Web Component library.",
   "main": "src/nexwidget.js",
   "type": "module",
