@@ -1,4 +1,4 @@
-import { noChange } from 'lit-html';
+import { html, noChange } from 'lit-html';
 import { Nexbounce } from 'nexbounce';
 import { render } from 'lit-html/lib/shady-render.js';
 
