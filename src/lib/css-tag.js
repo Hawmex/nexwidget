@@ -31,6 +31,10 @@ class CSSResult {
 
     return this.#styleSheet;
   }
+
+  get CSSText() {
+    return this.#CSSText;
+  }
 }
 
 export const css = (strings, ...values) => new CSSResult(strings, values);

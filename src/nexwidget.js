@@ -170,7 +170,14 @@ export class Nexwidget extends HTMLElement {
   #adoptStyles() {
     const { styles } = this.constructor;
 
-    this.#renderRoot.adoptedStyleSheets = styles.map(({ styleSheet }) => styleSheet);
+    if ('adoptedStyleSheets' in Document.prototype)
+      this.#renderRoot.adoptedStyleSheets = styles.map(({ styleSheet }) => styleSheet);
+    else
+      styles.forEach(({ CSSText }) => {
+        const style = document.createElement('style');
+        style.textContent = CSSText;
+        this.#renderRoot.appendChild(style);
+      });
   }
 
   #getPropertyValueFromAttribute(key) {
