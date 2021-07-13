@@ -138,6 +138,8 @@ export class Nexwidget extends HTMLElement {
 
   #animation;
 
+  #styleElement;
+
   constructor() {
     super();
     this.#adoptStyles();
@@ -172,12 +174,10 @@ export class Nexwidget extends HTMLElement {
 
     if ('adoptedStyleSheets' in Document.prototype)
       this.#renderRoot.adoptedStyleSheets = styles.map(({ styleSheet }) => styleSheet);
-    else
-      styles.forEach(({ CSSText }) => {
-        const style = document.createElement('style');
-        style.textContent = CSSText;
-        this.#renderRoot.appendChild(style);
-      });
+    else {
+      this.#styleElement = document.createElement('style');
+      this.#styleElement.textContent = styles.map(({ CSSText }) => CSSText).join('');
+    }
   }
 
   #getPropertyValueFromAttribute(key) {
@@ -226,7 +226,11 @@ export class Nexwidget extends HTMLElement {
   #render() {
     this.#renderDebouncer.enqueue(() => {
       if (this.#isRenderEnabled) {
-        render(this.template, this.#renderRoot, { scopeName: this.localName, eventContext: this });
+        const finalTemplate = this.#styleElement
+          ? html`${this.template} ${this.#styleElement}`
+          : this.template;
+
+        render(finalTemplate, this.#renderRoot, { scopeName: this.localName, eventContext: this });
 
         requestAnimationFrame(() => {
           this.updatedCallback();
