@@ -1,5 +1,7 @@
-class CSSResult {
-  static #checkValue(value) {
+export type CSSValue = CSSResult | number;
+
+export class CSSResult {
+  static #checkValue(value: CSSValue) {
     if (value instanceof CSSResult) return value.CSSText;
     else if (typeof value === 'number') return value;
     else
@@ -8,7 +10,7 @@ class CSSResult {
       );
   }
 
-  static #refine(strings, values) {
+  static #refine(strings: string[], values: CSSValue[]) {
     return values.reduce(
       (accumulator, value, index) =>
         accumulator + CSSResult.#checkValue(value) + strings[index + 1],
@@ -16,16 +18,17 @@ class CSSResult {
     );
   }
 
-  #CSSText;
-  #styleSheet;
+  #CSSText: string;
+  #styleSheet?: CSSStyleSheet;
 
-  constructor(strings, values) {
+  constructor(strings: string[], values: CSSValue[]) {
     this.#CSSText = CSSResult.#refine(strings, values);
   }
 
   get styleSheet() {
     if (this.#styleSheet === undefined) {
       this.#styleSheet = new CSSStyleSheet();
+      //@ts-ignore
       this.#styleSheet.replaceSync(this.#CSSText);
     }
 
@@ -37,4 +40,4 @@ class CSSResult {
   }
 }
 
-export const css = (strings, ...values) => new CSSResult(strings, values);
+export const css = (strings: string[], ...values: CSSValue[]) => new CSSResult(strings, values);

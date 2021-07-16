@@ -2,19 +2,21 @@
   "name": "nexwidget",
   "version": "2.3.2",
   "description": "An ESNext Web Component library.",
-  "main": "src/nexwidget.js",
+  "main": "dist/nexwidget.js",
   "type": "module",
-  "module": "src/nexwidget.js",
+  "module": "dist/nexwidget.js",
   "engines": {
     "node": ">=14.6.0",
     "npm": ">=6.0.0"
   },
   "files": [
-    "src/**/*"
+    "dist/**/*"
   ],
   "scripts": {
+    "build": "tsc",
     "version": "git add -A src",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -32,6 +34,9 @@
   "homepage": "https://github.com/Hawmex/nexwidget#readme",
   "dependencies": {
     "lit-html": "^1.4.1",
-    "nexbounce": "^1.0.22"
+    "nexbounce": "^2.0.13"
+  },
+  "devDependencies": {
+    "typescript": "^4.3.5"
   }
 }

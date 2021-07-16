@@ -1,28 +1,36 @@
-import { html, noChange } from 'lit-html';
+import { html, noChange, nothing, TemplateResult } from 'lit-html';
 import { Nexbounce } from 'nexbounce';
 import { render } from 'lit-html/lib/shady-render.js';
+import { CSSResult } from './lib/css-tag.js';
 
 export * from 'lit-html';
 export * from './lib/css-tag.js';
-export * from './lib/directives.js';
-export * from './lib/mixins.js';
+
+export type NexwidgetConstructor = typeof Nexwidget;
+export type NexwidgetAnimation = [keyframes: Keyframe[], options?: KeyframeAnimationOptions] | null;
+export type NexwidgetAttributeType = typeof String | typeof Number | typeof Boolean;
+export type NexwidgetTemplate = TemplateResult | string | number | typeof nothing | typeof noChange;
 
 export class Nexwidget extends HTMLElement {
-  static #reactives = new WeakMap([[Nexwidget, new Set()]]);
-  static #attributes = new WeakMap([[Nexwidget, new Map()]]);
+  static #reactives: WeakMap<NexwidgetConstructor, Set<string>> = new WeakMap([
+    [Nexwidget, new Set()],
+  ]);
 
-  static get styles() {
+  static #attributes: WeakMap<NexwidgetConstructor, Map<string, NexwidgetAttributeType>> =
+    new WeakMap([[Nexwidget, new Map()]]);
+
+  static get styles(): CSSResult[] {
     return [];
   }
 
   static get reactives() {
     Nexwidget.#ensureReactives(this);
-    return [...Nexwidget.#reactives.get(this)];
+    return [...Nexwidget.#reactives.get(this)!];
   }
 
   static get attributes() {
     Nexwidget.#ensureAttributes(this);
-    return [...Nexwidget.#attributes.get(this).keys()];
+    return [...Nexwidget.#attributes.get(this)!.keys()];
   }
 
   static get propertyKeysForObservedAttributes() {
@@ -34,36 +42,36 @@ export class Nexwidget extends HTMLElement {
     return this.propertyKeysForObservedAttributes.map(Nexwidget.#camelToKebab);
   }
 
-  static #camelToKebab(name) {
+  static #camelToKebab(name: string) {
     return name
       .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
       .replace(/([A-Z])([A-Z])(?=[a-z])/g, '$1-$2')
       .toLowerCase();
   }
 
-  static #ensureReactives(klass) {
+  static #ensureReactives(klass: NexwidgetConstructor) {
     const isEnsured = Nexwidget.#reactives.has(klass);
 
     if (!isEnsured) {
-      const superClass = Reflect.getPrototypeOf(klass);
+      const superClass = Reflect.getPrototypeOf(klass) as NexwidgetConstructor;
       const isSuperClassEnsured = Nexwidget.#reactives.has(superClass);
 
       if (!isSuperClassEnsured && superClass !== Nexwidget) Nexwidget.#ensureReactives(superClass);
 
-      Nexwidget.#reactives.set(klass, Nexwidget.#reactives.get(superClass));
+      Nexwidget.#reactives.set(klass, Nexwidget.#reactives.get(superClass)!);
     }
   }
 
-  static #ensureAttributes(klass) {
+  static #ensureAttributes(klass: NexwidgetConstructor) {
     const isEnsured = Nexwidget.#attributes.has(klass);
 
     if (!isEnsured) {
-      const superClass = Reflect.getPrototypeOf(klass);
+      const superClass = Reflect.getPrototypeOf(klass) as NexwidgetConstructor;
       const isSuperClassEnsured = Nexwidget.#attributes.has(superClass);
 
       if (!isSuperClassEnsured && superClass !== Nexwidget) Nexwidget.#ensureAttributes(superClass);
 
-      Nexwidget.#attributes.set(klass, Nexwidget.#attributes.get(superClass));
+      Nexwidget.#attributes.set(klass, Nexwidget.#attributes.get(superClass)!);
     }
   }
 
@@ -71,54 +79,58 @@ export class Nexwidget extends HTMLElement {
     customElements.define(tagName, this);
   }
 
-  static createReactives(properties) {
+  static createReactives(properties: string[]) {
     Nexwidget.#ensureReactives(this);
 
     properties.forEach((key) => {
       const descriptor = Reflect.getOwnPropertyDescriptor(this.prototype, key);
       const internalKey = !descriptor?.get ? Symbol(key) : null;
 
-      Nexwidget.#reactives.set(this, new Set([...Nexwidget.#reactives.get(this), key]));
+      Nexwidget.#reactives.set(this, new Set([...Nexwidget.#reactives.get(this)!, key]));
 
       Reflect.defineProperty(this.prototype, key, {
         configurable: true,
         enumerable: true,
         get() {
-          if (internalKey) return this[internalKey];
-          else return descriptor.get.call(this);
+          if (internalKey)
+            //@ts-ignore
+            return this[internalKey];
+          else return descriptor!.get!.call(this);
         },
         set(value) {
+          //@ts-ignore
           const prevValue = this[key];
 
           descriptor?.set?.call?.(this, value);
 
           if (prevValue !== value && internalKey) {
+            //@ts-ignore
             this[internalKey] = value;
-            this.#render();
+            (this as Nexwidget).#render();
           }
         },
       });
     });
   }
 
-  static createAttributes(attributes) {
+  static createAttributes(attributes: { [key: string]: NexwidgetAttributeType }) {
     Nexwidget.#ensureAttributes(this);
 
     Object.entries(attributes).forEach(([key, type]) => {
       const descriptor = Reflect.getOwnPropertyDescriptor(this.prototype, key);
 
-      Nexwidget.#attributes.set(this, new Map([...Nexwidget.#attributes.get(this), [key, type]]));
+      Nexwidget.#attributes.set(this, new Map([...Nexwidget.#attributes.get(this)!, [key, type]]));
 
       Reflect.defineProperty(this.prototype, key, {
         configurable: true,
         enumerable: true,
         get() {
           descriptor?.get?.call?.(this);
-          return this.#getPropertyValueFromAttribute(key);
+          return (this as Nexwidget).#getPropertyValueFromAttribute(key);
         },
         set(value) {
           descriptor?.set?.call?.(this, value);
-          this.#setAttributeFromProperty(key, value);
+          (this as Nexwidget).#setAttributeFromProperty(key, value);
         },
       });
     });
@@ -130,49 +142,45 @@ export class Nexwidget extends HTMLElement {
   #isRenderEnabled = false;
   #isMounted = false;
 
-  #removedController;
-  #willUnmountController;
-  #unmountedController;
+  #removedController?: AbortController;
+  #willUnmountController?: AbortController;
+  #unmountedController?: AbortController;
 
   #slotObserver = new MutationObserver(this.slotChangedCallback.bind(this));
 
-  #animation;
+  #animation?: Animation;
 
-  #styleElement;
-
-  constructor() {
-    super();
-    this.#adoptStyles();
-  }
+  #styleElement?: HTMLStyleElement;
 
   get removedSignal() {
-    return this.#removedController.signal;
+    return this.#removedController?.signal;
   }
 
   get willUnmountSignal() {
-    return this.#willUnmountController.signal;
+    return this.#willUnmountController?.signal;
   }
 
   get unmountedSignal() {
-    return this.#unmountedController.signal;
+    return this.#unmountedController?.signal;
   }
 
-  get template() {
+  get template(): NexwidgetTemplate {
     return noChange;
   }
 
-  get mountAnimation() {
+  get mountAnimation(): NexwidgetAnimation {
     return this.updateOrSlotChangeAnimation;
   }
 
-  get updateOrSlotChangeAnimation() {
-    return [];
+  get updateOrSlotChangeAnimation(): NexwidgetAnimation {
+    return null;
   }
 
   #adoptStyles() {
-    const { styles } = this.constructor;
+    const { styles } = this.constructor as NexwidgetConstructor;
 
     if ('adoptedStyleSheets' in Document.prototype)
+      //@ts-ignore
       this.#renderRoot.adoptedStyleSheets = styles.map(({ styleSheet }) => styleSheet);
     else {
       this.#styleElement = document.createElement('style');
@@ -180,8 +188,9 @@ export class Nexwidget extends HTMLElement {
     }
   }
 
-  #getPropertyValueFromAttribute(key) {
-    const type = Nexwidget.#attributes.get(this.constructor).get(key);
+  //@ts-ignore
+  #getPropertyValueFromAttribute(key: string) {
+    const type = Nexwidget.#attributes.get(this.constructor as NexwidgetConstructor)!.get(key)!;
     const attributeKey = Nexwidget.#camelToKebab(key);
 
     switch (type) {
@@ -197,8 +206,9 @@ export class Nexwidget extends HTMLElement {
     }
   }
 
-  #setAttributeFromProperty(key, value) {
-    const type = Nexwidget.#attributes.get(this.constructor).get(key);
+  //@ts-ignore
+  #setAttributeFromProperty(key: string, value: Object) {
+    const type = Nexwidget.#attributes.get(this.constructor as NexwidgetConstructor)!.get(key)!;
     const attributeKey = Nexwidget.#camelToKebab(key);
 
     if (value === undefined) throw new Error(`Attribute value cannot be undefined.`);
@@ -259,11 +269,12 @@ export class Nexwidget extends HTMLElement {
     this.unmountedCallback();
   }
 
-  attributeChangedCallback(_key, oldValue, newValue) {
+  attributeChangedCallback(_key: string, oldValue: string, newValue: string) {
     if (oldValue !== newValue) this.#render();
   }
 
   connectedCallback() {
+    this.#adoptStyles();
     this.addedCallback();
     this.willMountCallback().then(() => {
       this.#isRenderEnabled = true;
@@ -290,21 +301,21 @@ export class Nexwidget extends HTMLElement {
   updatedCallback() {
     this.#animation?.cancel?.();
 
-    if (this.updateOrSlotChangeAnimation.length > 0)
+    if (this.updateOrSlotChangeAnimation !== null)
       this.#animation = this.animate(...this.updateOrSlotChangeAnimation);
   }
 
   slotChangedCallback() {
     this.#animation?.cancel?.();
 
-    if (this.updateOrSlotChangeAnimation.length > 0)
+    if (this.updateOrSlotChangeAnimation !== null)
       this.#animation = this.animate(...this.updateOrSlotChangeAnimation);
   }
 
   mountedCallback() {
     this.#animation?.cancel?.();
 
-    if (this.mountAnimation.length > 0) this.#animation = this.animate(...this.mountAnimation);
+    if (this.mountAnimation !== null) this.#animation = this.animate(...this.mountAnimation);
 
     this.#unmountedController = new AbortController();
   }
@@ -321,7 +332,7 @@ export class Nexwidget extends HTMLElement {
     this.#unmountedController?.abort?.();
   }
 
-  getCSSProperty(key) {
+  getCSSProperty(key: string) {
     return getComputedStyle(this).getPropertyValue(key);
   }
 }
