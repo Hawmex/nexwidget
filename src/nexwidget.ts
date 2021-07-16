@@ -236,37 +236,53 @@ export class Nexwidget extends HTMLElement {
   #render() {
     this.#renderDebouncer.enqueue(() => {
       if (this.#isRenderEnabled) {
-        const finalTemplate = this.#styleElement
-          ? html`${this.template} ${this.#styleElement}`
-          : this.template;
+        this.willUpdateCallback()
+          .then(() => {
+            if (!this.#isMounted) return this.willMountCallback();
+            else return Promise.resolve();
+          })
+          .then(() => {
+            if (this.#isRenderEnabled) {
+              const finalTemplate = this.#styleElement
+                ? html`${this.template} ${this.#styleElement}`
+                : this.template;
 
-        render(finalTemplate, this.#renderRoot, { scopeName: this.localName, eventContext: this });
+              render(finalTemplate, this.#renderRoot, {
+                scopeName: this.localName,
+                eventContext: this,
+              });
 
-        requestAnimationFrame(() => {
-          this.updatedCallback();
+              requestAnimationFrame(() => {
+                this.updatedCallback();
 
-          if (!this.#isMounted) {
-            this.slotChangedCallback();
+                if (!this.#isMounted) {
+                  this.slotChangedCallback();
 
-            this.#isMounted = true;
-            this.mountedCallback();
+                  this.#isMounted = true;
+                  this.mountedCallback();
 
-            this.#slotObserver.observe(this, {
-              subtree: true,
-              characterData: true,
-              childList: true,
-            });
-          }
-        });
+                  this.#slotObserver.observe(this, {
+                    subtree: true,
+                    characterData: true,
+                    childList: true,
+                  });
+                }
+              });
+            }
+          });
       }
     });
   }
 
   #cleanupRender() {
-    this.#slotObserver.disconnect();
+    this.willUnmountCallback().then(() => {
+      if (!this.#isRenderEnabled) {
+        this.#slotObserver.disconnect();
 
-    this.#isMounted = false;
-    this.unmountedCallback();
+        this.#isMounted = false;
+        this.unmountedCallback();
+      }
+    });
   }
 
   attributeChangedCallback(_key: string, oldValue: string, newValue: string) {
@@ -276,23 +292,21 @@ export class Nexwidget extends HTMLElement {
   connectedCallback() {
     this.#adoptStyles();
     this.addedCallback();
-    this.willMountCallback().then(() => {
-      this.#isRenderEnabled = true;
-      this.#render();
-    });
+    this.#isRenderEnabled = true;
+    this.#render();
   }
 
   disconnectedCallback() {
     this.removedCallback();
-    this.willUnmountCallback().then(() => {
-      this.#isRenderEnabled = false;
-      this.#cleanupRender();
-    });
+    this.#isRenderEnabled = false;
+    this.#cleanupRender();
   }
 
   addedCallback() {
     this.#removedController = new AbortController();
   }
+
+  async willUpdateCallback() {}
 
   async willMountCallback() {
     this.#willUnmountController = new AbortController();
