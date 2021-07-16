@@ -1,6 +1,6 @@
 import { html, noChange, nothing, TemplateResult } from 'lit-html';
-import { Nexbounce } from 'nexbounce';
 import { render } from 'lit-html/lib/shady-render.js';
+import { Nexbounce } from 'nexbounce';
 import { CSSResult } from './lib/css-tag.js';
 
 export * from 'lit-html';
@@ -234,55 +234,49 @@ export class Nexwidget extends HTMLElement {
   }
 
   #render() {
-    this.#renderDebouncer.enqueue(() => {
+    this.#renderDebouncer.enqueue(async () => {
       if (this.#isRenderEnabled) {
-        this.willUpdateCallback()
-          .then(() => {
-            if (!this.#isMounted) return this.willMountCallback();
-            else return Promise.resolve();
-          })
-          .then(() => {
-            if (this.#isRenderEnabled) {
-              const finalTemplate = this.#styleElement
-                ? html`${this.template} ${this.#styleElement}`
-                : this.template;
+        await this.willUpdateCallback();
 
-              render(finalTemplate, this.#renderRoot, {
-                scopeName: this.localName,
-                eventContext: this,
-              });
+        if (!this.#isMounted) await this.willMountCallback();
+      }
 
-              requestAnimationFrame(() => {
-                this.updatedCallback();
+      if (this.#isRenderEnabled) {
+        const finalTemplate = this.#styleElement
+          ? html`${this.template} ${this.#styleElement}`
+          : this.template;
 
-                if (!this.#isMounted) {
-                  this.slotChangedCallback();
+        render(finalTemplate, this.#renderRoot, { scopeName: this.localName, eventContext: this });
 
-                  this.#isMounted = true;
-                  this.mountedCallback();
+        requestAnimationFrame(() => {
+          this.updatedCallback();
 
-                  this.#slotObserver.observe(this, {
-                    subtree: true,
-                    characterData: true,
-                    childList: true,
-                  });
-                }
-              });
-            }
-          });
+          if (!this.#isMounted) {
+            this.slotChangedCallback();
+
+            this.#isMounted = true;
+            this.mountedCallback();
+
+            this.#slotObserver.observe(this, {
+              subtree: true,
+              characterData: true,
+              childList: true,
+            });
+          }
+        });
       }
     });
   }
 
-  #cleanupRender() {
-    this.willUnmountCallback().then(() => {
-      if (!this.#isRenderEnabled) {
-        this.#slotObserver.disconnect();
+  async #cleanupRender() {
+    await this.willUnmountCallback();
 
-        this.#isMounted = false;
-        this.unmountedCallback();
-      }
-    });
+    if (!this.#isRenderEnabled) {
+      this.#slotObserver.disconnect();
+
+      this.#isMounted = false;
+      this.unmountedCallback();
+    }
   }
 
   attributeChangedCallback(_key: string, oldValue: string, newValue: string) {
