@@ -6,10 +6,16 @@ import { CSSResult } from './lib/css-tag.js';
 export * from 'lit-html';
 export * from './lib/css-tag.js';
 
-export type NexwidgetConstructor = typeof Nexwidget;
+export type NexwidgetConstructor = new (...args: any[]) => Nexwidget;
 export type NexwidgetAnimation = [keyframes: Keyframe[], options?: KeyframeAnimationOptions] | null;
 export type NexwidgetAttributeType = typeof String | typeof Number | typeof Boolean;
 export type NexwidgetTemplate = TemplateResult | string | number | typeof nothing | typeof noChange;
+
+declare global {
+  interface AddEventListenerOptions {
+    signal?: AbortSignal;
+  }
+}
 
 export class Nexwidget extends HTMLElement {
   static #reactives: WeakMap<NexwidgetConstructor, Set<string>> = new WeakMap([
@@ -177,7 +183,7 @@ export class Nexwidget extends HTMLElement {
   }
 
   #adoptStyles() {
-    const { styles } = this.constructor as NexwidgetConstructor;
+    const { styles } = this.constructor as typeof Nexwidget;
 
     if ('adoptedStyleSheets' in Document.prototype)
       //@ts-ignore
@@ -281,8 +287,8 @@ export class Nexwidget extends HTMLElement {
 
   #upgradeReactivesAndAttributes() {
     const keys = new Set([
-      ...(this.constructor as NexwidgetConstructor).reactives,
-      ...(this.constructor as NexwidgetConstructor).attributes,
+      ...(this.constructor as typeof Nexwidget).reactives,
+      ...(this.constructor as typeof Nexwidget).attributes,
     ]);
 
     keys.forEach((key) => {
