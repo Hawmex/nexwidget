@@ -279,11 +279,30 @@ export class Nexwidget extends HTMLElement {
     }
   }
 
+  #upgradeReactivesAndAttributes() {
+    const keys = new Set([
+      ...(this.constructor as NexwidgetConstructor).reactives,
+      ...(this.constructor as NexwidgetConstructor).attributes,
+    ]);
+
+    keys.forEach((key) => {
+      if (Object.prototype.hasOwnProperty.call(this, key)) {
+        //@ts-ignore
+        const value = this[key];
+        //@ts-ignore
+        delete this[key];
+        //@ts-ignore
+        this[key] = value;
+      }
+    });
+  }
+
   attributeChangedCallback(_key: string, oldValue: string, newValue: string) {
     if (oldValue !== newValue) this.#render();
   }
 
   connectedCallback() {
+    this.#upgradeReactivesAndAttributes();
     this.#adoptStyles();
     this.addedCallback();
     this.#isRenderEnabled = true;
