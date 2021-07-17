@@ -55,11 +55,11 @@ export class Nexwidget extends HTMLElement {
       .toLowerCase();
   }
 
-  static #ensureReactives(klass: NexwidgetConstructor) {
+  static #ensureReactives(klass: typeof Nexwidget) {
     const isEnsured = Nexwidget.#reactives.has(klass);
 
     if (!isEnsured) {
-      const superClass = Reflect.getPrototypeOf(klass) as NexwidgetConstructor;
+      const superClass = Reflect.getPrototypeOf(klass) as typeof Nexwidget;
       const isSuperClassEnsured = Nexwidget.#reactives.has(superClass);
 
       if (!isSuperClassEnsured && superClass !== Nexwidget) Nexwidget.#ensureReactives(superClass);
@@ -68,11 +68,11 @@ export class Nexwidget extends HTMLElement {
     }
   }
 
-  static #ensureAttributes(klass: NexwidgetConstructor) {
+  static #ensureAttributes(klass: typeof Nexwidget) {
     const isEnsured = Nexwidget.#attributes.has(klass);
 
     if (!isEnsured) {
-      const superClass = Reflect.getPrototypeOf(klass) as NexwidgetConstructor;
+      const superClass = Reflect.getPrototypeOf(klass) as typeof Nexwidget;
       const isSuperClassEnsured = Nexwidget.#attributes.has(superClass);
 
       if (!isSuperClassEnsured && superClass !== Nexwidget) Nexwidget.#ensureAttributes(superClass);
@@ -196,7 +196,7 @@ export class Nexwidget extends HTMLElement {
 
   //@ts-ignore
   #getPropertyValueFromAttribute(key: string) {
-    const type = Nexwidget.#attributes.get(this.constructor as NexwidgetConstructor)!.get(key)!;
+    const type = Nexwidget.#attributes.get(this.constructor as typeof Nexwidget)!.get(key)!;
     const attributeKey = Nexwidget.#camelToKebab(key);
 
     switch (type) {
@@ -214,7 +214,7 @@ export class Nexwidget extends HTMLElement {
 
   //@ts-ignore
   #setAttributeFromProperty(key: string, value: Object) {
-    const type = Nexwidget.#attributes.get(this.constructor as NexwidgetConstructor)!.get(key)!;
+    const type = Nexwidget.#attributes.get(this.constructor as typeof Nexwidget)!.get(key)!;
     const attributeKey = Nexwidget.#camelToKebab(key);
 
     if (value === undefined) throw new Error(`Attribute value cannot be undefined.`);
