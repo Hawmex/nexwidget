@@ -6,7 +6,6 @@ import { CSSResult } from './lib/css-tag.js';
 export * from 'lit-html';
 export * from './lib/css-tag.js';
 
-export type NexwidgetConstructor = new (...args: any[]) => Nexwidget;
 export type NexwidgetAnimation = [keyframes: Keyframe[], options?: KeyframeAnimationOptions] | null;
 export type NexwidgetAttributeType = typeof String | typeof Number | typeof Boolean;
 export type NexwidgetTemplate = TemplateResult | string | number | typeof nothing | typeof noChange;
@@ -18,12 +17,11 @@ declare global {
 }
 
 export class Nexwidget extends HTMLElement {
-  static #reactives: WeakMap<NexwidgetConstructor, Set<string>> = new WeakMap([
-    [Nexwidget, new Set()],
-  ]);
+  static #reactives: WeakMap<typeof Nexwidget, Set<string>> = new WeakMap([[Nexwidget, new Set()]]);
 
-  static #attributes: WeakMap<NexwidgetConstructor, Map<string, NexwidgetAttributeType>> =
-    new WeakMap([[Nexwidget, new Map()]]);
+  static #attributes: WeakMap<typeof Nexwidget, Map<string, NexwidgetAttributeType>> = new WeakMap([
+    [Nexwidget, new Map()],
+  ]);
 
   static get styles(): CSSResult[] {
     return [];

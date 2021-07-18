@@ -1,4 +1,4 @@
-import { NexwidgetConstructor } from '../nexwidget.js';
+import { Nexwidget } from '../nexwidget.js';
 
 export type DependencyRequestEventDetails = { key: string; value?: any };
 export type DependencyRequestEvent = CustomEvent<DependencyRequestEventDetails>;
@@ -9,8 +9,8 @@ declare global {
   }
 }
 
-export const WithDependencyConsumer = <T extends NexwidgetConstructor>(Base: T) =>
-  class WithDependencyConsumer extends Base {
+export const WithDependencyConsumer = (Base: typeof Nexwidget) =>
+  class extends Base {
     requestDependency(key: string) {
       const dependencyRequest = new CustomEvent<DependencyRequestEventDetails>(
         'dependency-request',
@@ -24,8 +24,8 @@ export const WithDependencyConsumer = <T extends NexwidgetConstructor>(Base: T) 
     }
   };
 
-export const WithDependencyProvider = <T extends NexwidgetConstructor>(Base: T) =>
-  class WithDependencyProvider extends Base {
+export const WithDependencyProvider = (Base: typeof Nexwidget) =>
+  class extends Base {
     #dependencies: Map<string, any> = new Map();
 
     #handleRequest(event: DependencyRequestEvent) {
