@@ -95,20 +95,19 @@ export class Nexwidget extends HTMLElement {
         configurable: true,
         enumerable: true,
         get() {
-          if (internalKey)
+          if (internalKey !== null)
             //@ts-ignore
-            return this[internalKey];
+            return (this as { [key: symbol]: any })[internalKey];
           else return descriptor!.get!.call(this);
         },
         set(value) {
-          //@ts-ignore
-          const prevValue = this[key];
+          const prevValue = (this as { [key: string]: any })[key];
 
           descriptor?.set?.call?.(this, value);
 
           if (prevValue !== value && internalKey) {
             //@ts-ignore
-            this[internalKey] = value;
+            (this as { [key: symbol]: any })[internalKey] = value;
             (this as Nexwidget).#render();
           }
         },
@@ -285,12 +284,9 @@ export class Nexwidget extends HTMLElement {
 
     keys.forEach((key) => {
       if (Object.prototype.hasOwnProperty.call(this, key)) {
-        //@ts-ignore
-        const value = this[key];
-        //@ts-ignore
-        delete this[key];
-        //@ts-ignore
-        this[key] = value;
+        const value = (this as { [key: string]: any })[key];
+        delete (this as { [key: string]: any })[key];
+        (this as { [key: string]: any })[key] = value;
       }
     });
   }

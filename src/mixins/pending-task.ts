@@ -1,14 +1,14 @@
 import { addPendingTask, AddPendingTaskEvent } from '../lib/add-pending-task.js';
 import { Nexwidget } from '../nexwidget.js';
 
-export const WithPendingTaskEmitter = (Base: typeof Nexwidget) =>
+export const WithPendingTaskEmitter = <T extends new (...args: any[]) => Nexwidget>(Base: T) =>
   class extends Base {
     addPendingTask<T>(task: Promise<T>) {
       return addPendingTask(this, task);
     }
   };
 
-export const WithPendingTaskHandler = (Base: typeof Nexwidget) => {
+export const WithPendingTaskHandler = <T extends new (...args: any[]) => Nexwidget>(Base: T) => {
   const WithPendingTaskHandler = class extends Base {
     #pendingTaskCount = 0;
     hasPendingTask = false;
@@ -31,8 +31,11 @@ export const WithPendingTaskHandler = (Base: typeof Nexwidget) => {
     }
   };
 
-  WithPendingTaskHandler.createAttributes({ hasPendingTask: Boolean });
-  WithPendingTaskHandler.createReactives(['hasPendingTask']);
+  (WithPendingTaskHandler as unknown as typeof Nexwidget).createAttributes({
+    hasPendingTask: Boolean,
+  });
+
+  (WithPendingTaskHandler as unknown as typeof Nexwidget).createReactives(['hasPendingTask']);
 
   return WithPendingTaskHandler;
 };

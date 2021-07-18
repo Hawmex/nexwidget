@@ -19,7 +19,7 @@ declare global {
   }
 }
 
-export const WithDependencyConsumer = (Base: typeof Nexwidget) =>
+export const WithDependencyConsumer = <T extends new (...args: any[]) => Nexwidget>(Base: T) =>
   class extends Base {
     requestDependency<K extends keyof NexwidgetDependencyMap>(key: K) {
       const dependencyRequest = new CustomEvent<DependencyRequestEventDetails<K>>(
@@ -34,7 +34,7 @@ export const WithDependencyConsumer = (Base: typeof Nexwidget) =>
     }
   };
 
-export const WithDependencyProvider = (Base: typeof Nexwidget) =>
+export const WithDependencyProvider = <T extends new (...args: any[]) => Nexwidget>(Base: T) =>
   class extends Base {
     #dependencies: Map<
       keyof NexwidgetDependencyMap,
