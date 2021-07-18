@@ -1,8 +1,8 @@
-export type CSSValue = CSSResult | number;
+type CSSValue = CSSResult | number;
 
-export class CSSResult {
+class CSSResult {
   static #checkValue(value: CSSValue) {
-    if (value instanceof CSSResult) return value.CSSText;
+    if (value instanceof CSSResult) return value.#CSSText;
     else if (typeof value === 'number') return value;
     else
       throw new Error(
@@ -34,11 +34,7 @@ export class CSSResult {
 
     return this.#styleSheet;
   }
-
-  get CSSText() {
-    return this.#CSSText;
-  }
 }
 
 export const css = (strings: TemplateStringsArray, ...values: CSSValue[]) =>
-  new CSSResult(strings, values);
+  new CSSResult(strings, values).styleSheet;

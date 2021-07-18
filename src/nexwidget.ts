@@ -1,7 +1,6 @@
 import { html, noChange, nothing, TemplateResult } from 'lit-html';
 import { render } from 'lit-html/lib/shady-render.js';
 import { Nexbounce } from 'nexbounce';
-import { CSSResult } from './lib/css-tag.js';
 
 export * from 'lit-html';
 export * from './lib/css-tag.js';
@@ -23,7 +22,7 @@ export class Nexwidget extends HTMLElement {
     [Nexwidget, new Map()],
   ]);
 
-  static get styles(): CSSResult[] {
+  static get styles(): CSSStyleSheet[] {
     return [];
   }
 
@@ -183,13 +182,8 @@ export class Nexwidget extends HTMLElement {
   #adoptStyles() {
     const { styles } = this.constructor as typeof Nexwidget;
 
-    if ('adoptedStyleSheets' in Document.prototype)
-      //@ts-ignore
-      this.#renderRoot.adoptedStyleSheets = styles.map(({ styleSheet }) => styleSheet);
-    else {
-      this.#styleElement = document.createElement('style');
-      this.#styleElement.textContent = styles.map(({ CSSText }) => CSSText).join('');
-    }
+    //@ts-ignore
+    this.#renderRoot.adoptedStyleSheets = [...styles];
   }
 
   //@ts-ignore
