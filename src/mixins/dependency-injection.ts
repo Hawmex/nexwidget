@@ -36,7 +36,10 @@ export const WithDependencyConsumer = (Base: typeof Nexwidget) =>
 
 export const WithDependencyProvider = (Base: typeof Nexwidget) =>
   class extends Base {
-    #dependencies: Map<string, any> = new Map();
+    #dependencies: Map<
+      keyof NexwidgetDependencyMap,
+      NexwidgetDependencyMap[keyof NexwidgetDependencyMap]
+    > = new Map([]);
 
     #handleRequest<K extends keyof NexwidgetDependencyMap>(event: DependencyRequestEvent<K>) {
       const { key } = event.detail;
@@ -54,7 +57,10 @@ export const WithDependencyProvider = (Base: typeof Nexwidget) =>
       });
     }
 
-    provideDependency(key: string, value: any) {
+    provideDependency<K extends keyof NexwidgetDependencyMap>(
+      key: K,
+      value: NexwidgetDependencyMap[K],
+    ) {
       this.#dependencies.set(key, value);
     }
   };
