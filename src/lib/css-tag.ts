@@ -10,7 +10,7 @@ export class CSSResult {
       );
   }
 
-  static #refine(strings: string[], values: CSSValue[]) {
+  static #refine(strings: TemplateStringsArray, values: CSSValue[]) {
     return values.reduce(
       (accumulator, value, index) =>
         accumulator + CSSResult.#checkValue(value) + strings[index + 1],
@@ -21,7 +21,7 @@ export class CSSResult {
   #CSSText: string;
   #styleSheet?: CSSStyleSheet;
 
-  constructor(strings: string[], values: CSSValue[]) {
+  constructor(strings: TemplateStringsArray, values: CSSValue[]) {
     this.#CSSText = CSSResult.#refine(strings, values);
   }
 
@@ -40,4 +40,5 @@ export class CSSResult {
   }
 }
 
-export const css = (strings: string[], ...values: CSSValue[]) => new CSSResult(strings, values);
+export const css = (strings: TemplateStringsArray, ...values: CSSValue[]) =>
+  new CSSResult(strings, values);
