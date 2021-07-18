@@ -7,7 +7,7 @@ declare global {
   }
 }
 
-export const addPendingTask = (emitter: EventTarget, task: Promise<any>) => {
+export const addPendingTask = <T>(emitter: EventTarget, task: Promise<T>) => {
   const pendingTask = new CustomEvent<AddPendingTaskEventDetails>('pending-task', {
     composed: true,
     bubbles: true,
