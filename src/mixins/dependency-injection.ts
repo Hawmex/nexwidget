@@ -1,6 +1,8 @@
 import { Nexwidget } from '../nexwidget.js';
 
-export interface NexwidgetDependencyKeyMap {}
+declare global {
+  interface NexwidgetDependencyKeyMap {}
+}
 
 export type DependencyRequestEventDetails<K extends keyof NexwidgetDependencyKeyMap> = {
   key: K;
@@ -39,7 +41,7 @@ export const WithDependencyProvider = <T extends new (...args: any[]) => Nexwidg
       NexwidgetDependencyKeyMap[keyof NexwidgetDependencyKeyMap]
     > = new Map([]);
 
-    #handleRequest<K extends keyof NexwidgetDependencyKeyMap>(event: DependencyRequestEvent<K>) {
+    #handleRequest(event: DependencyRequestEvent<keyof NexwidgetDependencyKeyMap>) {
       const { key } = event.detail;
 
       if (this.#dependencies.has(key)) {
