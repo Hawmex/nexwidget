@@ -1,4 +1,4 @@
-type CSSValue = CSSResult | number;
+export type CSSValue = CSSResult | number;
 
 class CSSResult {
   static #checkValue(value: CSSValue) {
