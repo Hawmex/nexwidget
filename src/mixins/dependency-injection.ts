@@ -1,6 +1,6 @@
 import { Constructor, Nexwidget } from '../nexwidget.js';
 
-export declare interface NexwidgetDependencyKeyMap {}
+export interface NexwidgetDependencyKeyMap {}
 
 type DependencyRequestEventDetails<K extends keyof NexwidgetDependencyKeyMap> = {
   key: K;
