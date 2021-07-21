@@ -1,7 +1,7 @@
 import { addPendingTask, AddPendingTaskEvent } from '../lib/add-pending-task.js';
 import { Constructor, Nexwidget } from '../nexwidget.js';
 
-export interface WithPendingTaskEmitterInterface {
+export declare class WithPendingTaskEmitterInterface {
   addPendingTask<T>(task: Promise<T>): Promise<T>;
 }
 
@@ -15,7 +15,7 @@ export const WithPendingTaskEmitter = <T extends Constructor<Nexwidget>>(Base: T
   return WithPendingTaskEmitter as Constructor<WithPendingTaskEmitterInterface> & T;
 };
 
-export interface WithPendingTaskHandlerInterface {
+export declare class WithPendingTaskHandlerInterface {
   hasPendingTask: boolean;
 }
 

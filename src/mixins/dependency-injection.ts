@@ -17,7 +17,7 @@ declare global {
   }
 }
 
-export interface WithDependencyConsumerInterface {
+export declare class WithDependencyConsumerInterface {
   requestDependency<K extends never>(key: K): NexwidgetDependencyKeyMap[K];
 }
 
@@ -39,7 +39,7 @@ export const WithDependencyConsumer = <T extends Constructor<Nexwidget>>(Base: T
   return WithDependencyConsumer as Constructor<WithDependencyConsumerInterface> & T;
 };
 
-export interface WithDependencyProviderInterface {
+export declare class WithDependencyProviderInterface {
   provideDependency<K extends never>(key: K, value: NexwidgetDependencyKeyMap[K]): void;
 }
 
