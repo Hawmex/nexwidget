@@ -1,4 +1,4 @@
-import { Nexwidget } from '../nexwidget.js';
+import { Constructor, Nexwidget } from '../nexwidget.js';
 
 export interface NexwidgetDependencyKeyMap {}
 
@@ -17,8 +17,12 @@ declare global {
   }
 }
 
-export const WithDependencyConsumer = <T extends new (...args: any[]) => Nexwidget>(Base: T) =>
-  class extends Base {
+export interface WithDependencyConsumerInterface {
+  requestDependency<K extends never>(key: K): NexwidgetDependencyKeyMap[K];
+}
+
+export const WithDependencyConsumer = <T extends Constructor<Nexwidget>>(Base: T) => {
+  class WithDependencyConsumer extends Base {
     requestDependency<K extends keyof NexwidgetDependencyKeyMap>(key: K) {
       const dependencyRequest = new CustomEvent<DependencyRequestEventDetails<K>>(
         'dependency-request',
@@ -27,13 +31,20 @@ export const WithDependencyConsumer = <T extends new (...args: any[]) => Nexwidg
 
       this.dispatchEvent(dependencyRequest);
 
-      if (Reflect.has(dependencyRequest.detail, 'value')) return dependencyRequest.detail.value;
+      if (Reflect.has(dependencyRequest.detail, 'value')) return dependencyRequest.detail.value!;
       else throw new Error(`No such dependency is provided.`);
     }
-  };
+  }
 
-export const WithDependencyProvider = <T extends new (...args: any[]) => Nexwidget>(Base: T) =>
-  class extends Base {
+  return WithDependencyConsumer as Constructor<WithDependencyConsumerInterface> & T;
+};
+
+export interface WithDependencyProviderInterface {
+  provideDependency<K extends never>(key: K, value: NexwidgetDependencyKeyMap[K]): void;
+}
+
+export const WithDependencyProvider = <T extends Constructor<Nexwidget>>(Base: T) => {
+  class WithDependencyProvider extends Base {
     #dependencies: Map<
       keyof NexwidgetDependencyKeyMap,
       NexwidgetDependencyKeyMap[keyof NexwidgetDependencyKeyMap]
@@ -61,4 +72,7 @@ export const WithDependencyProvider = <T extends new (...args: any[]) => Nexwidg
     ) {
       this.#dependencies.set(key, value);
     }
-  };
+  }
+
+  return WithDependencyProvider as Constructor<WithDependencyProviderInterface> & T;
+};

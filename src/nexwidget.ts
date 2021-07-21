@@ -4,7 +4,9 @@ import { Nexbounce } from 'nexbounce';
 
 export * from 'lit-html';
 export * from './lib/css-tag.js';
+export * from './lib/add-pending-task.js';
 
+export type Constructor<T = {}> = new (...args: any[]) => T;
 export type NexwidgetAnimation = [keyframes: Keyframe[], options?: KeyframeAnimationOptions] | null;
 export type NexwidgetAttributeType = typeof String | typeof Number | typeof Boolean;
 export type NexwidgetTemplate = TemplateResult | string | number | typeof nothing | typeof noChange;
