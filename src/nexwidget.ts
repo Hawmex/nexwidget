@@ -147,7 +147,6 @@ export class Nexwidget extends HTMLElement {
   #isMounted = false;
 
   #removedController?: AbortController;
-  #willUnmountController?: AbortController;
   #unmountedController?: AbortController;
 
   #slotObserver = new MutationObserver(this.slotChangedCallback.bind(this));
@@ -158,10 +157,6 @@ export class Nexwidget extends HTMLElement {
 
   get removedSignal() {
     return this.#removedController?.signal;
-  }
-
-  get willUnmountSignal() {
-    return this.#willUnmountController?.signal;
   }
 
   get unmountedSignal() {
@@ -233,13 +228,7 @@ export class Nexwidget extends HTMLElement {
   }
 
   #render() {
-    this.#renderDebouncer.enqueue(async () => {
-      if (this.#isRenderEnabled) {
-        await this.willUpdateCallback();
-
-        if (!this.#isMounted) await this.willMountCallback();
-      }
-
+    this.#renderDebouncer.enqueue(() => {
       if (this.#isRenderEnabled) {
         const finalTemplate = this.#styleElement
           ? html`${this.template} ${this.#styleElement}`
@@ -267,9 +256,7 @@ export class Nexwidget extends HTMLElement {
     });
   }
 
-  async #cleanupRender() {
-    await this.willUnmountCallback();
-
+  #cleanupRender() {
     if (!this.#isRenderEnabled) {
       this.#slotObserver.disconnect();
 
@@ -315,12 +302,6 @@ export class Nexwidget extends HTMLElement {
     this.#removedController = new AbortController();
   }
 
-  async willUpdateCallback() {}
-
-  async willMountCallback() {
-    this.#willUnmountController = new AbortController();
-  }
-
   updatedCallback() {
     this.#animation?.cancel?.();
 
@@ -345,10 +326,6 @@ export class Nexwidget extends HTMLElement {
 
   removedCallback() {
     this.#removedController?.abort?.();
-  }
-
-  async willUnmountCallback() {
-    this.#willUnmountController?.abort?.();
   }
 
   unmountedCallback() {
