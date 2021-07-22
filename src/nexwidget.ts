@@ -18,9 +18,9 @@ declare global {
 }
 
 export class Nexwidget extends HTMLElement {
-  static #reactives: WeakMap<typeof Nexwidget, Set<string>> = new WeakMap([[Nexwidget, new Set()]]);
+  static #reactives = new WeakMap<typeof Nexwidget, Set<string>>([[Nexwidget, new Set()]]);
 
-  static #attributes: WeakMap<typeof Nexwidget, Map<string, NexwidgetAttributeType>> = new WeakMap([
+  static #attributes = new WeakMap<typeof Nexwidget, Map<string, NexwidgetAttributeType>>([
     [Nexwidget, new Map()],
   ]);
 

@@ -2,7 +2,7 @@ import { directive, NodePart } from 'lit-html';
 import { Nexbounce } from 'nexbounce';
 import { addPendingTask } from '../lib/add-pending-task.js';
 
-const latestValues: WeakMap<NodePart, HTMLElement> = new WeakMap();
+const latestValues = new WeakMap<NodePart, HTMLElement>();
 const lazyLoadRenderDebouncer = new Nexbounce();
 
 export const lazyLoad = directive(

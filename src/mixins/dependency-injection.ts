@@ -50,10 +50,10 @@ export declare class WithDependencyProviderInterface {
 
 export const WithDependencyProvider = <T extends Constructor<Nexwidget>>(Base: T) => {
   class WithDependencyProvider extends Base {
-    #dependencies: Map<
+    #dependencies = new Map<
       keyof NexwidgetDependencyKeyMap,
       NexwidgetDependencyKeyMap[keyof NexwidgetDependencyKeyMap]
-    > = new Map([]);
+    >();
 
     #handleRequest(event: DependencyRequestEvent<keyof NexwidgetDependencyKeyMap>) {
       const { key } = event.detail;
