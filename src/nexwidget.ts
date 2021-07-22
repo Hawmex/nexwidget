@@ -1,4 +1,4 @@
-import { html, noChange, nothing, TemplateResult } from 'lit-html';
+import { noChange, nothing, TemplateResult } from 'lit-html';
 import { render } from 'lit-html/lib/shady-render.js';
 import { Nexbounce } from 'nexbounce';
 
@@ -153,8 +153,6 @@ export class Nexwidget extends HTMLElement {
 
   #animation?: Animation;
 
-  #styleElement?: HTMLStyleElement;
-
   get removedSignal() {
     return this.#removedController?.signal;
   }
@@ -230,11 +228,7 @@ export class Nexwidget extends HTMLElement {
   #render() {
     this.#renderDebouncer.enqueue(() => {
       if (this.#isRenderEnabled) {
-        const finalTemplate = this.#styleElement
-          ? html`${this.template} ${this.#styleElement}`
-          : this.template;
-
-        render(finalTemplate, this.#renderRoot, { scopeName: this.localName, eventContext: this });
+        render(this.template, this.#renderRoot, { scopeName: this.localName, eventContext: this });
 
         requestAnimationFrame(() => {
           this.updatedCallback();

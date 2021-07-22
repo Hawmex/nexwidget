@@ -23,15 +23,13 @@ class CSSResult {
 
   constructor(strings: TemplateStringsArray, values: CSSValue[]) {
     this.#CSSText = CSSResult.#refine(strings, values);
+
+    this.#styleSheet = new CSSStyleSheet();
+    //@ts-ignore
+    this.#styleSheet.replaceSync(this.#CSSText);
   }
 
   get styleSheet() {
-    if (this.#styleSheet === undefined) {
-      this.#styleSheet = new CSSStyleSheet();
-      //@ts-ignore
-      this.#styleSheet.replaceSync(this.#CSSText);
-    }
-
     return this.#styleSheet;
   }
 }
