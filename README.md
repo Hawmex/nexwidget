@@ -1,10 +1,11 @@
 # nexwidget
 
-`nexwidget` is an ESNext library that helps developers to create web components/custom elements.
+An ESNext library that helps developers to create web components/custom elements.
 
-![npm](https://img.shields.io/npm/v/nexwidget)
-![npm](https://img.shields.io/npm/dw/nexwidget)
-![NPM](https://img.shields.io/npm/l/nexwidget)
+[![npm version](https://img.shields.io/npm/v/nexwidget?style=for-the-badge)](https://npmjs.com/packages/nexwidget)
+[![npm downloads](https://img.shields.io/npm/dw/nexwidget?style=for-the-badge)](https://npmjs.com/packages/nexwidget)
+[![github issues](https://img.shields.io/github/issues/Hawmex/nexwidget?style=for-the-badge)](https://github.com/Hawmex/nexwidget/issues)
+[![license](https://img.shields.io/npm/l/nexwidget?style=for-the-badge)](https://github.com/Hawmex/nexwidget)
 
 ## Demo
 
