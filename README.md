@@ -2,8 +2,8 @@
 
 An ESNext library that helps developers to create web components/custom elements.
 
-[![npm version](https://img.shields.io/npm/v/nexwidget?style=for-the-badge)](https://npmjs.com/packages/nexwidget)
-[![npm downloads](https://img.shields.io/npm/dw/nexwidget?style=for-the-badge)](https://npmjs.com/packages/nexwidget)
+[![npm version](https://img.shields.io/npm/v/nexwidget?style=for-the-badge)](https://npmjs.com/package/nexwidget)
+[![npm downloads](https://img.shields.io/npm/dw/nexwidget?style=for-the-badge)](https://npmjs.com/package/nexwidget)
 [![github issues](https://img.shields.io/github/issues/Hawmex/nexwidget?style=for-the-badge)](https://github.com/Hawmex/nexwidget/issues)
 [![license](https://img.shields.io/npm/l/nexwidget?style=for-the-badge)](https://github.com/Hawmex/nexwidget)
 
