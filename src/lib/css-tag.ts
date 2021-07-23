@@ -19,7 +19,7 @@ class CSSResult {
   }
 
   #CSSText: string;
-  #styleSheet?: CSSStyleSheet;
+  #styleSheet: CSSStyleSheet;
 
   constructor(strings: TemplateStringsArray, values: CSSValue[]) {
     this.#CSSText = CSSResult.#refine(strings, values);
