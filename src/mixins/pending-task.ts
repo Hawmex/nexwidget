@@ -12,7 +12,7 @@ export const WithPendingTaskEmitter = <T extends Constructor<Nexwidget>>(Base: T
     }
   }
 
-  return WithPendingTaskEmitter as Constructor<WithPendingTaskEmitterInterface> & T;
+  return <Constructor<WithPendingTaskEmitterInterface> & T>WithPendingTaskEmitter;
 };
 
 export declare class WithPendingTaskHandlerInterface {
@@ -42,11 +42,11 @@ export const WithPendingTaskHandler = <T extends Constructor<Nexwidget>>(Base: T
     }
   }
 
-  (WithPendingTaskHandler as unknown as typeof Nexwidget).createAttributes({
+  (<typeof Nexwidget>(<unknown>WithPendingTaskHandler)).createAttributes({
     hasPendingTask: Boolean,
   });
 
-  (WithPendingTaskHandler as unknown as typeof Nexwidget).createReactives(['hasPendingTask']);
+  (<typeof Nexwidget>(<unknown>WithPendingTaskHandler)).createReactives(['hasPendingTask']);
 
-  return WithPendingTaskHandler as Constructor<WithPendingTaskHandlerInterface> & T;
+  return <Constructor<WithPendingTaskHandlerInterface> & T>WithPendingTaskHandler;
 };

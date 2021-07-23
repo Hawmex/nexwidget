@@ -38,7 +38,7 @@ export const WithDependencyConsumer = <T extends Constructor<Nexwidget>>(Base: T
     }
   }
 
-  return WithDependencyConsumer as Constructor<WithDependencyConsumerInterface> & T;
+  return <Constructor<WithDependencyConsumerInterface> & T>WithDependencyConsumer;
 };
 
 export declare class WithDependencyProviderInterface {
@@ -79,5 +79,5 @@ export const WithDependencyProvider = <T extends Constructor<Nexwidget>>(Base: T
     }
   }
 
-  return WithDependencyProvider as Constructor<WithDependencyProviderInterface> & T;
+  return <Constructor<WithDependencyProviderInterface> & T>WithDependencyProvider;
 };

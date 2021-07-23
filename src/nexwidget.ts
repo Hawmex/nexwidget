@@ -58,7 +58,7 @@ export class Nexwidget extends HTMLElement {
     const isEnsured = Nexwidget.#reactives.has(klass);
 
     if (!isEnsured) {
-      const superClass = Reflect.getPrototypeOf(klass) as typeof Nexwidget;
+      const superClass = <typeof Nexwidget>Reflect.getPrototypeOf(klass);
       const isSuperClassEnsured = Nexwidget.#reactives.has(superClass);
 
       if (!isSuperClassEnsured && superClass !== Nexwidget) Nexwidget.#ensureReactives(superClass);
@@ -71,7 +71,7 @@ export class Nexwidget extends HTMLElement {
     const isEnsured = Nexwidget.#attributes.has(klass);
 
     if (!isEnsured) {
-      const superClass = Reflect.getPrototypeOf(klass) as typeof Nexwidget;
+      const superClass = <typeof Nexwidget>Reflect.getPrototypeOf(klass);
       const isSuperClassEnsured = Nexwidget.#attributes.has(superClass);
 
       if (!isSuperClassEnsured && superClass !== Nexwidget) Nexwidget.#ensureAttributes(superClass);
@@ -97,20 +97,17 @@ export class Nexwidget extends HTMLElement {
         configurable: true,
         enumerable: true,
         get() {
-          if (internalKey !== null)
-            //@ts-ignore
-            return (this as { [key: symbol]: any })[internalKey];
+          if (internalKey !== null) return (<any>this)[internalKey];
           else return descriptor!.get!.call(this);
         },
         set(value) {
-          const prevValue = (this as { [key: string]: any })[key];
+          const prevValue = (<{ [key: string]: any }>this)[key];
 
           descriptor?.set?.call?.(this, value);
 
           if (prevValue !== value && internalKey) {
-            //@ts-ignore
-            (this as { [key: symbol]: any })[internalKey] = value;
-            (this as Nexwidget).#render();
+            (<any>this)[internalKey] = value;
+            (<Nexwidget>this).#render();
           }
         },
       });
@@ -130,11 +127,11 @@ export class Nexwidget extends HTMLElement {
         enumerable: true,
         get() {
           descriptor?.get?.call?.(this);
-          return (this as Nexwidget).#getPropertyValueFromAttribute(key);
+          return (<Nexwidget>this).#getPropertyValueFromAttribute(key);
         },
         set(value) {
           descriptor?.set?.call?.(this, value);
-          (this as Nexwidget).#setAttributeFromProperty(key, value);
+          (<Nexwidget>this).#setAttributeFromProperty(key, value);
         },
       });
     });
@@ -174,15 +171,16 @@ export class Nexwidget extends HTMLElement {
   }
 
   #adoptStyles() {
-    const { styles } = this.constructor as typeof Nexwidget;
+    const { styles } = <typeof Nexwidget>this.constructor;
 
-    //@ts-ignore
-    this.#renderRoot.adoptedStyleSheets = [...styles];
+    (<{ adoptedStyleSheets: CSSStyleSheet[] } & ShadowRoot>this.#renderRoot).adoptedStyleSheets = [
+      ...styles,
+    ];
   }
 
   //@ts-ignore
   #getPropertyValueFromAttribute(key: string) {
-    const type = Nexwidget.#attributes.get(this.constructor as typeof Nexwidget)!.get(key)!;
+    const type = Nexwidget.#attributes.get(<typeof Nexwidget>this.constructor)!.get(key)!;
     const attributeKey = Nexwidget.#camelToKebab(key);
 
     switch (type) {
@@ -200,7 +198,7 @@ export class Nexwidget extends HTMLElement {
 
   //@ts-ignore
   #setAttributeFromProperty(key: string, value: Object) {
-    const type = Nexwidget.#attributes.get(this.constructor as typeof Nexwidget)!.get(key)!;
+    const type = Nexwidget.#attributes.get(<typeof Nexwidget>this.constructor)!.get(key)!;
     const attributeKey = Nexwidget.#camelToKebab(key);
 
     if (value === undefined) throw new Error(`Attribute value cannot be undefined.`);
@@ -259,27 +257,11 @@ export class Nexwidget extends HTMLElement {
     }
   }
 
-  #upgradeReactivesAndAttributes() {
-    const keys = new Set([
-      ...(this.constructor as typeof Nexwidget).reactives,
-      ...(this.constructor as typeof Nexwidget).attributes,
-    ]);
-
-    keys.forEach((key) => {
-      if (Object.prototype.hasOwnProperty.call(this, key)) {
-        const value = (this as { [key: string]: any })[key];
-        delete (this as { [key: string]: any })[key];
-        (this as { [key: string]: any })[key] = value;
-      }
-    });
-  }
-
   attributeChangedCallback(_key: string, oldValue: string, newValue: string) {
     if (oldValue !== newValue) this.#render();
   }
 
   connectedCallback() {
-    this.#upgradeReactivesAndAttributes();
     this.#adoptStyles();
     this.addedCallback();
     this.#isRenderEnabled = true;
