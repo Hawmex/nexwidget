@@ -10,6 +10,12 @@ export type Constructor<T = {}> = new (...args: any[]) => T;
 export type NexwidgetAnimation = [keyframes: Keyframe[], options?: KeyframeAnimationOptions] | null;
 export type NexwidgetAttributeType = typeof String | typeof Number | typeof Boolean;
 export type NexwidgetTemplate = TemplateResult | string | number | typeof nothing | typeof noChange;
+export type WidgetReactives<T extends typeof Nexwidget> = Set<keyof T['prototype'] & string>;
+
+export type WidgetAttributes<T extends typeof Nexwidget> = Map<
+  keyof T['prototype'] & string,
+  NexwidgetAttributeType
+>;
 
 declare global {
   interface AddEventListenerOptions {
@@ -84,7 +90,7 @@ export class Nexwidget extends HTMLElement {
     customElements.define(tagName, this);
   }
 
-  static createReactives(properties: string[]) {
+  static createReactives<T extends typeof Nexwidget>(this: T, properties: WidgetReactives<T>) {
     Nexwidget.#ensureReactives(this);
 
     properties.forEach((key) => {
@@ -114,10 +120,10 @@ export class Nexwidget extends HTMLElement {
     });
   }
 
-  static createAttributes(attributes: { [key: string]: NexwidgetAttributeType }) {
+  static createAttributes<T extends typeof Nexwidget>(this: T, attributes: WidgetAttributes<T>) {
     Nexwidget.#ensureAttributes(this);
 
-    Object.entries(attributes).forEach(([key, type]) => {
+    attributes.forEach((type, key) => {
       const descriptor = Reflect.getOwnPropertyDescriptor(this.prototype, key);
 
       Nexwidget.#attributes.set(this, new Map([...Nexwidget.#attributes.get(this)!, [key, type]]));
