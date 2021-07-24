@@ -53,11 +53,11 @@ export const WithPendingTaskHandler = <T extends Constructor<Nexwidget>>(Base: T
 
   (<typeof Nexwidget & typeof WithPendingTaskHandler>(
     (<unknown>WithPendingTaskHandler)
-  )).createAttributes(new Map([['hasPendingTask', Boolean]]));
+  )).createAttributes([['hasPendingTask', Boolean]]);
 
   (<typeof Nexwidget & typeof WithPendingTaskHandler>(
     (<unknown>WithPendingTaskHandler)
-  )).createReactives(new Set(['hasPendingTask']));
+  )).createReactives(['hasPendingTask']);
 
   return <Constructor<WithPendingTaskHandlerInterface> & T>WithPendingTaskHandler;
 };
