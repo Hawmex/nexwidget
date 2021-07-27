@@ -1,6 +1,6 @@
 export type CSSValue = CSSResult | number;
 
-class CSSResult {
+export class CSSResult {
   static #checkValue(value: CSSValue) {
     if (value instanceof CSSResult) return value.#CSSText;
     else if (typeof value === 'number') return value;
