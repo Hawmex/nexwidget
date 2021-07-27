@@ -15,7 +15,7 @@
   "scripts": {
     "build": "npx tsc",
     "version": "git add -A src",
-    "postversion": "git push && git push --tags",
+    "postversion": "git push && git push --tags && npx typedoc && git add -A docs && git commit -m \"updated docs\" && git push",
     "prepare": "npm run build"
   },
   "repository": {
@@ -34,7 +34,7 @@
   "homepage": "https://github.com/Hawmex/nexwidget#readme",
   "dependencies": {
     "lit-html": "^1.4.1",
-    "nexbounce": "^3.0.5"
+    "nexbounce": "^3.0.8"
   },
   "devDependencies": {
     "typedoc": "^0.21.4",
