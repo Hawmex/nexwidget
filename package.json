@@ -37,6 +37,7 @@
     "nexbounce": "^3.0.3"
   },
   "devDependencies": {
+    "typedoc": "^0.21.4",
     "typescript": "^4.3.5"
   }
 }

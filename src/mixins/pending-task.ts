@@ -22,7 +22,8 @@ export declare class WithPendingTaskHandlerInterface {
 
 export const WithPendingTaskHandler = <T extends Constructor<Nexwidget>>(Base: T) => {
   interface WithPendingTaskHandler {
-    hasPendingTask: boolean;
+    get hasPendingTask(): boolean;
+    set hasPendingTask(v: boolean);
   }
 
   class WithPendingTaskHandler extends Base {

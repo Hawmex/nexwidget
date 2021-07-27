@@ -1,0 +1,12 @@
+{
+  "out": "docs",
+  "entryPoints": [
+    "src/nexwidget.ts",
+    "src/mixins/pending-task.ts",
+    "src/mixins/dependency-injection.ts",
+    "src/directives/lazyload.ts"
+  ],
+  "excludePrivate": true,
+  "includeVersion": true,
+  "watch": true
+}

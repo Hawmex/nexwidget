@@ -2,7 +2,7 @@ import { noChange, nothing, TemplateResult } from 'lit-html';
 import { render } from 'lit-html/lib/shady-render.js';
 import { Nexbounce } from 'nexbounce';
 
-export * from 'lit-html';
+export { noChange, nothing, html } from 'lit-html';
 export * from './lib/css-tag.js';
 export * from './lib/add-pending-task.js';
 
