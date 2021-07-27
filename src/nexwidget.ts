@@ -2,9 +2,10 @@ import { noChange, nothing, TemplateResult } from 'lit-html';
 import { render } from 'lit-html/lib/shady-render.js';
 import { Nexbounce } from 'nexbounce';
 
-export { noChange, nothing, html } from 'lit-html';
-export * from './lib/css-tag.js';
+export { html, noChange, nothing } from 'lit-html';
+
 export * from './lib/add-pending-task.js';
+export * from './lib/css-tag.js';
 
 export type Constructor<T = {}> = new (...args: any[]) => T;
 export type NexwidgetAnimation = [keyframes: Keyframe[], options?: KeyframeAnimationOptions] | null;
