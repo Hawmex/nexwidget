@@ -7,6 +7,5 @@
     "src/directives/lazyload.ts"
   ],
   "excludePrivate": true,
-  "includeVersion": true,
   "watch": true
 }
