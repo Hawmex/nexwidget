@@ -15,7 +15,7 @@
   "scripts": {
     "build": "npx tsc && npx prettier dist/**/*.{js,d.ts} --write",
     "version": "npx typedoc && npx prettier docs/**/*.{css,html,js} --write && git add -A docs",
-    "postversion": "git push && git push --tags",
+    "postversion": "git push && git push --tags && npm publish",
     "prepare": "npm run build"
   },
   "repository": {
