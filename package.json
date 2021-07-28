@@ -13,8 +13,8 @@
     "dist/**/*"
   ],
   "scripts": {
-    "build": "npx tsc",
-    "version": "npx typedoc && git add -A docs",
+    "build": "npx tsc && npx prettier dist/**/*.{js,d.ts} --write",
+    "version": "npx typedoc && npx prettier docs/**/*.{css,html,js} --write && git add -A docs",
     "postversion": "git push && git push --tags",
     "prepare": "npm run build"
   },
@@ -37,6 +37,7 @@
     "nexbounce": "^3.1.1"
   },
   "devDependencies": {
+    "prettier": "^2.3.2",
     "typedoc": "^0.21.4",
     "typescript": "^4.3.5"
   }
