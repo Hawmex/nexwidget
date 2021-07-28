@@ -14,8 +14,8 @@
   ],
   "scripts": {
     "build": "npx tsc",
-    "version": "git add -A src",
-    "postversion": "git push && git push --tags && npx typedoc && git add -A docs && git commit -m \"updated docs\" && git push",
+    "version": "npx typedoc && git add -A docs",
+    "postversion": "git push && git push --tags",
     "prepare": "npm run build"
   },
   "repository": {

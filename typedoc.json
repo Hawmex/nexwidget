@@ -6,6 +6,5 @@
     "src/mixins/dependency-injection.ts",
     "src/directives/lazyload.ts"
   ],
-  "excludePrivate": true,
-  "includeVersion": true
+  "excludePrivate": true
 }
