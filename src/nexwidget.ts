@@ -60,29 +60,29 @@ export class Nexwidget extends HTMLElement {
       .toLowerCase();
   }
 
-  static #ensureReactives(klass: typeof Nexwidget) {
-    const isEnsured = Nexwidget.#reactives.has(klass);
+  static #ensureReactives(Class: typeof Nexwidget) {
+    const isEnsured = Nexwidget.#reactives.has(Class);
 
     if (!isEnsured) {
-      const superClass = <typeof Nexwidget>Reflect.getPrototypeOf(klass);
-      const isSuperClassEnsured = Nexwidget.#reactives.has(superClass);
+      const SuperClass = <typeof Nexwidget>Reflect.getPrototypeOf(Class);
+      const isSuperClassEnsured = Nexwidget.#reactives.has(SuperClass);
 
-      if (!isSuperClassEnsured && superClass !== Nexwidget) Nexwidget.#ensureReactives(superClass);
+      if (!isSuperClassEnsured && SuperClass !== Nexwidget) Nexwidget.#ensureReactives(SuperClass);
 
-      Nexwidget.#reactives.set(klass, Nexwidget.#reactives.get(superClass)!);
+      Nexwidget.#reactives.set(Class, Nexwidget.#reactives.get(SuperClass)!);
     }
   }
 
-  static #ensureAttributes(klass: typeof Nexwidget) {
-    const isEnsured = Nexwidget.#attributes.has(klass);
+  static #ensureAttributes(Class: typeof Nexwidget) {
+    const isEnsured = Nexwidget.#attributes.has(Class);
 
     if (!isEnsured) {
-      const superClass = <typeof Nexwidget>Reflect.getPrototypeOf(klass);
-      const isSuperClassEnsured = Nexwidget.#attributes.has(superClass);
+      const SuperClass = <typeof Nexwidget>Reflect.getPrototypeOf(Class);
+      const isSuperClassEnsured = Nexwidget.#attributes.has(SuperClass);
 
-      if (!isSuperClassEnsured && superClass !== Nexwidget) Nexwidget.#ensureAttributes(superClass);
+      if (!isSuperClassEnsured && SuperClass !== Nexwidget) Nexwidget.#ensureAttributes(SuperClass);
 
-      Nexwidget.#attributes.set(klass, Nexwidget.#attributes.get(superClass)!);
+      Nexwidget.#attributes.set(Class, Nexwidget.#attributes.get(SuperClass)!);
     }
   }
 
