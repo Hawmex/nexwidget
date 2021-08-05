@@ -34,7 +34,7 @@ export const WithDependencyConsumer = <T extends Constructor<Nexwidget>>(Base: T
       this.dispatchEvent(dependencyRequest);
 
       if (Reflect.has(dependencyRequest.detail, 'value')) return dependencyRequest.detail.value!;
-      else throw new Error(`No such dependency is provided.`);
+      else throw new RangeError(`No such dependency is provided.`);
     }
   }
 

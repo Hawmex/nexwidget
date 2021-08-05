@@ -202,7 +202,7 @@ export class Nexwidget extends HTMLElement {
         return this.hasAttribute(attributeKey) ? type(this.getAttribute(attributeKey)) : null;
 
       default:
-        throw new Error(`Invalid type for attribute.`);
+        throw new RangeError(`Invalid type for attribute.`);
     }
   }
 
@@ -211,14 +211,14 @@ export class Nexwidget extends HTMLElement {
     const type = Nexwidget.#attributes.get(<typeof Nexwidget>this.constructor)!.get(key)!;
     const attributeKey = Nexwidget.#camelToKebab(key);
 
-    if (value === undefined) throw new Error(`Attribute value cannot be undefined.`);
+    if (value === undefined) throw new TypeError(`Attribute value cannot be undefined.`);
     else if (value !== null && value.constructor !== type)
-      throw new Error(`Attribute value doesn't match its type.`);
+      throw new TypeError(`Attribute value doesn't match its type.`);
     else
       switch (type) {
         case Boolean:
           if (value) this.setAttribute(attributeKey, '');
-          else if (value === null) throw new Error(`Boolean attribute cannot be null.`);
+          else if (value === null) throw new TypeError(`Boolean attribute cannot be null.`);
           else this.removeAttribute(attributeKey);
           break;
 
@@ -229,7 +229,7 @@ export class Nexwidget extends HTMLElement {
           break;
 
         default:
-          throw new Error(`Invalid type for attribute.`);
+          throw new RangeError(`Invalid type for attribute.`);
       }
   }
 
