@@ -128,7 +128,7 @@ window.searchData = {
       kind: 2048,
       name: 'register',
       url: 'classes/nexwidget.Nexwidget.html#register',
-      classes: 'tsd-kind-method tsd-parent-kind-class tsd-is-static',
+      classes: 'tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static',
       parent: 'nexwidget.Nexwidget',
     },
     {
