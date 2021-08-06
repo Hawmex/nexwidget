@@ -116,7 +116,7 @@ export class Nexwidget extends HTMLElement {
 
           descriptor?.set?.call?.(this, value);
 
-          if (prevValue !== value && internalKey) {
+          if (internalKey && prevValue !== value) {
             (<any>this)[internalKey] = value;
             (<Nexwidget>this).#render();
           }
