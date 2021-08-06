@@ -86,7 +86,7 @@ export class Nexwidget extends HTMLElement {
     }
   }
 
-  static register(tagName = Nexwidget.#camelToKebab(this.name)) {
+  static register(tagName: keyof HTMLElementTagNameMap) {
     customElements.define(tagName, this);
   }
 
