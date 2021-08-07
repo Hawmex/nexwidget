@@ -41,6 +41,7 @@ export const WithPendingTaskHandler = <T extends Constructor<Nexwidget>>(Base: T
 
     addedCallback() {
       super.addedCallback();
+
       this.addEventListener('pending-task', this.#handlePendingTask.bind(this), {
         signal: this.removedSignal,
       });
