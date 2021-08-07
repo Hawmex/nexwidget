@@ -16,14 +16,14 @@ export const WithPendingTaskEmitter = <T extends Constructor<Nexwidget>>(Base: T
 };
 
 export declare class WithPendingTaskHandlerInterface {
-  get hasPendingTask(): boolean | undefined;
-  set hasPendingTask(v: boolean | undefined);
+  get hasPendingTask(): boolean;
+  set hasPendingTask(v: boolean);
 }
 
 export const WithPendingTaskHandler = <T extends Constructor<Nexwidget>>(Base: T) => {
   interface WithPendingTaskHandler {
-    get hasPendingTask(): boolean | undefined;
-    set hasPendingTask(v: boolean | undefined);
+    get hasPendingTask(): boolean;
+    set hasPendingTask(v: boolean);
   }
 
   class WithPendingTaskHandler extends Base {
