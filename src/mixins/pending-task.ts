@@ -16,26 +16,21 @@ export const WithPendingTaskEmitter = <T extends Constructor<Nexwidget>>(Base: T
 };
 
 export declare class WithPendingTaskHandlerInterface {
-  get hasPendingTask(): boolean;
-  set hasPendingTask(v: boolean);
+  get hasPendingTask(): boolean | undefined;
+  set hasPendingTask(v: boolean | undefined);
 }
 
 export const WithPendingTaskHandler = <T extends Constructor<Nexwidget>>(Base: T) => {
   interface WithPendingTaskHandler {
-    get hasPendingTask(): boolean;
-    set hasPendingTask(v: boolean);
+    get hasPendingTask(): boolean | undefined;
+    set hasPendingTask(v: boolean | undefined);
   }
 
   class WithPendingTaskHandler extends Base {
     #pendingTaskCount = 0;
 
-    constructor(..._args: any[]) {
-      super();
-      this.hasPendingTask = false;
-    }
-
     #handlePendingTask({ detail: { task } }: AddPendingTaskEvent) {
-      this.hasPendingTask = true;
+      this.hasPendingTask = false;
       this.#pendingTaskCount += 1;
 
       task.finally(() => {
