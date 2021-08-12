@@ -6,7 +6,7 @@ const latestValues = new WeakMap<NodePart, HTMLElement>();
 const lazyLoadRenderDebouncer = new Nexbounce();
 
 export const lazyLoad = directive(
-  (widgetImport: Promise<{ default: any }>, value: HTMLElement) => (part: NodePart) => {
+  (widgetImport: Promise<{ default: unknown }>, value: HTMLElement) => (part: NodePart) => {
     latestValues.set(part, value);
 
     addPendingTask(part.startNode.parentNode!, widgetImport).then(() =>

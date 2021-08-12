@@ -1,4 +1,4 @@
-export type AddPendingTaskEventDetails = { task: Promise<any> };
+export type AddPendingTaskEventDetails = { task: Promise<unknown> };
 export type AddPendingTaskEvent = CustomEvent<AddPendingTaskEventDetails>;
 
 declare global {

@@ -7,14 +7,14 @@ export * from './lib/add-pending-task.js';
 export * from './lib/css-tag.js';
 
 export type Constructor<T = {}> = new (...args: any[]) => T;
-export type NexwidgetAnimation = [keyframes: Keyframe[], options?: KeyframeAnimationOptions] | null;
-export type NexwidgetAttributeType = typeof String | typeof Number | typeof Boolean;
-export type NexwidgetTemplate = TemplateResult | string | number | typeof nothing | typeof noChange;
+export type WidgetAnimation = [keyframes: Keyframe[], options?: KeyframeAnimationOptions] | null;
+export type WidgetAttributeType = typeof String | typeof Number | typeof Boolean;
+export type WidgetTemplate = TemplateResult | string | number | typeof nothing | typeof noChange;
 export type WidgetReactives<T extends typeof Nexwidget> = (keyof T['prototype'] & string)[];
 
 export type WidgetAttributes<T extends typeof Nexwidget> = [
   key: keyof T['prototype'] & string,
-  type: NexwidgetAttributeType,
+  type: WidgetAttributeType,
 ][];
 
 declare global {
@@ -26,7 +26,7 @@ declare global {
 export class Nexwidget extends HTMLElement {
   static #reactives = new WeakMap<typeof Nexwidget, Set<string>>([[Nexwidget, new Set()]]);
 
-  static #attributes = new WeakMap<typeof Nexwidget, Map<string, NexwidgetAttributeType>>([
+  static #attributes = new WeakMap<typeof Nexwidget, Map<string, WidgetAttributeType>>([
     [Nexwidget, new Map()],
   ]);
 
@@ -112,7 +112,7 @@ export class Nexwidget extends HTMLElement {
           else return descriptor!.get!.call(this);
         },
         set(value) {
-          const prevValue = (<{ [key: string]: any }>this)[key];
+          const prevValue = (<{ [key: string]: unknown }>this)[key];
 
           descriptor?.set?.call?.(this, value);
 
@@ -171,15 +171,15 @@ export class Nexwidget extends HTMLElement {
     return this.#unmountedController?.signal;
   }
 
-  get template(): NexwidgetTemplate {
+  get template(): WidgetTemplate {
     return noChange;
   }
 
-  get mountAnimation(): NexwidgetAnimation {
+  get mountAnimation(): WidgetAnimation {
     return this.updateOrSlotChangeAnimation;
   }
 
-  get updateOrSlotChangeAnimation(): NexwidgetAnimation {
+  get updateOrSlotChangeAnimation(): WidgetAnimation {
     return null;
   }
 
