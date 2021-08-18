@@ -7,15 +7,15 @@ export * from './lib/add-pending-task.js';
 export * from './lib/css-tag.js';
 
 export type Constructor<T = {}> = new (...args: any[]) => T;
-export type WidgetAnimation = [keyframes: Keyframe[], options?: KeyframeAnimationOptions] | null;
-export type WidgetAttributeType = typeof String | typeof Number | typeof Boolean;
+export type WidgetAnimation = { keyframes: Keyframe[]; options?: KeyframeAnimationOptions } | null;
+export type WidgetAttributeType = 'string' | 'number' | 'boolean';
 export type WidgetTemplate = TemplateResult | string | number | typeof nothing | typeof noChange;
 export type WidgetReactives<T extends typeof Nexwidget> = (keyof T['prototype'] & string)[];
 
-export type WidgetAttributes<T extends typeof Nexwidget> = [
-  key: keyof T['prototype'] & string,
-  type: WidgetAttributeType,
-][];
+export type WidgetAttributes<T extends typeof Nexwidget> = {
+  key: keyof T['prototype'] & string;
+  type: WidgetAttributeType;
+}[];
 
 declare global {
   interface AddEventListenerOptions {
@@ -128,7 +128,7 @@ export class Nexwidget extends HTMLElement {
   static createAttributes<T extends typeof Nexwidget>(this: T, attributes: WidgetAttributes<T>) {
     Nexwidget.#ensureAttributes(this);
 
-    const attributesMap = new Map(attributes);
+    const attributesMap = new Map(attributes.map(({ key, type }) => [key, type]));
 
     attributesMap.forEach((type, key) => {
       const descriptor = Reflect.getOwnPropertyDescriptor(this.prototype, key);
@@ -197,12 +197,20 @@ export class Nexwidget extends HTMLElement {
     const attributeKey = Nexwidget.#camelToKebab(key);
 
     switch (type) {
-      case Boolean:
+      case 'boolean':
         return this.hasAttribute(attributeKey);
 
-      case String:
-      case Number:
-        return this.hasAttribute(attributeKey) ? type(this.getAttribute(attributeKey)) : null;
+      case 'string':
+      case 'number':
+        const typeConstructorName = <Capitalize<WidgetAttributeType>>(
+          (type.charAt(0).toUpperCase() + type.slice(1))
+        );
+
+        const typeConstructor = globalThis[typeConstructorName];
+
+        return this.hasAttribute(attributeKey)
+          ? typeConstructor(this.getAttribute(attributeKey))
+          : null;
 
       default:
         throw new RangeError(`Invalid type for attribute.`);
@@ -215,18 +223,18 @@ export class Nexwidget extends HTMLElement {
     const attributeKey = Nexwidget.#camelToKebab(key);
 
     if (value === undefined) throw new TypeError(`Attribute value cannot be undefined.`);
-    else if (value !== null && value.constructor !== type)
+    else if (value !== null && typeof value !== type)
       throw new TypeError(`Attribute value doesn't match its type.`);
     else
       switch (type) {
-        case Boolean:
+        case 'boolean':
           if (value) this.setAttribute(attributeKey, '');
           else if (value === null) throw new TypeError(`Boolean attribute cannot be null.`);
           else this.removeAttribute(attributeKey);
           break;
 
-        case String:
-        case Number:
+        case 'string':
+        case 'number':
           if (value === null) this.removeAttribute(attributeKey);
           else this.setAttribute(attributeKey, String(value));
           break;
@@ -295,20 +303,27 @@ export class Nexwidget extends HTMLElement {
     this.#animation?.cancel?.();
 
     if (this.updateOrSlotChangeAnimation !== null)
-      this.#animation = this.animate(...this.updateOrSlotChangeAnimation);
+      this.#animation = this.animate(
+        this.updateOrSlotChangeAnimation.keyframes,
+        this.updateOrSlotChangeAnimation.options,
+      );
   }
 
   slotChangedCallback() {
     this.#animation?.cancel?.();
 
     if (this.updateOrSlotChangeAnimation !== null)
-      this.#animation = this.animate(...this.updateOrSlotChangeAnimation);
+      this.#animation = this.animate(
+        this.updateOrSlotChangeAnimation.keyframes,
+        this.updateOrSlotChangeAnimation.options,
+      );
   }
 
   mountedCallback() {
     this.#animation?.cancel?.();
 
-    if (this.mountAnimation !== null) this.#animation = this.animate(...this.mountAnimation);
+    if (this.mountAnimation !== null)
+      this.#animation = this.animate(this.mountAnimation.keyframes, this.mountAnimation.options);
 
     this.#unmountedController = new AbortController();
   }
