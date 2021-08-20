@@ -86,7 +86,7 @@ export class Nexwidget extends HTMLElement {
     }
   }
 
-  static register<T extends typeof Nexwidget, K extends keyof HTMLElementTagNameMap>(
+  static registerAs<T extends typeof Nexwidget, K extends keyof HTMLElementTagNameMap>(
     this: T & (new () => HTMLElementTagNameMap[K]),
     tagName: K,
   ) {
