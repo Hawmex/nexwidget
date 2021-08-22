@@ -30,7 +30,7 @@ export const WithPendingTaskHandler = <T extends Constructor<Nexwidget>>(Base: T
     #pendingTaskCount = 0;
 
     #handlePendingTask({ detail: { task } }: AddPendingTaskEvent) {
-      this.hasPendingTask = false;
+      this.hasPendingTask = true;
       this.#pendingTaskCount += 1;
 
       task.finally(() => {
