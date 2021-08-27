@@ -15,7 +15,9 @@
     "noImplicitAny": true,
     "noImplicitThis": true,
     "moduleResolution": "node",
-    "useDefineForClassFields": true
+    "useDefineForClassFields": true,
+    "useUnknownInCatchVariables": true,
+    "noImplicitOverride": true
   },
   "include": ["src/**/*.ts"]
 }
