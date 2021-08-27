@@ -340,3 +340,6 @@ export class Nexwidget extends HTMLElement {
     return getComputedStyle(this).getPropertyValue(key);
   }
 }
+
+//@ts-ignore
+globalThis.usesNexwidgetPackage = true;
