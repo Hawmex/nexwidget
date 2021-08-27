@@ -65,7 +65,7 @@ export const WithDependencyProvider = <T extends Constructor<Nexwidget>>(Base: T
       }
     }
 
-    addedCallback() {
+    override addedCallback() {
       super.addedCallback();
 
       this.addEventListener('dependency-request', this.#handleRequest.bind(this), {
