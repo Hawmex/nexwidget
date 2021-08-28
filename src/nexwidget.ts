@@ -108,7 +108,7 @@ export class Nexwidget extends HTMLElement {
         configurable: true,
         enumerable: true,
         get() {
-          if (internalKey !== null) return (<any>this)[internalKey];
+          if (internalKey !== null) return (<{ [key: symbol]: unknown }>this)[internalKey];
           else return descriptor!.get!.call(this);
         },
         set(value) {
@@ -117,7 +117,7 @@ export class Nexwidget extends HTMLElement {
           descriptor?.set?.call?.(this, value);
 
           if (internalKey && prevValue !== value) {
-            (<any>this)[internalKey] = value;
+            (<{ [key: symbol]: unknown }>this)[internalKey] = value;
             (<Nexwidget>this).#render();
           }
         },
