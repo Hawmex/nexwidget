@@ -65,19 +65,19 @@ export const WithDependencyProvider = <T extends Constructor<Nexwidget>>(Base: T
       }
     }
 
+    provideDependency<K extends keyof NexwidgetDependencyKeyMap>(
+      key: K,
+      value: NexwidgetDependencyKeyMap[K],
+    ) {
+      this.#dependencies.set(key, value);
+    }
+
     override addedCallback() {
       super.addedCallback();
 
       this.addEventListener('dependency-request', this.#handleRequest.bind(this), {
         signal: this.removedSignal,
       });
-    }
-
-    provideDependency<K extends keyof NexwidgetDependencyKeyMap>(
-      key: K,
-      value: NexwidgetDependencyKeyMap[K],
-    ) {
-      this.#dependencies.set(key, value);
     }
   }
 
