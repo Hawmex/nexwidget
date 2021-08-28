@@ -278,6 +278,10 @@ export class Nexwidget extends HTMLElement {
     }
   }
 
+  getCSSProperty(key: string) {
+    return getComputedStyle(this).getPropertyValue(key);
+  }
+
   attributeChangedCallback(_key: string, oldValue: string, newValue: string) {
     if (oldValue !== newValue) this.#render();
   }
@@ -334,10 +338,6 @@ export class Nexwidget extends HTMLElement {
 
   unmountedCallback() {
     this.#unmountedController?.abort?.();
-  }
-
-  getCSSProperty(key: string) {
-    return getComputedStyle(this).getPropertyValue(key);
   }
 }
 
