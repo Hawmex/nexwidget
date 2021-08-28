@@ -27,6 +27,16 @@ export const WithPendingTaskHandler = <T extends Constructor<Nexwidget>>(Base: T
   }
 
   class WithPendingTaskHandler extends Base {
+    static {
+      (<typeof Nexwidget & typeof WithPendingTaskHandler>this).createAttributes([
+        { key: 'hasPendingTask', type: 'boolean' },
+      ]);
+    
+      (<typeof Nexwidget & typeof WithPendingTaskHandler>this).createReactives([
+        'hasPendingTask',
+      ]);
+    }
+
     #pendingTaskCount = 0;
 
     #handlePendingTask({ detail: { task } }: AddPendingTaskEvent) {
@@ -47,14 +57,6 @@ export const WithPendingTaskHandler = <T extends Constructor<Nexwidget>>(Base: T
       });
     }
   }
-
-  (<typeof Nexwidget & typeof WithPendingTaskHandler>(
-    (<unknown>WithPendingTaskHandler)
-  )).createAttributes([{ key: 'hasPendingTask', type: 'boolean' }]);
-
-  (<typeof Nexwidget & typeof WithPendingTaskHandler>(
-    (<unknown>WithPendingTaskHandler)
-  )).createReactives(['hasPendingTask']);
 
   return <Constructor<WithPendingTaskHandlerInterface> & T>WithPendingTaskHandler;
 };
