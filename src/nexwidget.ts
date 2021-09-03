@@ -1,8 +1,8 @@
-import { noChange, nothing, TemplateResult } from 'lit-html';
+import { noChange, nothing, TemplateResult } from 'lit-html/lit-html.js';
 import { render } from 'lit-html/lib/shady-render.js';
-import { Nexbounce } from 'nexbounce';
+import { Nexbounce } from 'nexbounce/nexbounce.js';
 
-export * from 'lit-html';
+export * from 'lit-html/lit-html.js';
 export * from './lib/add-pending-task.js';
 export * from './lib/css-tag.js';
 

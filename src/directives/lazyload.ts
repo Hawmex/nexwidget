@@ -1,5 +1,5 @@
-import { directive, NodePart } from 'lit-html';
-import { Nexbounce } from 'nexbounce';
+import { directive, NodePart } from 'lit-html/lit-html.js';
+import { Nexbounce } from 'nexbounce/nexbounce.js';
 import { addPendingTask } from '../lib/add-pending-task.js';
 
 const latestValues = new WeakMap<NodePart, HTMLElement>();

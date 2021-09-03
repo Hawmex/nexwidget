@@ -4,14 +4,12 @@
   "description": "An ESNext Web Component library.",
   "type": "module",
   "exports": {
-    ".": "./dist/nexwidget.js",
     "./**/*.js": "./dist/**/*.js"
   },
   "typesVersions": {
     "*": {
       "*": [
-        "dist/*",
-        "dist/nexwidget.d.ts"
+        "dist/*"
       ]
     }
   },
@@ -40,7 +38,7 @@
   "homepage": "https://github.com/Hawmex/nexwidget#readme",
   "dependencies": {
     "lit-html": "^1.4.1",
-    "nexbounce": "^5.1.5"
+    "nexbounce": "^5.1.6"
   },
   "devDependencies": {
     "prettier": "^2.3.2",
