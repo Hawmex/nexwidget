@@ -5,8 +5,10 @@
   "main": "dist/nexwidget.js",
   "type": "module",
   "module": "dist/nexwidget.js",
+  "types": "dist/nexwidget.d.ts",
   "exports": {
-    ".": "./dist/index.js"
+    ".": "./dist/nexwidget.js",
+    "./": "./dist/"
   },
   "engines": {
     "node": ">=14.6.0",
@@ -37,7 +39,7 @@
   "homepage": "https://github.com/Hawmex/nexwidget#readme",
   "dependencies": {
     "lit-html": "^1.4.1",
-    "nexbounce": "^5.1.2"
+    "nexbounce": "^5.1.3"
   },
   "devDependencies": {
     "prettier": "^2.3.2",
