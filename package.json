@@ -5,6 +5,9 @@
   "main": "dist/nexwidget.js",
   "type": "module",
   "module": "dist/nexwidget.js",
+  "exports": {
+    ".": "./dist/index.js"
+  },
   "engines": {
     "node": ">=14.6.0",
     "npm": ">=6.0.0"
