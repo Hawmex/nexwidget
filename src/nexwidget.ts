@@ -1,5 +1,5 @@
-import { noChange, nothing, TemplateResult } from 'lit-html/lit-html.js';
 import { render } from 'lit-html/lib/shady-render.js';
+import { noChange, nothing, TemplateResult } from 'lit-html/lit-html.js';
 import { Nexbounce } from 'nexbounce/nexbounce.js';
 
 export * from 'lit-html/lit-html.js';
