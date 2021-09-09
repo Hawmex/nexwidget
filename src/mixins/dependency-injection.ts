@@ -33,8 +33,8 @@ export const WithDependencyConsumer = <T extends Constructor<Nexwidget>>(Base: T
 
       this.dispatchEvent(dependencyRequest);
 
-      if (Object.prototype.hasOwnProperty.call(dependencyRequest.detail, 'value'))
-        return dependencyRequest.detail.value!;
+      //@ts-ignore
+      if (Object.hasOwn(dependencyRequest.detail, 'value')) return dependencyRequest.detail.value!;
       else throw new RangeError(`No such dependency is provided.`);
     }
   }
