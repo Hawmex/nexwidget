@@ -183,6 +183,10 @@ export class Nexwidget extends HTMLElement {
     return null;
   }
 
+  get usesNexwidget(): true {
+    return true;
+  }
+
   #adoptStyles() {
     const { styles } = <typeof Nexwidget>this.constructor;
 
@@ -340,6 +344,3 @@ export class Nexwidget extends HTMLElement {
     this.#unmountedController?.abort?.();
   }
 }
-
-//@ts-ignore
-globalThis.usesNexwidgetPackage = true;
