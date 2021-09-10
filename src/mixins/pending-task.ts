@@ -31,10 +31,8 @@ export const WithPendingTaskHandler = <T extends Constructor<Nexwidget>>(Base: T
       (<typeof Nexwidget & typeof WithPendingTaskHandler>this).createAttributes([
         { key: 'hasPendingTask', type: 'boolean' },
       ]);
-    
-      (<typeof Nexwidget & typeof WithPendingTaskHandler>this).createReactives([
-        'hasPendingTask',
-      ]);
+
+      (<typeof Nexwidget & typeof WithPendingTaskHandler>this).createReactives(['hasPendingTask']);
     }
 
     #pendingTaskCount = 0;
