@@ -1,6 +1,6 @@
 window.searchData = {
   kinds: {
-    1: 'Module',
+    2: 'Module',
     64: 'Function',
     128: 'Class',
     256: 'Interface',
@@ -14,7 +14,7 @@ window.searchData = {
   rows: [
     {
       id: 0,
-      kind: 1,
+      kind: 2,
       name: 'nexwidget',
       url: 'modules/nexwidget.html',
       classes: 'tsd-kind-module',
@@ -285,7 +285,7 @@ window.searchData = {
     },
     {
       id: 34,
-      kind: 1,
+      kind: 2,
       name: 'mixins/pending-task',
       url: 'modules/mixins_pending_task.html',
       classes: 'tsd-kind-module',
@@ -356,7 +356,7 @@ window.searchData = {
     },
     {
       id: 43,
-      kind: 1,
+      kind: 2,
       name: 'mixins/dependency-injection',
       url: 'modules/mixins_dependency_injection.html',
       classes: 'tsd-kind-module',
@@ -435,7 +435,7 @@ window.searchData = {
     },
     {
       id: 53,
-      kind: 1,
+      kind: 2,
       name: 'directives/lazyload',
       url: 'modules/directives_lazyload.html',
       classes: 'tsd-kind-module',
