@@ -38,11 +38,11 @@
   "homepage": "https://github.com/Hawmex/nexwidget#readme",
   "dependencies": {
     "lit-html": "^1.4.1",
-    "nexbounce": "^6.0.2"
+    "nexbounce": "^6.0.3"
   },
   "devDependencies": {
     "prettier": "^2.4.0",
     "typedoc": "^0.22.3",
-    "typescript": "^4.4.2"
+    "typescript": "^4.4.3"
   }
 }
