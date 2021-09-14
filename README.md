@@ -1,3 +1,5 @@
+<img style="display: flex; border-radius: 8px; margin: auto;" src="./logo.png" alt="nex logo" width="128" />
+
 # nexwidget
 
 A library to create fast web components/custom elements.
