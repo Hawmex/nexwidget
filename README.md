@@ -1,4 +1,4 @@
-<img style="display: flex; border-radius: 8px; margin: auto;" src="./logo.png" alt="nex logo" width="128" />
+![nex logo](./logo.png)
 
 # nexwidget
 
