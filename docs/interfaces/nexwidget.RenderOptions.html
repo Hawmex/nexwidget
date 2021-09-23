@@ -68,6 +68,20 @@
     <div class="container container-main">
       <div class="row">
         <div class="col-8 col-content">
+          <section class="tsd-panel tsd-comment">
+            <div class="tsd-comment tsd-typography">
+              <div class="lead">
+                <p>
+                  Object specifying options for controlling lit-html rendering. Note that while
+                  <code>render</code> may be called multiple times on the same
+                  <code>container</code> (and <code>renderBefore</code> reference node) to
+                  efficiently update the rendered content, only the options passed in during the
+                  first render are respected during the lifetime of renders to that unique
+                  <code>container</code> + <code>renderBefore</code> combination.
+                </p>
+              </div>
+            </div>
+          </section>
           <section class="tsd-panel tsd-hierarchy">
             <h3>Hierarchy</h3>
             <ul class="tsd-hierarchy">
@@ -82,13 +96,21 @@
                   <h3>Properties</h3>
                   <ul class="tsd-index-list">
                     <li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-                      <a href="nexwidget.RenderOptions.html#eventContext" class="tsd-kind-icon"
-                        >event<wbr />Context</a
+                      <a href="nexwidget.RenderOptions.html#creationScope" class="tsd-kind-icon"
+                        >creation<wbr />Scope</a
                       >
                     </li>
                     <li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-                      <a href="nexwidget.RenderOptions.html#templateFactory" class="tsd-kind-icon"
-                        >template<wbr />Factory</a
+                      <a href="nexwidget.RenderOptions.html#host" class="tsd-kind-icon">host</a>
+                    </li>
+                    <li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+                      <a href="nexwidget.RenderOptions.html#isConnected" class="tsd-kind-icon"
+                        >is<wbr />Connected</a
+                      >
+                    </li>
+                    <li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+                      <a href="nexwidget.RenderOptions.html#renderBefore" class="tsd-kind-icon"
+                        >render<wbr />Before</a
                       >
                     </li>
                   </ul>
@@ -103,37 +125,159 @@
                 tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external
               "
             >
-              <a name="eventContext" class="tsd-anchor"></a>
-              <h3>
-                <span class="tsd-flag ts-flagOptional">Optional</span>
-                <span class="tsd-flag ts-flagReadonly">Readonly</span> event<wbr />Context
-              </h3>
+              <a name="creationScope" class="tsd-anchor"></a>
+              <h3><span class="tsd-flag ts-flagOptional">Optional</span> creation<wbr />Scope</h3>
               <div class="tsd-signature tsd-kind-icon">
-                event<wbr />Context<span class="tsd-signature-symbol">?:</span>
-                <span class="tsd-signature-type">EventTarget</span>
+                creation<wbr />Scope<span class="tsd-signature-symbol">?:</span>
+                <span class="tsd-signature-symbol">{ </span>importNode<span
+                  class="tsd-signature-symbol"
+                  >: </span
+                ><span class="tsd-signature-type">any</span
+                ><span class="tsd-signature-symbol"> }</span>
               </div>
               <aside class="tsd-sources">
                 <ul>
-                  <li>Defined in node_modules/lit-html/lib/render-options.d.ts:17</li>
+                  <li>Defined in node_modules/lit-html/lit-html.d.ts:131</li>
                 </ul>
               </aside>
+              <div class="tsd-comment tsd-typography">
+                <div class="lead">
+                  <p>
+                    Node used for cloning the template (<code>importNode</code> will be called on
+                    this node). This controls the <code>ownerDocument</code> of the rendered DOM,
+                    along with any inherited context. Defaults to the global <code>document</code>.
+                  </p>
+                </div>
+              </div>
+              <div class="tsd-type-declaration">
+                <h4>Type declaration</h4>
+                <ul class="tsd-parameters">
+                  <li class="tsd-parameter">
+                    <h5>import<wbr />Node<span class="tsd-signature-symbol">:</span>function</h5>
+                    <ul
+                      class="
+                        tsd-signatures tsd-kind-method tsd-parent-kind-type-literal tsd-is-external
+                      "
+                    >
+                      <li class="tsd-signature tsd-kind-icon">
+                        import<wbr />Node<span class="tsd-signature-symbol">(</span>node<span
+                          class="tsd-signature-symbol"
+                          >: </span
+                        ><span class="tsd-signature-type">Node</span>, deep<span
+                          class="tsd-signature-symbol"
+                          >?: </span
+                        ><span class="tsd-signature-type">boolean</span
+                        ><span class="tsd-signature-symbol">)</span
+                        ><span class="tsd-signature-symbol">: </span
+                        ><span class="tsd-signature-type">Node</span>
+                      </li>
+                    </ul>
+                    <ul class="tsd-descriptions">
+                      <li class="tsd-description">
+                        <aside class="tsd-sources">
+                          <ul>
+                            <li>Defined in node_modules/lit-html/lit-html.d.ts:132</li>
+                          </ul>
+                        </aside>
+                        <h4 class="tsd-parameters-title">Parameters</h4>
+                        <ul class="tsd-parameters">
+                          <li>
+                            <h5>node: <span class="tsd-signature-type">Node</span></h5>
+                          </li>
+                          <li>
+                            <h5>
+                              <span class="tsd-flag ts-flagOptional">Optional</span> deep:
+                              <span class="tsd-signature-type">boolean</span>
+                            </h5>
+                          </li>
+                        </ul>
+                        <h4 class="tsd-returns-title">
+                          Returns <span class="tsd-signature-type">Node</span>
+                        </h4>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
             </section>
             <section
               class="
                 tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external
               "
             >
-              <a name="templateFactory" class="tsd-anchor"></a>
-              <h3><span class="tsd-flag ts-flagReadonly">Readonly</span> template<wbr />Factory</h3>
+              <a name="host" class="tsd-anchor"></a>
+              <h3><span class="tsd-flag ts-flagOptional">Optional</span> host</h3>
               <div class="tsd-signature tsd-kind-icon">
-                template<wbr />Factory<span class="tsd-signature-symbol">:</span>
-                <span class="tsd-signature-type">TemplateFactory</span>
+                host<span class="tsd-signature-symbol">?:</span>
+                <span class="tsd-signature-type">object</span>
               </div>
               <aside class="tsd-sources">
                 <ul>
-                  <li>Defined in node_modules/lit-html/lib/render-options.d.ts:16</li>
+                  <li>Defined in node_modules/lit-html/lit-html.d.ts:121</li>
                 </ul>
               </aside>
+              <div class="tsd-comment tsd-typography">
+                <div class="lead">
+                  <p>
+                    An object to use as the <code>this</code> value for event listeners. It&#39;s
+                    often useful to set this to the host component rendering a template.
+                  </p>
+                </div>
+              </div>
+            </section>
+            <section
+              class="
+                tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external
+              "
+            >
+              <a name="isConnected" class="tsd-anchor"></a>
+              <h3><span class="tsd-flag ts-flagOptional">Optional</span> is<wbr />Connected</h3>
+              <div class="tsd-signature tsd-kind-icon">
+                is<wbr />Connected<span class="tsd-signature-symbol">?:</span>
+                <span class="tsd-signature-type">boolean</span>
+              </div>
+              <aside class="tsd-sources">
+                <ul>
+                  <li>Defined in node_modules/lit-html/lit-html.d.ts:142</li>
+                </ul>
+              </aside>
+              <div class="tsd-comment tsd-typography">
+                <div class="lead">
+                  <p>
+                    The initial connected state for the top-level part being rendered. If no
+                    <code>isConnected</code> option is set, <code>AsyncDirective</code>s will be
+                    connected by default. Set to <code>false</code> if the initial render occurs in
+                    a disconnected tree and <code>AsyncDirective</code>s should see
+                    <code>isConnected === false</code> for their initial render. The
+                    <code>part.setConnected()</code> method must be used subsequent to initial
+                    render to change the connected state of the part.
+                  </p>
+                </div>
+              </div>
+            </section>
+            <section
+              class="
+                tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external
+              "
+            >
+              <a name="renderBefore" class="tsd-anchor"></a>
+              <h3><span class="tsd-flag ts-flagOptional">Optional</span> render<wbr />Before</h3>
+              <div class="tsd-signature tsd-kind-icon">
+                render<wbr />Before<span class="tsd-signature-symbol">?:</span>
+                <span class="tsd-signature-type">null</span
+                ><span class="tsd-signature-symbol"> | </span
+                ><span class="tsd-signature-type">ChildNode</span>
+              </div>
+              <aside class="tsd-sources">
+                <ul>
+                  <li>Defined in node_modules/lit-html/lit-html.d.ts:125</li>
+                </ul>
+              </aside>
+              <div class="tsd-comment tsd-typography">
+                <div class="lead">
+                  <p>A DOM node before which to render content in the container.</p>
+                </div>
+              </div>
             </section>
           </section>
         </div>
@@ -165,13 +309,21 @@
                 >
                 <ul>
                   <li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-                    <a href="nexwidget.RenderOptions.html#eventContext" class="tsd-kind-icon"
-                      >event<wbr />Context</a
+                    <a href="nexwidget.RenderOptions.html#creationScope" class="tsd-kind-icon"
+                      >creation<wbr />Scope</a
                     >
                   </li>
                   <li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-                    <a href="nexwidget.RenderOptions.html#templateFactory" class="tsd-kind-icon"
-                      >template<wbr />Factory</a
+                    <a href="nexwidget.RenderOptions.html#host" class="tsd-kind-icon">host</a>
+                  </li>
+                  <li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+                    <a href="nexwidget.RenderOptions.html#isConnected" class="tsd-kind-icon"
+                      >is<wbr />Connected</a
+                    >
+                  </li>
+                  <li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+                    <a href="nexwidget.RenderOptions.html#renderBefore" class="tsd-kind-icon"
+                      >render<wbr />Before</a
                     >
                   </li>
                 </ul>

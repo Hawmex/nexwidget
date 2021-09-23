@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Part | nexwidget</title>
+    <title>Disconnectable | nexwidget</title>
     <meta name="description" content="Documentation for nexwidget" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../assets/style.css" />
@@ -59,29 +59,19 @@
           <ul class="tsd-breadcrumb">
             <li><a href="../modules.html">nexwidget</a></li>
             <li><a href="../modules/nexwidget.html">nexwidget</a></li>
-            <li><a href="nexwidget.Part.html">Part</a></li>
+            <li><a href="nexwidget.Disconnectable.html">Disconnectable</a></li>
           </ul>
-          <h1>Interface Part</h1>
+          <h1>Interface Disconnectable</h1>
         </div>
       </div>
     </header>
     <div class="container container-main">
       <div class="row">
         <div class="col-8 col-content">
-          <section class="tsd-panel tsd-comment">
-            <div class="tsd-comment tsd-typography">
-              <div class="lead">
-                <p>
-                  The Part interface represents a dynamic part of a template instance rendered by
-                  lit-html.
-                </p>
-              </div>
-            </div>
-          </section>
           <section class="tsd-panel tsd-hierarchy">
             <h3>Hierarchy</h3>
             <ul class="tsd-hierarchy">
-              <li><span class="target">Part</span></li>
+              <li><span class="target">Disconnectable</span></li>
             </ul>
           </section>
           <section class="tsd-panel">
@@ -97,26 +87,18 @@
               </li>
               <li>
                 <a
-                  href="../classes/nexwidget.BooleanAttributePart.html"
+                  href="../classes/nexwidget.ChildPart.html"
                   class="tsd-signature-type"
                   data-tsd-kind="Class"
-                  >BooleanAttributePart</a
+                  >ChildPart</a
                 >
               </li>
               <li>
                 <a
-                  href="../classes/nexwidget.EventPart.html"
+                  href="../classes/nexwidget.ElementPart.html"
                   class="tsd-signature-type"
                   data-tsd-kind="Class"
-                  >EventPart</a
-                >
-              </li>
-              <li>
-                <a
-                  href="../classes/nexwidget.NodePart.html"
-                  class="tsd-signature-type"
-                  data-tsd-kind="Class"
-                  >NodePart</a
+                  >ElementPart</a
                 >
               </li>
             </ul>
@@ -129,19 +111,20 @@
                   <h3>Properties</h3>
                   <ul class="tsd-index-list">
                     <li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-                      <a href="nexwidget.Part.html#value" class="tsd-kind-icon">value</a>
+                      <a
+                        href="nexwidget.Disconnectable.html#__disconnectableChildren"
+                        class="tsd-kind-icon"
+                        >_$disconnectable<wbr />Children</a
+                      >
                     </li>
-                  </ul>
-                </section>
-                <section class="tsd-index-section tsd-is-external">
-                  <h3>Methods</h3>
-                  <ul class="tsd-index-list">
-                    <li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-                      <a href="nexwidget.Part.html#commit" class="tsd-kind-icon">commit</a>
+                    <li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+                      <a href="nexwidget.Disconnectable.html#__isConnected" class="tsd-kind-icon"
+                        >_$is<wbr />Connected</a
+                      >
                     </li>
-                    <li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-                      <a href="nexwidget.Part.html#setValue" class="tsd-kind-icon"
-                        >set<wbr />Value</a
+                    <li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+                      <a href="nexwidget.Disconnectable.html#__parent" class="tsd-kind-icon"
+                        >_$parent</a
                       >
                     </li>
                   </ul>
@@ -156,109 +139,66 @@
                 tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external
               "
             >
-              <a name="value" class="tsd-anchor"></a>
-              <h3><span class="tsd-flag ts-flagReadonly">Readonly</span> value</h3>
+              <a name="__disconnectableChildren" class="tsd-anchor"></a>
+              <h3>
+                <span class="tsd-flag ts-flagOptional">Optional</span>
+                _$disconnectable<wbr />Children
+              </h3>
               <div class="tsd-signature tsd-kind-icon">
-                value<span class="tsd-signature-symbol">:</span>
-                <span class="tsd-signature-type">unknown</span>
+                _$disconnectable<wbr />Children<span class="tsd-signature-symbol">?:</span>
+                <span class="tsd-signature-type">Set</span
+                ><span class="tsd-signature-symbol">&lt;</span
+                ><a
+                  href="nexwidget.Disconnectable.html"
+                  class="tsd-signature-type"
+                  data-tsd-kind="Interface"
+                  >Disconnectable</a
+                ><span class="tsd-signature-symbol">&gt;</span>
               </div>
               <aside class="tsd-sources">
                 <ul>
-                  <li>Defined in node_modules/lit-html/lib/part.d.ts:19</li>
+                  <li>Defined in node_modules/lit-html/lit-html.d.ts:169</li>
                 </ul>
               </aside>
             </section>
-          </section>
-          <section class="tsd-panel-group tsd-member-group tsd-is-external">
-            <h2>Methods</h2>
             <section
-              class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external"
+              class="
+                tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external
+              "
             >
-              <a name="commit" class="tsd-anchor"></a>
-              <h3>commit</h3>
-              <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-                <li class="tsd-signature tsd-kind-icon">
-                  commit<span class="tsd-signature-symbol">(</span
-                  ><span class="tsd-signature-symbol">)</span
-                  ><span class="tsd-signature-symbol">: </span
-                  ><span class="tsd-signature-type">void</span>
-                </li>
-              </ul>
-              <ul class="tsd-descriptions">
-                <li class="tsd-description">
-                  <aside class="tsd-sources">
-                    <ul>
-                      <li>Defined in node_modules/lit-html/lib/part.d.ts:35</li>
-                    </ul>
-                  </aside>
-                  <div class="tsd-comment tsd-typography">
-                    <div class="lead">
-                      <p>
-                        Commits the current part value, causing it to actually be written to the
-                        DOM.
-                      </p>
-                    </div>
-                    <div>
-                      <p>
-                        Directives are run at the start of <code>commit</code>, so that if they call
-                        <code>part.setValue(...)</code> synchronously that value will be used in the
-                        current commit, and there&#39;s no need to call
-                        <code>part.commit()</code> within the directive. If directives set a part
-                        value asynchronously, then they must call
-                        <code>part.commit()</code> manually.
-                      </p>
-                    </div>
-                  </div>
-                  <h4 class="tsd-returns-title">
-                    Returns <span class="tsd-signature-type">void</span>
-                  </h4>
-                </li>
-              </ul>
+              <a name="__isConnected" class="tsd-anchor"></a>
+              <h3>_$is<wbr />Connected</h3>
+              <div class="tsd-signature tsd-kind-icon">
+                _$is<wbr />Connected<span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">boolean</span>
+              </div>
+              <aside class="tsd-sources">
+                <ul>
+                  <li>Defined in node_modules/lit-html/lit-html.d.ts:170</li>
+                </ul>
+              </aside>
             </section>
             <section
-              class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external"
+              class="
+                tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external
+              "
             >
-              <a name="setValue" class="tsd-anchor"></a>
-              <h3>set<wbr />Value</h3>
-              <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-                <li class="tsd-signature tsd-kind-icon">
-                  set<wbr />Value<span class="tsd-signature-symbol">(</span>value<span
-                    class="tsd-signature-symbol"
-                    >: </span
-                  ><span class="tsd-signature-type">unknown</span
-                  ><span class="tsd-signature-symbol">)</span
-                  ><span class="tsd-signature-symbol">: </span
-                  ><span class="tsd-signature-type">void</span>
-                </li>
-              </ul>
-              <ul class="tsd-descriptions">
-                <li class="tsd-description">
-                  <aside class="tsd-sources">
-                    <ul>
-                      <li>Defined in node_modules/lit-html/lib/part.d.ts:24</li>
-                    </ul>
-                  </aside>
-                  <div class="tsd-comment tsd-typography">
-                    <div class="lead">
-                      <p>Sets the current part value, but does not write it to the DOM.</p>
-                    </div>
-                  </div>
-                  <h4 class="tsd-parameters-title">Parameters</h4>
-                  <ul class="tsd-parameters">
-                    <li>
-                      <h5>value: <span class="tsd-signature-type">unknown</span></h5>
-                      <div class="tsd-comment tsd-typography">
-                        <div class="lead">
-                          <p>The value that will be committed.</p>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                  <h4 class="tsd-returns-title">
-                    Returns <span class="tsd-signature-type">void</span>
-                  </h4>
-                </li>
-              </ul>
+              <a name="__parent" class="tsd-anchor"></a>
+              <h3><span class="tsd-flag ts-flagOptional">Optional</span> _$parent</h3>
+              <div class="tsd-signature tsd-kind-icon">
+                _$parent<span class="tsd-signature-symbol">?:</span>
+                <a
+                  href="nexwidget.Disconnectable.html"
+                  class="tsd-signature-type"
+                  data-tsd-kind="Interface"
+                  >Disconnectable</a
+                >
+              </div>
+              <aside class="tsd-sources">
+                <ul>
+                  <li>Defined in node_modules/lit-html/lit-html.d.ts:168</li>
+                </ul>
+              </aside>
             </section>
           </section>
         </div>
@@ -285,16 +225,24 @@
           <nav class="tsd-navigation secondary menu-sticky">
             <ul>
               <li class="current tsd-kind-interface tsd-parent-kind-module tsd-is-external">
-                <a href="nexwidget.Part.html" class="tsd-kind-icon">Part</a>
+                <a href="nexwidget.Disconnectable.html" class="tsd-kind-icon">Disconnectable</a>
                 <ul>
                   <li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-                    <a href="nexwidget.Part.html#value" class="tsd-kind-icon">value</a>
+                    <a
+                      href="nexwidget.Disconnectable.html#__disconnectableChildren"
+                      class="tsd-kind-icon"
+                      >_$disconnectable<wbr />Children</a
+                    >
                   </li>
-                  <li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-                    <a href="nexwidget.Part.html#commit" class="tsd-kind-icon">commit</a>
+                  <li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+                    <a href="nexwidget.Disconnectable.html#__isConnected" class="tsd-kind-icon"
+                      >_$is<wbr />Connected</a
+                    >
                   </li>
-                  <li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-                    <a href="nexwidget.Part.html#setValue" class="tsd-kind-icon">set<wbr />Value</a>
+                  <li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+                    <a href="nexwidget.Disconnectable.html#__parent" class="tsd-kind-icon"
+                      >_$parent</a
+                    >
                   </li>
                 </ul>
               </li>

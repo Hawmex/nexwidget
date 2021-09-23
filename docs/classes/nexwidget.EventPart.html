@@ -68,22 +68,38 @@
     <div class="container container-main">
       <div class="row">
         <div class="col-8 col-content">
+          <section class="tsd-panel tsd-comment">
+            <div class="tsd-comment tsd-typography">
+              <div class="lead">
+                <p>An AttributePart that manages an event listener via add/removeEventListener.</p>
+              </div>
+              <div>
+                <p>
+                  This part works by adding itself as the event listener on an element, then
+                  delegating to the value passed to it. This reduces the number of calls to
+                  add/removeEventListener if the listener changes frequently, such as when an inline
+                  function is used as a listener.
+                </p>
+                <p>
+                  Because event options are passed when adding listeners, we must take case to add
+                  and remove the part as a listener when the event options change.
+                </p>
+              </div>
+            </div>
+          </section>
           <section class="tsd-panel tsd-hierarchy">
             <h3>Hierarchy</h3>
             <ul class="tsd-hierarchy">
-              <li><span class="target">EventPart</span></li>
-            </ul>
-          </section>
-          <section class="tsd-panel">
-            <h3>Implements</h3>
-            <ul class="tsd-hierarchy">
               <li>
                 <a
-                  href="../interfaces/nexwidget.Part.html"
+                  href="nexwidget.AttributePart.html"
                   class="tsd-signature-type"
-                  data-tsd-kind="Interface"
-                  >Part</a
+                  data-tsd-kind="Class"
+                  >AttributePart</a
                 >
+                <ul class="tsd-hierarchy">
+                  <li><span class="target">EventPart</span></li>
+                </ul>
               </li>
             </ul>
           </section>
@@ -94,7 +110,11 @@
                 <section class="tsd-index-section tsd-is-external">
                   <h3>Constructors</h3>
                   <ul class="tsd-index-list">
-                    <li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-external">
+                    <li
+                      class="
+                        tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite tsd-is-external
+                      "
+                    >
                       <a href="nexwidget.EventPart.html#constructor" class="tsd-kind-icon"
                         >constructor</a
                       >
@@ -104,21 +124,82 @@
                 <section class="tsd-index-section tsd-is-external">
                   <h3>Properties</h3>
                   <ul class="tsd-index-list">
-                    <li class="tsd-kind-property tsd-parent-kind-class tsd-is-external">
+                    <li
+                      class="
+                        tsd-kind-property
+                        tsd-parent-kind-class
+                        tsd-is-inherited
+                        tsd-is-protected
+                        tsd-is-external
+                      "
+                    >
+                      <a href="nexwidget.EventPart.html#_sanitizer" class="tsd-kind-icon"
+                        >_sanitizer</a
+                      >
+                    </li>
+                    <li
+                      class="
+                        tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external
+                      "
+                    >
                       <a href="nexwidget.EventPart.html#element" class="tsd-kind-icon">element</a>
                     </li>
-                    <li class="tsd-kind-property tsd-parent-kind-class tsd-is-external">
-                      <a href="nexwidget.EventPart.html#eventContext" class="tsd-kind-icon"
-                        >event<wbr />Context</a
+                    <li
+                      class="
+                        tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external
+                      "
+                    >
+                      <a href="nexwidget.EventPart.html#name" class="tsd-kind-icon">name</a>
+                    </li>
+                    <li
+                      class="
+                        tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external
+                      "
+                    >
+                      <a href="nexwidget.EventPart.html#options" class="tsd-kind-icon">options</a>
+                    </li>
+                    <li
+                      class="
+                        tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external
+                      "
+                    >
+                      <a href="nexwidget.EventPart.html#strings" class="tsd-kind-icon">strings</a>
+                    </li>
+                    <li
+                      class="
+                        tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-external
+                      "
+                    >
+                      <a href="nexwidget.EventPart.html#type" class="tsd-kind-icon">type</a>
+                    </li>
+                  </ul>
+                </section>
+                <section class="tsd-index-section tsd-is-external">
+                  <h3>Accessors</h3>
+                  <ul class="tsd-index-list">
+                    <li
+                      class="
+                        tsd-kind-get-signature
+                        tsd-parent-kind-class
+                        tsd-is-inherited
+                        tsd-is-external
+                      "
+                    >
+                      <a href="nexwidget.EventPart.html#__isConnected" class="tsd-kind-icon"
+                        >_$is<wbr />Connected</a
                       >
                     </li>
-                    <li class="tsd-kind-property tsd-parent-kind-class tsd-is-external">
-                      <a href="nexwidget.EventPart.html#eventName" class="tsd-kind-icon"
-                        >event<wbr />Name</a
+                    <li
+                      class="
+                        tsd-kind-get-signature
+                        tsd-parent-kind-class
+                        tsd-is-inherited
+                        tsd-is-external
+                      "
+                    >
+                      <a href="nexwidget.EventPart.html#tagName" class="tsd-kind-icon"
+                        >tag<wbr />Name</a
                       >
-                    </li>
-                    <li class="tsd-kind-property tsd-parent-kind-class tsd-is-external">
-                      <a href="nexwidget.EventPart.html#value" class="tsd-kind-icon">value</a>
                     </li>
                   </ul>
                 </section>
@@ -126,16 +207,8 @@
                   <h3>Methods</h3>
                   <ul class="tsd-index-list">
                     <li class="tsd-kind-method tsd-parent-kind-class tsd-is-external">
-                      <a href="nexwidget.EventPart.html#commit" class="tsd-kind-icon">commit</a>
-                    </li>
-                    <li class="tsd-kind-method tsd-parent-kind-class tsd-is-external">
                       <a href="nexwidget.EventPart.html#handleEvent" class="tsd-kind-icon"
                         >handle<wbr />Event</a
-                      >
-                    </li>
-                    <li class="tsd-kind-method tsd-parent-kind-class tsd-is-external">
-                      <a href="nexwidget.EventPart.html#setValue" class="tsd-kind-icon"
-                        >set<wbr />Value</a
                       >
                     </li>
                   </ul>
@@ -147,23 +220,53 @@
             <h2>Constructors</h2>
             <section
               class="
-                tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-external
+                tsd-panel
+                tsd-member
+                tsd-kind-constructor
+                tsd-parent-kind-class
+                tsd-is-overwrite
+                tsd-is-external
               "
             >
               <a name="constructor" class="tsd-anchor"></a>
               <h3>constructor</h3>
-              <ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-external">
+              <ul
+                class="
+                  tsd-signatures
+                  tsd-kind-constructor
+                  tsd-parent-kind-class
+                  tsd-is-overwrite
+                  tsd-is-external
+                "
+              >
                 <li class="tsd-signature tsd-kind-icon">
                   new <wbr />Event<wbr />Part<span class="tsd-signature-symbol">(</span>element<span
                     class="tsd-signature-symbol"
                     >: </span
-                  ><span class="tsd-signature-type">Element</span>, eventName<span
+                  ><span class="tsd-signature-type">HTMLElement</span>, name<span
                     class="tsd-signature-symbol"
                     >: </span
-                  ><span class="tsd-signature-type">string</span>, eventContext<span
+                  ><span class="tsd-signature-type">string</span>, strings<span
                     class="tsd-signature-symbol"
-                    >?: </span
-                  ><span class="tsd-signature-type">EventTarget</span
+                    >: </span
+                  ><span class="tsd-signature-symbol">readonly </span
+                  ><span class="tsd-signature-type">string</span
+                  ><span class="tsd-signature-symbol">[]</span>, parent<span
+                    class="tsd-signature-symbol"
+                    >: </span
+                  ><a
+                    href="../interfaces/nexwidget.Disconnectable.html"
+                    class="tsd-signature-type"
+                    data-tsd-kind="Interface"
+                    >Disconnectable</a
+                  >, options<span class="tsd-signature-symbol">: </span
+                  ><span class="tsd-signature-type">undefined</span
+                  ><span class="tsd-signature-symbol"> | </span
+                  ><a
+                    href="../interfaces/nexwidget.RenderOptions.html"
+                    class="tsd-signature-type"
+                    data-tsd-kind="Interface"
+                    >RenderOptions</a
                   ><span class="tsd-signature-symbol">)</span
                   ><span class="tsd-signature-symbol">: </span
                   ><a
@@ -177,22 +280,52 @@
               <ul class="tsd-descriptions">
                 <li class="tsd-description">
                   <aside class="tsd-sources">
+                    <p>
+                      Overrides <a href="nexwidget.AttributePart.html">AttributePart</a>.<a
+                        href="nexwidget.AttributePart.html#constructor"
+                        >constructor</a
+                      >
+                    </p>
                     <ul>
-                      <li>Defined in node_modules/lit-html/lib/parts.d.ts:142</li>
+                      <li>Defined in node_modules/lit-html/lit-html.d.ts:290</li>
                     </ul>
                   </aside>
                   <h4 class="tsd-parameters-title">Parameters</h4>
                   <ul class="tsd-parameters">
                     <li>
-                      <h5>element: <span class="tsd-signature-type">Element</span></h5>
+                      <h5>element: <span class="tsd-signature-type">HTMLElement</span></h5>
                     </li>
                     <li>
-                      <h5>eventName: <span class="tsd-signature-type">string</span></h5>
+                      <h5>name: <span class="tsd-signature-type">string</span></h5>
                     </li>
                     <li>
                       <h5>
-                        <span class="tsd-flag ts-flagOptional">Optional</span> eventContext:
-                        <span class="tsd-signature-type">EventTarget</span>
+                        strings: <span class="tsd-signature-symbol">readonly </span
+                        ><span class="tsd-signature-type">string</span
+                        ><span class="tsd-signature-symbol">[]</span>
+                      </h5>
+                    </li>
+                    <li>
+                      <h5>
+                        parent:
+                        <a
+                          href="../interfaces/nexwidget.Disconnectable.html"
+                          class="tsd-signature-type"
+                          data-tsd-kind="Interface"
+                          >Disconnectable</a
+                        >
+                      </h5>
+                    </li>
+                    <li>
+                      <h5>
+                        options: <span class="tsd-signature-type">undefined</span
+                        ><span class="tsd-signature-symbol"> | </span
+                        ><a
+                          href="../interfaces/nexwidget.RenderOptions.html"
+                          class="tsd-signature-type"
+                          data-tsd-kind="Interface"
+                          >RenderOptions</a
+                        >
                       </h5>
                     </li>
                   </ul>
@@ -212,129 +345,295 @@
           <section class="tsd-panel-group tsd-member-group tsd-is-external">
             <h2>Properties</h2>
             <section
-              class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external"
+              class="
+                tsd-panel
+                tsd-member
+                tsd-kind-property
+                tsd-parent-kind-class
+                tsd-is-inherited
+                tsd-is-protected
+                tsd-is-external
+              "
+            >
+              <a name="_sanitizer" class="tsd-anchor"></a>
+              <h3><span class="tsd-flag ts-flagProtected">Protected</span> _sanitizer</h3>
+              <div class="tsd-signature tsd-kind-icon">
+                _sanitizer<span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">undefined</span
+                ><span class="tsd-signature-symbol"> | </span
+                ><a
+                  href="../modules/nexwidget.html#ValueSanitizer"
+                  class="tsd-signature-type"
+                  data-tsd-kind="Type alias"
+                  >ValueSanitizer</a
+                >
+              </div>
+              <aside class="tsd-sources">
+                <p>
+                  Inherited from <a href="nexwidget.AttributePart.html">AttributePart</a>.<a
+                    href="nexwidget.AttributePart.html#_sanitizer"
+                    >_sanitizer</a
+                  >
+                </p>
+                <ul>
+                  <li>Defined in node_modules/lit-html/lit-html.d.ts:263</li>
+                </ul>
+              </aside>
+            </section>
+            <section
+              class="
+                tsd-panel
+                tsd-member
+                tsd-kind-property
+                tsd-parent-kind-class
+                tsd-is-inherited
+                tsd-is-external
+              "
             >
               <a name="element" class="tsd-anchor"></a>
               <h3><span class="tsd-flag ts-flagReadonly">Readonly</span> element</h3>
               <div class="tsd-signature tsd-kind-icon">
                 element<span class="tsd-signature-symbol">:</span>
-                <span class="tsd-signature-type">Element</span>
-              </div>
-              <aside class="tsd-sources">
-                <ul>
-                  <li>Defined in node_modules/lit-html/lib/parts.d.ts:135</li>
-                </ul>
-              </aside>
-            </section>
-            <section
-              class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external"
-            >
-              <a name="eventContext" class="tsd-anchor"></a>
-              <h3>
-                <span class="tsd-flag ts-flagOptional">Optional</span>
-                <span class="tsd-flag ts-flagReadonly">Readonly</span> event<wbr />Context
-              </h3>
-              <div class="tsd-signature tsd-kind-icon">
-                event<wbr />Context<span class="tsd-signature-symbol">?:</span>
-                <span class="tsd-signature-type">EventTarget</span>
-              </div>
-              <aside class="tsd-sources">
-                <ul>
-                  <li>Defined in node_modules/lit-html/lib/parts.d.ts:137</li>
-                </ul>
-              </aside>
-            </section>
-            <section
-              class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external"
-            >
-              <a name="eventName" class="tsd-anchor"></a>
-              <h3><span class="tsd-flag ts-flagReadonly">Readonly</span> event<wbr />Name</h3>
-              <div class="tsd-signature tsd-kind-icon">
-                event<wbr />Name<span class="tsd-signature-symbol">:</span>
-                <span class="tsd-signature-type">string</span>
-              </div>
-              <aside class="tsd-sources">
-                <ul>
-                  <li>Defined in node_modules/lit-html/lib/parts.d.ts:136</li>
-                </ul>
-              </aside>
-            </section>
-            <section
-              class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external"
-            >
-              <a name="value" class="tsd-anchor"></a>
-              <h3>value</h3>
-              <div class="tsd-signature tsd-kind-icon">
-                value<span class="tsd-signature-symbol">:</span>
-                <span class="tsd-signature-type">undefined</span
-                ><span class="tsd-signature-symbol"> | </span
-                ><span class="tsd-signature-type">EventHandlerWithOptions</span>
+                <span class="tsd-signature-type">HTMLElement</span>
               </div>
               <aside class="tsd-sources">
                 <p>
-                  Implementation of <a href="../interfaces/nexwidget.Part.html">Part</a>.<a
-                    href="../interfaces/nexwidget.Part.html#value"
-                    >value</a
+                  Inherited from <a href="nexwidget.AttributePart.html">AttributePart</a>.<a
+                    href="nexwidget.AttributePart.html#element"
+                    >element</a
                   >
                 </p>
                 <ul>
-                  <li>Defined in node_modules/lit-html/lib/parts.d.ts:138</li>
+                  <li>Defined in node_modules/lit-html/lit-html.d.ts:254</li>
+                </ul>
+              </aside>
+            </section>
+            <section
+              class="
+                tsd-panel
+                tsd-member
+                tsd-kind-property
+                tsd-parent-kind-class
+                tsd-is-inherited
+                tsd-is-external
+              "
+            >
+              <a name="name" class="tsd-anchor"></a>
+              <h3><span class="tsd-flag ts-flagReadonly">Readonly</span> name</h3>
+              <div class="tsd-signature tsd-kind-icon">
+                name<span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">string</span>
+              </div>
+              <aside class="tsd-sources">
+                <p>
+                  Inherited from <a href="nexwidget.AttributePart.html">AttributePart</a>.<a
+                    href="nexwidget.AttributePart.html#name"
+                    >name</a
+                  >
+                </p>
+                <ul>
+                  <li>Defined in node_modules/lit-html/lit-html.d.ts:255</li>
+                </ul>
+              </aside>
+            </section>
+            <section
+              class="
+                tsd-panel
+                tsd-member
+                tsd-kind-property
+                tsd-parent-kind-class
+                tsd-is-inherited
+                tsd-is-external
+              "
+            >
+              <a name="options" class="tsd-anchor"></a>
+              <h3><span class="tsd-flag ts-flagReadonly">Readonly</span> options</h3>
+              <div class="tsd-signature tsd-kind-icon">
+                options<span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">undefined</span
+                ><span class="tsd-signature-symbol"> | </span
+                ><a
+                  href="../interfaces/nexwidget.RenderOptions.html"
+                  class="tsd-signature-type"
+                  data-tsd-kind="Interface"
+                  >RenderOptions</a
+                >
+              </div>
+              <aside class="tsd-sources">
+                <p>
+                  Inherited from <a href="nexwidget.AttributePart.html">AttributePart</a>.<a
+                    href="nexwidget.AttributePart.html#options"
+                    >options</a
+                  >
+                </p>
+                <ul>
+                  <li>Defined in node_modules/lit-html/lit-html.d.ts:256</li>
+                </ul>
+              </aside>
+            </section>
+            <section
+              class="
+                tsd-panel
+                tsd-member
+                tsd-kind-property
+                tsd-parent-kind-class
+                tsd-is-inherited
+                tsd-is-external
+              "
+            >
+              <a name="strings" class="tsd-anchor"></a>
+              <h3>
+                <span class="tsd-flag ts-flagOptional">Optional</span>
+                <span class="tsd-flag ts-flagReadonly">Readonly</span> strings
+              </h3>
+              <div class="tsd-signature tsd-kind-icon">
+                strings<span class="tsd-signature-symbol">?:</span>
+                <span class="tsd-signature-symbol">readonly </span
+                ><span class="tsd-signature-type">string</span
+                ><span class="tsd-signature-symbol">[]</span>
+              </div>
+              <aside class="tsd-sources">
+                <p>
+                  Inherited from <a href="nexwidget.AttributePart.html">AttributePart</a>.<a
+                    href="nexwidget.AttributePart.html#strings"
+                    >strings</a
+                  >
+                </p>
+                <ul>
+                  <li>Defined in node_modules/lit-html/lit-html.d.ts:262</li>
+                </ul>
+              </aside>
+              <div class="tsd-comment tsd-typography">
+                <div class="lead">
+                  <p>
+                    If this attribute part represents an interpolation, this contains the static
+                    strings of the interpolation. For single-value, complete bindings, this is
+                    undefined.
+                  </p>
+                </div>
+              </div>
+            </section>
+            <section
+              class="
+                tsd-panel
+                tsd-member
+                tsd-kind-property
+                tsd-parent-kind-class
+                tsd-is-overwrite
+                tsd-is-external
+              "
+            >
+              <a name="type" class="tsd-anchor"></a>
+              <h3><span class="tsd-flag ts-flagReadonly">Readonly</span> type</h3>
+              <div class="tsd-signature tsd-kind-icon">
+                type<span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">5</span
+                ><span class="tsd-signature-symbol"> = 5</span>
+              </div>
+              <aside class="tsd-sources">
+                <p>
+                  Overrides <a href="nexwidget.AttributePart.html">AttributePart</a>.<a
+                    href="nexwidget.AttributePart.html#type"
+                    >type</a
+                  >
+                </p>
+                <ul>
+                  <li>Defined in node_modules/lit-html/lit-html.d.ts:289</li>
                 </ul>
               </aside>
             </section>
           </section>
           <section class="tsd-panel-group tsd-member-group tsd-is-external">
-            <h2>Methods</h2>
+            <h2>Accessors</h2>
             <section
-              class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external"
+              class="
+                tsd-panel
+                tsd-member
+                tsd-kind-get-signature
+                tsd-parent-kind-class
+                tsd-is-inherited
+                tsd-is-external
+              "
             >
-              <a name="commit" class="tsd-anchor"></a>
-              <h3>commit</h3>
-              <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+              <a name="__isConnected" class="tsd-anchor"></a>
+              <h3>_$is<wbr />Connected</h3>
+              <ul
+                class="
+                  tsd-signatures
+                  tsd-kind-get-signature
+                  tsd-parent-kind-class
+                  tsd-is-inherited
+                  tsd-is-external
+                "
+              >
                 <li class="tsd-signature tsd-kind-icon">
-                  commit<span class="tsd-signature-symbol">(</span
+                  <span class="tsd-signature-symbol">get</span> _$isConnected<span
+                    class="tsd-signature-symbol"
+                    >(</span
                   ><span class="tsd-signature-symbol">)</span
                   ><span class="tsd-signature-symbol">: </span
-                  ><span class="tsd-signature-type">void</span>
+                  ><span class="tsd-signature-type">boolean</span>
                 </li>
               </ul>
               <ul class="tsd-descriptions">
                 <li class="tsd-description">
                   <aside class="tsd-sources">
-                    <p>
-                      Implementation of <a href="../interfaces/nexwidget.Part.html">Part</a>.<a
-                        href="../interfaces/nexwidget.Part.html#commit"
-                        >commit</a
-                      >
-                    </p>
                     <ul>
-                      <li>Defined in node_modules/lit-html/lib/parts.d.ts:144</li>
+                      <li>Defined in node_modules/lit-html/lit-html.d.ts:265</li>
                     </ul>
                   </aside>
-                  <div class="tsd-comment tsd-typography">
-                    <div class="lead">
-                      <p>
-                        Commits the current part value, causing it to actually be written to the
-                        DOM.
-                      </p>
-                    </div>
-                    <div>
-                      <p>
-                        Directives are run at the start of <code>commit</code>, so that if they call
-                        <code>part.setValue(...)</code> synchronously that value will be used in the
-                        current commit, and there&#39;s no need to call
-                        <code>part.commit()</code> within the directive. If directives set a part
-                        value asynchronously, then they must call
-                        <code>part.commit()</code> manually.
-                      </p>
-                    </div>
-                  </div>
                   <h4 class="tsd-returns-title">
-                    Returns <span class="tsd-signature-type">void</span>
+                    Returns <span class="tsd-signature-type">boolean</span>
                   </h4>
                 </li>
               </ul>
             </section>
+            <section
+              class="
+                tsd-panel
+                tsd-member
+                tsd-kind-get-signature
+                tsd-parent-kind-class
+                tsd-is-inherited
+                tsd-is-external
+              "
+            >
+              <a name="tagName" class="tsd-anchor"></a>
+              <h3>tag<wbr />Name</h3>
+              <ul
+                class="
+                  tsd-signatures
+                  tsd-kind-get-signature
+                  tsd-parent-kind-class
+                  tsd-is-inherited
+                  tsd-is-external
+                "
+              >
+                <li class="tsd-signature tsd-kind-icon">
+                  <span class="tsd-signature-symbol">get</span> tagName<span
+                    class="tsd-signature-symbol"
+                    >(</span
+                  ><span class="tsd-signature-symbol">)</span
+                  ><span class="tsd-signature-symbol">: </span
+                  ><span class="tsd-signature-type">string</span>
+                </li>
+              </ul>
+              <ul class="tsd-descriptions">
+                <li class="tsd-description">
+                  <aside class="tsd-sources">
+                    <ul>
+                      <li>Defined in node_modules/lit-html/lit-html.d.ts:264</li>
+                    </ul>
+                  </aside>
+                  <h4 class="tsd-returns-title">
+                    Returns <span class="tsd-signature-type">string</span>
+                  </h4>
+                </li>
+              </ul>
+            </section>
+          </section>
+          <section class="tsd-panel-group tsd-member-group tsd-is-external">
+            <h2>Methods</h2>
             <section
               class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external"
             >
@@ -355,65 +654,13 @@
                 <li class="tsd-description">
                   <aside class="tsd-sources">
                     <ul>
-                      <li>Defined in node_modules/lit-html/lib/parts.d.ts:145</li>
+                      <li>Defined in node_modules/lit-html/lit-html.d.ts:291</li>
                     </ul>
                   </aside>
                   <h4 class="tsd-parameters-title">Parameters</h4>
                   <ul class="tsd-parameters">
                     <li>
                       <h5>event: <span class="tsd-signature-type">Event</span></h5>
-                    </li>
-                  </ul>
-                  <h4 class="tsd-returns-title">
-                    Returns <span class="tsd-signature-type">void</span>
-                  </h4>
-                </li>
-              </ul>
-            </section>
-            <section
-              class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external"
-            >
-              <a name="setValue" class="tsd-anchor"></a>
-              <h3>set<wbr />Value</h3>
-              <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
-                <li class="tsd-signature tsd-kind-icon">
-                  set<wbr />Value<span class="tsd-signature-symbol">(</span>value<span
-                    class="tsd-signature-symbol"
-                    >: </span
-                  ><span class="tsd-signature-type">undefined</span
-                  ><span class="tsd-signature-symbol"> | </span
-                  ><span class="tsd-signature-type">EventHandlerWithOptions</span
-                  ><span class="tsd-signature-symbol">)</span
-                  ><span class="tsd-signature-symbol">: </span
-                  ><span class="tsd-signature-type">void</span>
-                </li>
-              </ul>
-              <ul class="tsd-descriptions">
-                <li class="tsd-description">
-                  <aside class="tsd-sources">
-                    <p>
-                      Implementation of <a href="../interfaces/nexwidget.Part.html">Part</a>.<a
-                        href="../interfaces/nexwidget.Part.html#setValue"
-                        >setValue</a
-                      >
-                    </p>
-                    <ul>
-                      <li>Defined in node_modules/lit-html/lib/parts.d.ts:143</li>
-                    </ul>
-                  </aside>
-                  <div class="tsd-comment tsd-typography">
-                    <div class="lead">
-                      <p>Sets the current part value, but does not write it to the DOM.</p>
-                    </div>
-                  </div>
-                  <h4 class="tsd-parameters-title">Parameters</h4>
-                  <ul class="tsd-parameters">
-                    <li>
-                      <h5>
-                        value: <span class="tsd-signature-type">undefined</span
-                        ><span class="tsd-signature-symbol"> | </span
-                        ><span class="tsd-signature-type">EventHandlerWithOptions</span>
-                      </h5>
                     </li>
                   </ul>
                   <h4 class="tsd-returns-title">
@@ -449,38 +696,74 @@
               <li class="current tsd-kind-class tsd-parent-kind-module tsd-is-external">
                 <a href="nexwidget.EventPart.html" class="tsd-kind-icon">Event<wbr />Part</a>
                 <ul>
-                  <li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-external">
+                  <li
+                    class="
+                      tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite tsd-is-external
+                    "
+                  >
                     <a href="nexwidget.EventPart.html#constructor" class="tsd-kind-icon"
                       >constructor</a
                     >
                   </li>
-                  <li class="tsd-kind-property tsd-parent-kind-class tsd-is-external">
+                  <li
+                    class="
+                      tsd-kind-property
+                      tsd-parent-kind-class
+                      tsd-is-inherited
+                      tsd-is-protected
+                      tsd-is-external
+                    "
+                  >
+                    <a href="nexwidget.EventPart.html#_sanitizer" class="tsd-kind-icon"
+                      >_sanitizer</a
+                    >
+                  </li>
+                  <li
+                    class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external"
+                  >
                     <a href="nexwidget.EventPart.html#element" class="tsd-kind-icon">element</a>
                   </li>
-                  <li class="tsd-kind-property tsd-parent-kind-class tsd-is-external">
-                    <a href="nexwidget.EventPart.html#eventContext" class="tsd-kind-icon"
-                      >event<wbr />Context</a
+                  <li
+                    class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external"
+                  >
+                    <a href="nexwidget.EventPart.html#name" class="tsd-kind-icon">name</a>
+                  </li>
+                  <li
+                    class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external"
+                  >
+                    <a href="nexwidget.EventPart.html#options" class="tsd-kind-icon">options</a>
+                  </li>
+                  <li
+                    class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external"
+                  >
+                    <a href="nexwidget.EventPart.html#strings" class="tsd-kind-icon">strings</a>
+                  </li>
+                  <li
+                    class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-external"
+                  >
+                    <a href="nexwidget.EventPart.html#type" class="tsd-kind-icon">type</a>
+                  </li>
+                  <li
+                    class="
+                      tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-external
+                    "
+                  >
+                    <a href="nexwidget.EventPart.html#__isConnected" class="tsd-kind-icon"
+                      >_$is<wbr />Connected</a
                     >
                   </li>
-                  <li class="tsd-kind-property tsd-parent-kind-class tsd-is-external">
-                    <a href="nexwidget.EventPart.html#eventName" class="tsd-kind-icon"
-                      >event<wbr />Name</a
+                  <li
+                    class="
+                      tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-external
+                    "
+                  >
+                    <a href="nexwidget.EventPart.html#tagName" class="tsd-kind-icon"
+                      >tag<wbr />Name</a
                     >
-                  </li>
-                  <li class="tsd-kind-property tsd-parent-kind-class tsd-is-external">
-                    <a href="nexwidget.EventPart.html#value" class="tsd-kind-icon">value</a>
-                  </li>
-                  <li class="tsd-kind-method tsd-parent-kind-class tsd-is-external">
-                    <a href="nexwidget.EventPart.html#commit" class="tsd-kind-icon">commit</a>
                   </li>
                   <li class="tsd-kind-method tsd-parent-kind-class tsd-is-external">
                     <a href="nexwidget.EventPart.html#handleEvent" class="tsd-kind-icon"
                       >handle<wbr />Event</a
-                    >
-                  </li>
-                  <li class="tsd-kind-method tsd-parent-kind-class tsd-is-external">
-                    <a href="nexwidget.EventPart.html#setValue" class="tsd-kind-icon"
-                      >set<wbr />Value</a
                     >
                   </li>
                 </ul>
