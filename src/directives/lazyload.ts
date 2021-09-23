@@ -1,21 +1,30 @@
-import { directive, NodePart } from 'lit-html/lit-html.js';
+import { AsyncDirective, directive } from 'lit-html/async-directive.js';
+import { ChildPart, noChange } from 'lit-html/lit-html.js';
 import { Nexbounce } from 'nexbounce/nexbounce.js';
 import { addPendingTask } from '../lib/add-pending-task.js';
 
-const latestValues = new WeakMap<NodePart, HTMLElement>();
-const lazyLoadRenderDebouncer = new Nexbounce();
+export class LazyloadDirective extends AsyncDirective {
+  #latestValue?: HTMLElement;
+  #renderDebouncer = new Nexbounce();
+  #part?: ChildPart;
 
-export const lazyLoad = directive(
-  (widgetImport: Promise<unknown>, value: HTMLElement) => (part: NodePart) => {
-    latestValues.set(part, value);
+  render(widgetImport: Promise<unknown>, value: HTMLElement) {
+    this.#latestValue = value;
 
-    addPendingTask(part.startNode.parentNode!, widgetImport).then(() =>
-      lazyLoadRenderDebouncer.enqueue(() => {
-        if (latestValues.get(part) === value) {
-          part.setValue(value);
-          part.commit();
-        }
+    addPendingTask(this.#part?.startNode?.parentNode!, widgetImport).then(() =>
+      this.#renderDebouncer.enqueue(() => {
+        if (this.#latestValue === value) this.setValue(value);
       }),
     );
-  },
-);
+
+    return noChange;
+  }
+
+  override update(part: ChildPart, [widgetImport, value]: [Promise<unknown>, HTMLElement]) {
+    this.#part = part;
+
+    return this.render(widgetImport, value);
+  }
+}
+
+export const lazyload = directive(LazyloadDirective);

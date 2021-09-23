@@ -1,5 +1,4 @@
-import { render } from 'lit-html/lib/shady-render.js';
-import { noChange, nothing, TemplateResult } from 'lit-html/lit-html.js';
+import { noChange, nothing, render, RootPart, TemplateResult } from 'lit-html/lit-html.js';
 import { Nexbounce } from 'nexbounce/nexbounce.js';
 
 export * from 'lit-html/lit-html.js';
@@ -114,7 +113,7 @@ export class Nexwidget extends HTMLElement {
         set(value) {
           const prevValue = (<{ [key: string]: unknown }>this)[key];
 
-          descriptor?.set?.call?.(this, value);
+          descriptor?.set?.call(this, value);
 
           if (internalKey && prevValue !== value) {
             (<{ [key: symbol]: unknown }>this)[internalKey] = value;
@@ -139,11 +138,11 @@ export class Nexwidget extends HTMLElement {
         configurable: true,
         enumerable: true,
         get() {
-          descriptor?.get?.call?.(this);
+          descriptor?.get?.call(this);
           return (<Nexwidget>this).#getPropertyValueFromAttribute(key);
         },
         set(value) {
-          descriptor?.set?.call?.(this, value);
+          descriptor?.set?.call(this, value);
           (<Nexwidget>this).#setAttributeFromProperty(key, value);
         },
       });
@@ -155,6 +154,8 @@ export class Nexwidget extends HTMLElement {
 
   #isRenderEnabled = false;
   #isMounted = false;
+
+  #rootPart?: RootPart;
 
   #removedController?: AbortController;
   #unmountedController?: AbortController;
@@ -251,7 +252,7 @@ export class Nexwidget extends HTMLElement {
   #render() {
     this.#renderDebouncer.enqueue(() => {
       if (this.#isRenderEnabled) {
-        render(this.template, this.#renderRoot, { scopeName: this.localName, eventContext: this });
+        this.#rootPart = render(this.template, this.#renderRoot, { host: this });
 
         requestAnimationFrame(() => {
           this.updatedCallback();
@@ -308,7 +309,7 @@ export class Nexwidget extends HTMLElement {
   }
 
   updatedCallback() {
-    this.#animation?.cancel?.();
+    this.#animation?.cancel();
 
     if (this.updateOrSlotChangeAnimation !== null)
       this.#animation = this.animate(
@@ -318,7 +319,7 @@ export class Nexwidget extends HTMLElement {
   }
 
   slotChangedCallback() {
-    this.#animation?.cancel?.();
+    this.#animation?.cancel();
 
     if (this.updateOrSlotChangeAnimation !== null)
       this.#animation = this.animate(
@@ -328,7 +329,8 @@ export class Nexwidget extends HTMLElement {
   }
 
   mountedCallback() {
-    this.#animation?.cancel?.();
+    this.#rootPart?.setConnected(true);
+    this.#animation?.cancel();
 
     if (this.mountAnimation !== null)
       this.#animation = this.animate(this.mountAnimation.keyframes, this.mountAnimation.options);
@@ -337,10 +339,11 @@ export class Nexwidget extends HTMLElement {
   }
 
   removedCallback() {
-    this.#removedController?.abort?.();
+    this.#removedController?.abort();
   }
 
   unmountedCallback() {
-    this.#unmountedController?.abort?.();
+    this.#rootPart?.setConnected(false);
+    this.#unmountedController?.abort();
   }
 }
