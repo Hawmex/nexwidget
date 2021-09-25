@@ -295,14 +295,12 @@ export class Nexwidget extends HTMLElement {
     this.#adoptStyles();
     this.addedCallback();
     this.#isRenderEnabled = true;
-    this.#rootPart?.setConnected(true);
     this.#render();
   }
 
   disconnectedCallback() {
     this.removedCallback();
     this.#isRenderEnabled = false;
-    this.#rootPart?.setConnected(false);
     this.#cleanupRender();
   }
 
@@ -331,6 +329,7 @@ export class Nexwidget extends HTMLElement {
   }
 
   mountedCallback() {
+    this.#rootPart?.setConnected(true);
     this.#animation?.cancel();
 
     if (this.mountAnimation !== null)
@@ -344,6 +343,7 @@ export class Nexwidget extends HTMLElement {
   }
 
   unmountedCallback() {
+    this.#rootPart?.setConnected(false);
     this.#unmountedController?.abort();
   }
 }
