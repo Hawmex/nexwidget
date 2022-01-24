@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html class="default no-js">
+<html class="default">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
     <title>WithDependencyConsumerInterface | nexwidget</title>
     <meta name="description" content="Documentation for nexwidget" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -11,13 +11,19 @@
     <script async src="../assets/search.js" id="search-script"></script>
   </head>
   <body>
+    <script>
+      document.body.classList.add(localStorage.getItem('tsd-theme') || 'os');
+    </script>
     <header>
       <div class="tsd-page-toolbar">
         <div class="container">
           <div class="table-wrap">
             <div class="table-cell" id="tsd-search" data-base="..">
               <div class="field">
-                <label for="tsd-search-field" class="tsd-widget search no-caption">Search</label
+                <label
+                  for="tsd-search-field"
+                  class="tsd-widget search no-caption"
+                  >Search</label
                 ><input type="text" id="tsd-search-field" />
               </div>
               <ul class="results">
@@ -28,7 +34,12 @@
             </div>
             <div class="table-cell" id="tsd-widgets">
               <div id="tsd-filter">
-                <a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+                <a
+                  href="#"
+                  class="tsd-widget options no-caption"
+                  data-toggle="options"
+                  >Options</a
+                >
                 <div class="tsd-filter-group">
                   <div class="tsd-select" id="tsd-filter-visibility">
                     <span class="tsd-select-label">All</span>
@@ -38,18 +49,24 @@
                       <li data-value="private" class="selected">All</li>
                     </ul>
                   </div>
-                  <input type="checkbox" id="tsd-filter-inherited" checked /><label
-                    class="tsd-widget"
-                    for="tsd-filter-inherited"
+                  <input
+                    type="checkbox"
+                    id="tsd-filter-inherited"
+                    checked
+                  /><label class="tsd-widget" for="tsd-filter-inherited"
                     >Inherited</label
-                  ><input type="checkbox" id="tsd-filter-externals" checked /><label
-                    class="tsd-widget"
-                    for="tsd-filter-externals"
+                  ><input
+                    type="checkbox"
+                    id="tsd-filter-externals"
+                    checked
+                  /><label class="tsd-widget" for="tsd-filter-externals"
                     >Externals</label
                   >
                 </div>
               </div>
-              <a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+              <a href="#" class="tsd-widget menu no-caption" data-toggle="menu"
+                >Menu</a
+              >
             </div>
           </div>
         </div>
@@ -59,10 +76,13 @@
           <ul class="tsd-breadcrumb">
             <li><a href="../modules.html">nexwidget</a></li>
             <li>
-              <a href="../modules/mixins_dependency_injection.html">mixins/dependency-injection</a>
+              <a href="../modules/mixins_dependency_injection.html"
+                >mixins/dependency-injection</a
+              >
             </li>
             <li>
-              <a href="mixins_dependency_injection.WithDependencyConsumerInterface.html"
+              <a
+                href="mixins_dependency_injection.WithDependencyConsumerInterface.html"
                 >WithDependencyConsumerInterface</a
               >
             </li>
@@ -77,7 +97,9 @@
           <section class="tsd-panel tsd-hierarchy">
             <h3>Hierarchy</h3>
             <ul class="tsd-hierarchy">
-              <li><span class="target">WithDependencyConsumerInterface</span></li>
+              <li>
+                <span class="target">WithDependencyConsumerInterface</span>
+              </li>
             </ul>
           </section>
           <section class="tsd-panel-group tsd-index-group">
@@ -99,7 +121,9 @@
                 <section class="tsd-index-section">
                   <h3>Methods</h3>
                   <ul class="tsd-index-list">
-                    <li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+                    <li
+                      class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"
+                    >
                       <a
                         href="mixins_dependency_injection.WithDependencyConsumerInterface.html#requestDependency"
                         class="tsd-kind-icon"
@@ -113,12 +137,40 @@
           </section>
           <section class="tsd-panel-group tsd-member-group">
             <h2>Constructors</h2>
-            <section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
-              <a name="constructor" class="tsd-anchor"></a>
-              <h3>constructor</h3>
-              <ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+            <section
+              class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class"
+            >
+              <a id="constructor" class="tsd-anchor"></a>
+              <h3 class="tsd-anchor-link">
+                constructor<a
+                  href="#constructor"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-link"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                      d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"
+                    ></path>
+                    <path
+                      d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"
+                    ></path></svg
+                ></a>
+              </h3>
+              <ul
+                class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class"
+              >
                 <li class="tsd-signature tsd-kind-icon">
-                  new <wbr />With<wbr />Dependency<wbr />Consumer<wbr />Interface<span
+                  new
+                  <wbr />With<wbr />Dependency<wbr />Consumer<wbr />Interface<span
                     class="tsd-signature-symbol"
                     >(</span
                   ><span class="tsd-signature-symbol">)</span
@@ -133,7 +185,6 @@
               </ul>
               <ul class="tsd-descriptions">
                 <li class="tsd-description">
-                  <aside class="tsd-sources"></aside>
                   <h4 class="tsd-returns-title">
                     Returns
                     <a
@@ -150,19 +201,51 @@
           <section class="tsd-panel-group tsd-member-group">
             <h2>Methods</h2>
             <section
-              class="
-                tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter
-              "
+              class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"
             >
-              <a name="requestDependency" class="tsd-anchor"></a>
-              <h3>request<wbr />Dependency</h3>
+              <a id="requestDependency" class="tsd-anchor"></a>
+              <h3 class="tsd-anchor-link">
+                request<wbr />Dependency<a
+                  href="#requestDependency"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-link"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                      d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"
+                    ></path>
+                    <path
+                      d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"
+                    ></path></svg
+                ></a>
+              </h3>
               <ul
                 class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"
               >
                 <li class="tsd-signature tsd-kind-icon">
-                  request<wbr />Dependency&lt;K&gt;<span class="tsd-signature-symbol">(</span
-                  >key<span class="tsd-signature-symbol">: </span
-                  ><span class="tsd-signature-type" data-tsd-kind="Type parameter">K</span
+                  request<wbr />Dependency<span class="tsd-signature-symbol"
+                    >&lt;</span
+                  ><span
+                    class="tsd-signature-type"
+                    data-tsd-kind="Type parameter"
+                    >K</span
+                  ><span class="tsd-signature-symbol">&gt;</span
+                  ><span class="tsd-signature-symbol">(</span>key<span
+                    class="tsd-signature-symbol"
+                    >: </span
+                  ><span
+                    class="tsd-signature-type"
+                    data-tsd-kind="Type parameter"
+                    >K</span
                   ><span class="tsd-signature-symbol">)</span
                   ><span class="tsd-signature-symbol">: </span
                   ><a
@@ -171,7 +254,10 @@
                     data-tsd-kind="Interface"
                     >NexwidgetDependencyKeyMap</a
                   ><span class="tsd-signature-symbol">[</span
-                  ><span class="tsd-signature-type" data-tsd-kind="Type parameter">K</span
+                  ><span
+                    class="tsd-signature-type"
+                    data-tsd-kind="Type parameter"
+                    >K</span
                   ><span class="tsd-signature-symbol">]</span>
                 </li>
               </ul>
@@ -182,8 +268,8 @@
                       <li>
                         Defined in
                         <a
-                          href="https://github.com/hawmex/nexwidget/blob/31f43cc/src/mixins/dependency-injection.ts#L21"
-                          >src/mixins/dependency-injection.ts:21</a
+                          href="https://github.com/hawmex/nexwidget/blob/6dc51eb/src/mixins/dependency-injection.ts#L23"
+                          >src/mixins/dependency-injection.ts:23</a
                         >
                       </li>
                     </ul>
@@ -202,7 +288,11 @@
                     <li>
                       <h5>
                         key:
-                        <span class="tsd-signature-type" data-tsd-kind="Type parameter">K</span>
+                        <span
+                          class="tsd-signature-type"
+                          data-tsd-kind="Type parameter"
+                          >K</span
+                        >
                       </h5>
                     </li>
                   </ul>
@@ -214,7 +304,10 @@
                       data-tsd-kind="Interface"
                       >NexwidgetDependencyKeyMap</a
                     ><span class="tsd-signature-symbol">[</span
-                    ><span class="tsd-signature-type" data-tsd-kind="Type parameter">K</span
+                    ><span
+                      class="tsd-signature-type"
+                      data-tsd-kind="Type parameter"
+                      >K</span
                     ><span class="tsd-signature-symbol">]</span>
                   </h4>
                 </li>
@@ -227,7 +320,9 @@
             <ul>
               <li class=""><a href="../modules.html">Modules</a></li>
               <li class="tsd-kind-module">
-                <a href="../modules/directives_lazyload.html">directives/lazyload</a>
+                <a href="../modules/directives_lazyload.html"
+                  >directives/lazyload</a
+                >
               </li>
               <li class="current tsd-kind-module">
                 <a href="../modules/mixins_dependency_injection.html"
@@ -235,9 +330,13 @@
                 >
               </li>
               <li class="tsd-kind-module">
-                <a href="../modules/mixins_pending_task.html">mixins/pending-<wbr />task</a>
+                <a href="../modules/mixins_pending_task.html"
+                  >mixins/pending-<wbr />task</a
+                >
               </li>
-              <li class="tsd-kind-module"><a href="../modules/nexwidget.html">nexwidget</a></li>
+              <li class="tsd-kind-module">
+                <a href="../modules/nexwidget.html">nexwidget</a>
+              </li>
             </ul>
           </nav>
           <nav class="tsd-navigation secondary menu-sticky">
@@ -256,7 +355,9 @@
                       >constructor</a
                     >
                   </li>
-                  <li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+                  <li
+                    class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"
+                  >
                     <a
                       href="mixins_dependency_injection.WithDependencyConsumerInterface.html#requestDependency"
                       class="tsd-kind-icon"
@@ -275,23 +376,31 @@
         <h2>Legend</h2>
         <div class="tsd-legend-group">
           <ul class="tsd-legend">
-            <li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+            <li class="tsd-kind-function">
+              <span class="tsd-kind-icon">Function</span>
+            </li>
             <li class="tsd-kind-function tsd-has-type-parameter">
               <span class="tsd-kind-icon">Function with type parameter</span>
             </li>
-            <li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+            <li class="tsd-kind-type-alias">
+              <span class="tsd-kind-icon">Type alias</span>
+            </li>
             <li class="tsd-kind-type-alias tsd-has-type-parameter">
               <span class="tsd-kind-icon">Type alias with type parameter</span>
             </li>
           </ul>
           <ul class="tsd-legend">
-            <li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+            <li class="tsd-kind-class">
+              <span class="tsd-kind-icon">Class</span>
+            </li>
             <li class="tsd-kind-constructor tsd-parent-kind-class">
               <span class="tsd-kind-icon">Constructor</span>
             </li>
           </ul>
           <ul class="tsd-legend">
-            <li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+            <li class="tsd-kind-interface">
+              <span class="tsd-kind-icon">Interface</span>
+            </li>
           </ul>
         </div>
         <h2>Settings</h2>
@@ -306,7 +415,10 @@
       </div>
     </footer>
     <div class="container tsd-generator">
-      <p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+      <p>
+        Generated using
+        <a href="https://typedoc.org/" target="_blank">TypeDoc</a>
+      </p>
     </div>
     <div class="overlay"></div>
     <script src="../assets/main.js"></script>

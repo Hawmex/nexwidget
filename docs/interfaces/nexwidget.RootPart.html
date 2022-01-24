@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html class="default no-js">
+<html class="default">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
     <title>RootPart | nexwidget</title>
     <meta name="description" content="Documentation for nexwidget" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -11,13 +11,19 @@
     <script async src="../assets/search.js" id="search-script"></script>
   </head>
   <body>
+    <script>
+      document.body.classList.add(localStorage.getItem('tsd-theme') || 'os');
+    </script>
     <header>
       <div class="tsd-page-toolbar">
         <div class="container">
           <div class="table-wrap">
             <div class="table-cell" id="tsd-search" data-base="..">
               <div class="field">
-                <label for="tsd-search-field" class="tsd-widget search no-caption">Search</label
+                <label
+                  for="tsd-search-field"
+                  class="tsd-widget search no-caption"
+                  >Search</label
                 ><input type="text" id="tsd-search-field" />
               </div>
               <ul class="results">
@@ -28,7 +34,12 @@
             </div>
             <div class="table-cell" id="tsd-widgets">
               <div id="tsd-filter">
-                <a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+                <a
+                  href="#"
+                  class="tsd-widget options no-caption"
+                  data-toggle="options"
+                  >Options</a
+                >
                 <div class="tsd-filter-group">
                   <div class="tsd-select" id="tsd-filter-visibility">
                     <span class="tsd-select-label">All</span>
@@ -38,18 +49,24 @@
                       <li data-value="private" class="selected">All</li>
                     </ul>
                   </div>
-                  <input type="checkbox" id="tsd-filter-inherited" checked /><label
-                    class="tsd-widget"
-                    for="tsd-filter-inherited"
+                  <input
+                    type="checkbox"
+                    id="tsd-filter-inherited"
+                    checked
+                  /><label class="tsd-widget" for="tsd-filter-inherited"
                     >Inherited</label
-                  ><input type="checkbox" id="tsd-filter-externals" checked /><label
-                    class="tsd-widget"
-                    for="tsd-filter-externals"
+                  ><input
+                    type="checkbox"
+                    id="tsd-filter-externals"
+                    checked
+                  /><label class="tsd-widget" for="tsd-filter-externals"
                     >Externals</label
                   >
                 </div>
               </div>
-              <a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+              <a href="#" class="tsd-widget menu no-caption" data-toggle="menu"
+                >Menu</a
+              >
             </div>
           </div>
         </div>
@@ -72,9 +89,10 @@
             <div class="tsd-comment tsd-typography">
               <div class="lead">
                 <p>
-                  A top-level <code>ChildPart</code> returned from <code>render</code> that manages
-                  the connected state of <code>AsyncDirective</code>s created throughout the tree
-                  below it.
+                  A top-level <code>ChildPart</code> returned from
+                  <code>render</code> that manages the connected state of
+                  <code>AsyncDirective</code>s created throughout the tree below
+                  it.
                 </p>
               </div>
             </div>
@@ -99,82 +117,78 @@
             <h2>Index</h2>
             <section class="tsd-panel tsd-index-panel">
               <div class="tsd-index-content">
-                <section class="tsd-index-section tsd-is-inherited tsd-is-external">
+                <section
+                  class="tsd-index-section tsd-is-inherited tsd-is-external"
+                >
                   <h3>Properties</h3>
                   <ul class="tsd-index-list">
                     <li
-                      class="
-                        tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external
-                      "
+                      class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
                     >
-                      <a href="nexwidget.RootPart.html#__committedValue" class="tsd-kind-icon"
+                      <a
+                        href="nexwidget.RootPart.html#__committedValue"
+                        class="tsd-kind-icon"
                         >_$committed<wbr />Value</a
                       >
                     </li>
                     <li
-                      class="
-                        tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external
-                      "
+                      class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
                     >
-                      <a href="nexwidget.RootPart.html#options" class="tsd-kind-icon">options</a>
+                      <a
+                        href="nexwidget.RootPart.html#options"
+                        class="tsd-kind-icon"
+                        >options</a
+                      >
                     </li>
                     <li
-                      class="
-                        tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external
-                      "
+                      class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
                     >
-                      <a href="nexwidget.RootPart.html#type" class="tsd-kind-icon">type</a>
+                      <a
+                        href="nexwidget.RootPart.html#type"
+                        class="tsd-kind-icon"
+                        >type</a
+                      >
                     </li>
                   </ul>
                 </section>
-                <section class="tsd-index-section tsd-is-external">
+                <section
+                  class="tsd-index-section tsd-is-inherited tsd-is-external"
+                >
                   <h3>Accessors</h3>
                   <ul class="tsd-index-list">
                     <li
-                      class="
-                        tsd-kind-get-signature
-                        tsd-parent-kind-interface
-                        tsd-is-inherited
-                        tsd-is-external
-                      "
+                      class="tsd-kind-get-signature tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
                     >
-                      <a href="nexwidget.RootPart.html#__isConnected" class="tsd-kind-icon"
+                      <a
+                        href="nexwidget.RootPart.html#__isConnected"
+                        class="tsd-kind-icon"
                         >_$is<wbr />Connected</a
                       >
                     </li>
                     <li
-                      class="
-                        tsd-kind-get-signature
-                        tsd-parent-kind-interface
-                        tsd-is-inherited
-                        tsd-is-external
-                      "
+                      class="tsd-kind-get-signature tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
                     >
-                      <a href="nexwidget.RootPart.html#endNode" class="tsd-kind-icon"
+                      <a
+                        href="nexwidget.RootPart.html#endNode"
+                        class="tsd-kind-icon"
                         >end<wbr />Node</a
                       >
                     </li>
                     <li
-                      class="
-                        tsd-kind-get-signature
-                        tsd-parent-kind-interface
-                        tsd-is-inherited
-                        tsd-is-external
-                      "
+                      class="tsd-kind-get-signature tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
                     >
-                      <a href="nexwidget.RootPart.html#parentNode" class="tsd-kind-icon"
+                      <a
+                        href="nexwidget.RootPart.html#parentNode"
+                        class="tsd-kind-icon"
                         >parent<wbr />Node</a
                       >
                     </li>
                     <li
-                      class="
-                        tsd-kind-get-signature
-                        tsd-parent-kind-interface
-                        tsd-is-inherited
-                        tsd-is-external
-                      "
+                      class="tsd-kind-get-signature tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
                     >
-                      <a href="nexwidget.RootPart.html#startNode" class="tsd-kind-icon"
+                      <a
+                        href="nexwidget.RootPart.html#startNode"
+                        class="tsd-kind-icon"
                         >start<wbr />Node</a
                       >
                     </li>
@@ -184,16 +198,20 @@
                   <h3>Methods</h3>
                   <ul class="tsd-index-list">
                     <li
-                      class="
-                        tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external
-                      "
+                      class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
                     >
-                      <a href="nexwidget.RootPart.html#__setValue" class="tsd-kind-icon"
+                      <a
+                        href="nexwidget.RootPart.html#__setValue"
+                        class="tsd-kind-icon"
                         >_$set<wbr />Value</a
                       >
                     </li>
-                    <li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-                      <a href="nexwidget.RootPart.html#setConnected" class="tsd-kind-icon"
+                    <li
+                      class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"
+                    >
+                      <a
+                        href="nexwidget.RootPart.html#setConnected"
+                        class="tsd-kind-icon"
                         >set<wbr />Connected</a
                       >
                     </li>
@@ -202,27 +220,48 @@
               </div>
             </section>
           </section>
-          <section class="tsd-panel-group tsd-member-group tsd-is-inherited tsd-is-external">
+          <section
+            class="tsd-panel-group tsd-member-group tsd-is-inherited tsd-is-external"
+          >
             <h2>Properties</h2>
             <section
-              class="
-                tsd-panel
-                tsd-member
-                tsd-kind-property
-                tsd-parent-kind-interface
-                tsd-is-inherited
-                tsd-is-external
-              "
+              class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
             >
-              <a name="__committedValue" class="tsd-anchor"></a>
-              <h3>_$committed<wbr />Value</h3>
+              <a id="__committedValue" class="tsd-anchor"></a>
+              <h3 class="tsd-anchor-link">
+                _$committed<wbr />Value<a
+                  href="#__committedValue"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-link"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                      d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"
+                    ></path>
+                    <path
+                      d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"
+                    ></path></svg
+                ></a>
+              </h3>
               <div class="tsd-signature tsd-kind-icon">
-                _$committed<wbr />Value<span class="tsd-signature-symbol">:</span>
+                _$committed<wbr />Value<span class="tsd-signature-symbol"
+                  >:</span
+                >
                 <span class="tsd-signature-type">unknown</span>
               </div>
               <aside class="tsd-sources">
                 <p>
-                  Inherited from <a href="../classes/nexwidget.ChildPart.html">ChildPart</a>.<a
+                  Inherited from
+                  <a href="../classes/nexwidget.ChildPart.html">ChildPart</a>.<a
                     href="../classes/nexwidget.ChildPart.html#__committedValue"
                     >_$committedValue</a
                   >
@@ -233,17 +272,33 @@
               </aside>
             </section>
             <section
-              class="
-                tsd-panel
-                tsd-member
-                tsd-kind-property
-                tsd-parent-kind-interface
-                tsd-is-inherited
-                tsd-is-external
-              "
+              class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
             >
-              <a name="options" class="tsd-anchor"></a>
-              <h3><span class="tsd-flag ts-flagReadonly">Readonly</span> options</h3>
+              <a id="options" class="tsd-anchor"></a>
+              <h3 class="tsd-anchor-link">
+                <span class="tsd-flag ts-flagReadonly">Readonly</span> options<a
+                  href="#options"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-link"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                      d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"
+                    ></path>
+                    <path
+                      d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"
+                    ></path></svg
+                ></a>
+              </h3>
               <div class="tsd-signature tsd-kind-icon">
                 options<span class="tsd-signature-symbol">:</span>
                 <span class="tsd-signature-type">undefined</span
@@ -257,7 +312,8 @@
               </div>
               <aside class="tsd-sources">
                 <p>
-                  Inherited from <a href="../classes/nexwidget.ChildPart.html">ChildPart</a>.<a
+                  Inherited from
+                  <a href="../classes/nexwidget.ChildPart.html">ChildPart</a>.<a
                     href="../classes/nexwidget.ChildPart.html#options"
                     >options</a
                   >
@@ -268,17 +324,33 @@
               </aside>
             </section>
             <section
-              class="
-                tsd-panel
-                tsd-member
-                tsd-kind-property
-                tsd-parent-kind-interface
-                tsd-is-inherited
-                tsd-is-external
-              "
+              class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
             >
-              <a name="type" class="tsd-anchor"></a>
-              <h3><span class="tsd-flag ts-flagReadonly">Readonly</span> type</h3>
+              <a id="type" class="tsd-anchor"></a>
+              <h3 class="tsd-anchor-link">
+                <span class="tsd-flag ts-flagReadonly">Readonly</span> type<a
+                  href="#type"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-link"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                      d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"
+                    ></path>
+                    <path
+                      d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"
+                    ></path></svg
+                ></a>
+              </h3>
               <div class="tsd-signature tsd-kind-icon">
                 type<span class="tsd-signature-symbol">:</span>
                 <span class="tsd-signature-type">2</span
@@ -286,7 +358,8 @@
               </div>
               <aside class="tsd-sources">
                 <p>
-                  Inherited from <a href="../classes/nexwidget.ChildPart.html">ChildPart</a>.<a
+                  Inherited from
+                  <a href="../classes/nexwidget.ChildPart.html">ChildPart</a>.<a
                     href="../classes/nexwidget.ChildPart.html#type"
                     >type</a
                   >
@@ -297,33 +370,44 @@
               </aside>
             </section>
           </section>
-          <section class="tsd-panel-group tsd-member-group tsd-is-external">
+          <section
+            class="tsd-panel-group tsd-member-group tsd-is-inherited tsd-is-external"
+          >
             <h2>Accessors</h2>
             <section
-              class="
-                tsd-panel
-                tsd-member
-                tsd-kind-get-signature
-                tsd-parent-kind-interface
-                tsd-is-inherited
-                tsd-is-external
-              "
+              class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
             >
-              <a name="__isConnected" class="tsd-anchor"></a>
-              <h3>_$is<wbr />Connected</h3>
+              <a id="__isConnected" class="tsd-anchor"></a>
+              <h3 class="tsd-anchor-link">
+                _$is<wbr />Connected<a
+                  href="#__isConnected"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-link"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                      d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"
+                    ></path>
+                    <path
+                      d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"
+                    ></path></svg
+                ></a>
+              </h3>
               <ul
-                class="
-                  tsd-signatures
-                  tsd-kind-get-signature
-                  tsd-parent-kind-interface
-                  tsd-is-inherited
-                  tsd-is-external
-                "
+                class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
               >
                 <li class="tsd-signature tsd-kind-icon">
-                  <span class="tsd-signature-symbol">get</span> _$isConnected<span
-                    class="tsd-signature-symbol"
-                    >(</span
+                  <span class="tsd-signature-symbol">get</span>
+                  _$isConnected<span class="tsd-signature-symbol">(</span
                   ><span class="tsd-signature-symbol">)</span
                   ><span class="tsd-signature-symbol">: </span
                   ><span class="tsd-signature-type">boolean</span>
@@ -332,8 +416,11 @@
               <ul class="tsd-descriptions">
                 <li class="tsd-description">
                   <aside class="tsd-sources">
+                    <p>Inherited from ChildPart._$isConnected</p>
                     <ul>
-                      <li>Defined in node_modules/lit-html/lit-html.d.ts:191</li>
+                      <li>
+                        Defined in node_modules/lit-html/lit-html.d.ts:191
+                      </li>
                     </ul>
                   </aside>
                   <h4 class="tsd-returns-title">
@@ -343,25 +430,35 @@
               </ul>
             </section>
             <section
-              class="
-                tsd-panel
-                tsd-member
-                tsd-kind-get-signature
-                tsd-parent-kind-interface
-                tsd-is-inherited
-                tsd-is-external
-              "
+              class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
             >
-              <a name="endNode" class="tsd-anchor"></a>
-              <h3>end<wbr />Node</h3>
+              <a id="endNode" class="tsd-anchor"></a>
+              <h3 class="tsd-anchor-link">
+                end<wbr />Node<a
+                  href="#endNode"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-link"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                      d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"
+                    ></path>
+                    <path
+                      d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"
+                    ></path></svg
+                ></a>
+              </h3>
               <ul
-                class="
-                  tsd-signatures
-                  tsd-kind-get-signature
-                  tsd-parent-kind-interface
-                  tsd-is-inherited
-                  tsd-is-external
-                "
+                class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
               >
                 <li class="tsd-signature tsd-kind-icon">
                   <span class="tsd-signature-symbol">get</span> endNode<span
@@ -377,8 +474,11 @@
               <ul class="tsd-descriptions">
                 <li class="tsd-description">
                   <aside class="tsd-sources">
+                    <p>Inherited from ChildPart.endNode</p>
                     <ul>
-                      <li>Defined in node_modules/lit-html/lit-html.d.ts:221</li>
+                      <li>
+                        Defined in node_modules/lit-html/lit-html.d.ts:221
+                      </li>
                     </ul>
                   </aside>
                   <div class="tsd-comment tsd-typography">
@@ -398,25 +498,35 @@
               </ul>
             </section>
             <section
-              class="
-                tsd-panel
-                tsd-member
-                tsd-kind-get-signature
-                tsd-parent-kind-interface
-                tsd-is-inherited
-                tsd-is-external
-              "
+              class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
             >
-              <a name="parentNode" class="tsd-anchor"></a>
-              <h3>parent<wbr />Node</h3>
+              <a id="parentNode" class="tsd-anchor"></a>
+              <h3 class="tsd-anchor-link">
+                parent<wbr />Node<a
+                  href="#parentNode"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-link"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                      d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"
+                    ></path>
+                    <path
+                      d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"
+                    ></path></svg
+                ></a>
+              </h3>
               <ul
-                class="
-                  tsd-signatures
-                  tsd-kind-get-signature
-                  tsd-parent-kind-interface
-                  tsd-is-inherited
-                  tsd-is-external
-                "
+                class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
               >
                 <li class="tsd-signature tsd-kind-icon">
                   <span class="tsd-signature-symbol">get</span> parentNode<span
@@ -430,18 +540,24 @@
               <ul class="tsd-descriptions">
                 <li class="tsd-description">
                   <aside class="tsd-sources">
+                    <p>Inherited from ChildPart.parentNode</p>
                     <ul>
-                      <li>Defined in node_modules/lit-html/lit-html.d.ts:211</li>
+                      <li>
+                        Defined in node_modules/lit-html/lit-html.d.ts:211
+                      </li>
                     </ul>
                   </aside>
                   <div class="tsd-comment tsd-typography">
                     <div class="lead">
-                      <p>The parent node into which the part renders its content.</p>
+                      <p>
+                        The parent node into which the part renders its content.
+                      </p>
                     </div>
                     <div>
                       <p>
-                        A ChildPart&#39;s content consists of a range of adjacent child nodes of
-                        <code>.parentNode</code>, possibly bordered by &#39;marker nodes&#39; (<code
+                        A ChildPart&#39;s content consists of a range of
+                        adjacent child nodes of <code>.parentNode</code>,
+                        possibly bordered by &#39;marker nodes&#39; (<code
                           >.startNode</code
                         >
                         and <code>.endNode</code>).
@@ -449,24 +565,29 @@
                       <ul>
                         <li>
                           <p>
-                            If both <code>.startNode</code> and <code>.endNode</code> are non-null,
-                            then the part&#39;s content consists of all siblings between
-                            <code>.startNode</code> and <code>.endNode</code>, exclusively.
+                            If both <code>.startNode</code> and
+                            <code>.endNode</code> are non-null, then the
+                            part&#39;s content consists of all siblings between
+                            <code>.startNode</code> and <code>.endNode</code>,
+                            exclusively.
                           </p>
                         </li>
                         <li>
                           <p>
-                            If <code>.startNode</code> is non-null but <code>.endNode</code> is
-                            null, then the part&#39;s content consists of all siblings following
-                            <code>.startNode</code>, up to and including the last child of
-                            <code>.parentNode</code>. If <code>.endNode</code> is non-null, then
+                            If <code>.startNode</code> is non-null but
+                            <code>.endNode</code> is null, then the part&#39;s
+                            content consists of all siblings following
+                            <code>.startNode</code>, up to and including the
+                            last child of <code>.parentNode</code>. If
+                            <code>.endNode</code> is non-null, then
                             <code>.startNode</code> will always be non-null.
                           </p>
                         </li>
                         <li>
                           <p>
-                            If both <code>.endNode</code> and <code>.startNode</code> are null, then
-                            the part&#39;s content consists of all child nodes of
+                            If both <code>.endNode</code> and
+                            <code>.startNode</code> are null, then the
+                            part&#39;s content consists of all child nodes of
                             <code>.parentNode</code>.
                           </p>
                         </li>
@@ -480,25 +601,35 @@
               </ul>
             </section>
             <section
-              class="
-                tsd-panel
-                tsd-member
-                tsd-kind-get-signature
-                tsd-parent-kind-interface
-                tsd-is-inherited
-                tsd-is-external
-              "
+              class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
             >
-              <a name="startNode" class="tsd-anchor"></a>
-              <h3>start<wbr />Node</h3>
+              <a id="startNode" class="tsd-anchor"></a>
+              <h3 class="tsd-anchor-link">
+                start<wbr />Node<a
+                  href="#startNode"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-link"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                      d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"
+                    ></path>
+                    <path
+                      d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"
+                    ></path></svg
+                ></a>
+              </h3>
               <ul
-                class="
-                  tsd-signatures
-                  tsd-kind-get-signature
-                  tsd-parent-kind-interface
-                  tsd-is-inherited
-                  tsd-is-external
-                "
+                class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
               >
                 <li class="tsd-signature tsd-kind-icon">
                   <span class="tsd-signature-symbol">get</span> startNode<span
@@ -514,15 +645,18 @@
               <ul class="tsd-descriptions">
                 <li class="tsd-description">
                   <aside class="tsd-sources">
+                    <p>Inherited from ChildPart.startNode</p>
                     <ul>
-                      <li>Defined in node_modules/lit-html/lit-html.d.ts:216</li>
+                      <li>
+                        Defined in node_modules/lit-html/lit-html.d.ts:216
+                      </li>
                     </ul>
                   </aside>
                   <div class="tsd-comment tsd-typography">
                     <div class="lead">
                       <p>
-                        The part&#39;s leading marker node, if any. See <code>.parentNode</code> for
-                        more information.
+                        The part&#39;s leading marker node, if any. See
+                        <code>.parentNode</code> for more information.
                       </p>
                     </div>
                   </div>
@@ -538,33 +672,41 @@
           <section class="tsd-panel-group tsd-member-group tsd-is-external">
             <h2>Methods</h2>
             <section
-              class="
-                tsd-panel
-                tsd-member
-                tsd-kind-method
-                tsd-parent-kind-interface
-                tsd-is-inherited
-                tsd-is-external
-              "
+              class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
             >
-              <a name="__setValue" class="tsd-anchor"></a>
-              <h3>_$set<wbr />Value</h3>
+              <a id="__setValue" class="tsd-anchor"></a>
+              <h3 class="tsd-anchor-link">
+                _$set<wbr />Value<a
+                  href="#__setValue"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-link"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                      d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"
+                    ></path>
+                    <path
+                      d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"
+                    ></path></svg
+                ></a>
+              </h3>
               <ul
-                class="
-                  tsd-signatures
-                  tsd-kind-method
-                  tsd-parent-kind-interface
-                  tsd-is-inherited
-                  tsd-is-external
-                "
+                class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
               >
                 <li class="tsd-signature tsd-kind-icon">
-                  _$set<wbr />Value<span class="tsd-signature-symbol">(</span>value<span
-                    class="tsd-signature-symbol"
-                    >: </span
-                  ><span class="tsd-signature-type">unknown</span>, directiveParent<span
-                    class="tsd-signature-symbol"
-                    >?: </span
+                  _$set<wbr />Value<span class="tsd-signature-symbol">(</span
+                  >value<span class="tsd-signature-symbol">: </span
+                  ><span class="tsd-signature-type">unknown</span>,
+                  directiveParent<span class="tsd-signature-symbol">?: </span
                   ><a
                     href="nexwidget.DirectiveParent.html"
                     class="tsd-signature-type"
@@ -579,23 +721,29 @@
                 <li class="tsd-description">
                   <aside class="tsd-sources">
                     <p>
-                      Inherited from <a href="../classes/nexwidget.ChildPart.html">ChildPart</a>.<a
-                        href="../classes/nexwidget.ChildPart.html#__setValue"
+                      Inherited from
+                      <a href="../classes/nexwidget.ChildPart.html">ChildPart</a
+                      >.<a href="../classes/nexwidget.ChildPart.html#__setValue"
                         >_$setValue</a
                       >
                     </p>
                     <ul>
-                      <li>Defined in node_modules/lit-html/lit-html.d.ts:222</li>
+                      <li>
+                        Defined in node_modules/lit-html/lit-html.d.ts:222
+                      </li>
                     </ul>
                   </aside>
                   <h4 class="tsd-parameters-title">Parameters</h4>
                   <ul class="tsd-parameters">
                     <li>
-                      <h5>value: <span class="tsd-signature-type">unknown</span></h5>
+                      <h5>
+                        value: <span class="tsd-signature-type">unknown</span>
+                      </h5>
                     </li>
                     <li>
                       <h5>
-                        <span class="tsd-flag ts-flagOptional">Optional</span> directiveParent:
+                        <span class="tsd-flag ts-flagOptional">Optional</span>
+                        directiveParent:
                         <a
                           href="nexwidget.DirectiveParent.html"
                           class="tsd-signature-type"
@@ -614,13 +762,37 @@
             <section
               class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external"
             >
-              <a name="setConnected" class="tsd-anchor"></a>
-              <h3>set<wbr />Connected</h3>
-              <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+              <a id="setConnected" class="tsd-anchor"></a>
+              <h3 class="tsd-anchor-link">
+                set<wbr />Connected<a
+                  href="#setConnected"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-link"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                      d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"
+                    ></path>
+                    <path
+                      d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"
+                    ></path></svg
+                ></a>
+              </h3>
+              <ul
+                class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external"
+              >
                 <li class="tsd-signature tsd-kind-icon">
-                  set<wbr />Connected<span class="tsd-signature-symbol">(</span>isConnected<span
-                    class="tsd-signature-symbol"
-                    >: </span
+                  set<wbr />Connected<span class="tsd-signature-symbol">(</span
+                  >isConnected<span class="tsd-signature-symbol">: </span
                   ><span class="tsd-signature-type">boolean</span
                   ><span class="tsd-signature-symbol">)</span
                   ><span class="tsd-signature-symbol">: </span
@@ -631,25 +803,31 @@
                 <li class="tsd-description">
                   <aside class="tsd-sources">
                     <ul>
-                      <li>Defined in node_modules/lit-html/lit-html.d.ts:249</li>
+                      <li>
+                        Defined in node_modules/lit-html/lit-html.d.ts:249
+                      </li>
                     </ul>
                   </aside>
                   <div class="tsd-comment tsd-typography">
                     <div class="lead">
                       <p>
-                        Sets the connection state for <code>AsyncDirective</code>s contained within
-                        this root ChildPart.
+                        Sets the connection state for
+                        <code>AsyncDirective</code>s contained within this root
+                        ChildPart.
                       </p>
                     </div>
                     <div>
                       <p>
-                        lit-html does not automatically monitor the connectedness of DOM rendered;
-                        as such, it is the responsibility of the caller to <code>render</code> to
-                        ensure that <code>part.setConnected(false)</code> is called before the part
-                        object is potentially discarded, to ensure that <code>AsyncDirective</code>s
-                        have a chance to dispose of any resources being held. If a
-                        <code>RootPart</code> that was prevously disconnected is subsequently
-                        re-connected (and its <code>AsyncDirective</code>s should re-connect),
+                        lit-html does not automatically monitor the
+                        connectedness of DOM rendered; as such, it is the
+                        responsibility of the caller to <code>render</code> to
+                        ensure that <code>part.setConnected(false)</code> is
+                        called before the part object is potentially discarded,
+                        to ensure that <code>AsyncDirective</code>s have a
+                        chance to dispose of any resources being held. If a
+                        <code>RootPart</code> that was prevously disconnected is
+                        subsequently re-connected (and its
+                        <code>AsyncDirective</code>s should re-connect),
                         <code>setConnected(true)</code> should be called.
                       </p>
                     </div>
@@ -657,10 +835,16 @@
                   <h4 class="tsd-parameters-title">Parameters</h4>
                   <ul class="tsd-parameters">
                     <li>
-                      <h5>isConnected: <span class="tsd-signature-type">boolean</span></h5>
+                      <h5>
+                        isConnected:
+                        <span class="tsd-signature-type">boolean</span>
+                      </h5>
                       <div class="tsd-comment tsd-typography">
                         <div class="lead">
-                          <p>Whether directives within this tree should be connected or not</p>
+                          <p>
+                            Whether directives within this tree should be
+                            connected or not
+                          </p>
                         </div>
                       </div>
                     </li>
@@ -678,7 +862,9 @@
             <ul>
               <li class=""><a href="../modules.html">Modules</a></li>
               <li class="tsd-kind-module">
-                <a href="../modules/directives_lazyload.html">directives/lazyload</a>
+                <a href="../modules/directives_lazyload.html"
+                  >directives/lazyload</a
+                >
               </li>
               <li class="tsd-kind-module">
                 <a href="../modules/mixins_dependency_injection.html"
@@ -686,7 +872,9 @@
                 >
               </li>
               <li class="tsd-kind-module">
-                <a href="../modules/mixins_pending_task.html">mixins/pending-<wbr />task</a>
+                <a href="../modules/mixins_pending_task.html"
+                  >mixins/pending-<wbr />task</a
+                >
               </li>
               <li class="current tsd-kind-module">
                 <a href="../modules/nexwidget.html">nexwidget</a>
@@ -695,91 +883,89 @@
           </nav>
           <nav class="tsd-navigation secondary menu-sticky">
             <ul>
-              <li class="current tsd-kind-interface tsd-parent-kind-module tsd-is-external">
-                <a href="nexwidget.RootPart.html" class="tsd-kind-icon">Root<wbr />Part</a>
+              <li
+                class="current tsd-kind-interface tsd-parent-kind-module tsd-is-external"
+              >
+                <a href="nexwidget.RootPart.html" class="tsd-kind-icon"
+                  >Root<wbr />Part</a
+                >
                 <ul>
                   <li
-                    class="
-                      tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external
-                    "
+                    class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
                   >
-                    <a href="nexwidget.RootPart.html#__committedValue" class="tsd-kind-icon"
+                    <a
+                      href="nexwidget.RootPart.html#__committedValue"
+                      class="tsd-kind-icon"
                       >_$committed<wbr />Value</a
                     >
                   </li>
                   <li
-                    class="
-                      tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external
-                    "
+                    class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
                   >
-                    <a href="nexwidget.RootPart.html#options" class="tsd-kind-icon">options</a>
+                    <a
+                      href="nexwidget.RootPart.html#options"
+                      class="tsd-kind-icon"
+                      >options</a
+                    >
                   </li>
                   <li
-                    class="
-                      tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external
-                    "
+                    class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
                   >
-                    <a href="nexwidget.RootPart.html#type" class="tsd-kind-icon">type</a>
+                    <a href="nexwidget.RootPart.html#type" class="tsd-kind-icon"
+                      >type</a
+                    >
                   </li>
                   <li
-                    class="
-                      tsd-kind-get-signature
-                      tsd-parent-kind-interface
-                      tsd-is-inherited
-                      tsd-is-external
-                    "
+                    class="tsd-kind-get-signature tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
                   >
-                    <a href="nexwidget.RootPart.html#__isConnected" class="tsd-kind-icon"
+                    <a
+                      href="nexwidget.RootPart.html#__isConnected"
+                      class="tsd-kind-icon"
                       >_$is<wbr />Connected</a
                     >
                   </li>
                   <li
-                    class="
-                      tsd-kind-get-signature
-                      tsd-parent-kind-interface
-                      tsd-is-inherited
-                      tsd-is-external
-                    "
+                    class="tsd-kind-get-signature tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
                   >
-                    <a href="nexwidget.RootPart.html#endNode" class="tsd-kind-icon"
+                    <a
+                      href="nexwidget.RootPart.html#endNode"
+                      class="tsd-kind-icon"
                       >end<wbr />Node</a
                     >
                   </li>
                   <li
-                    class="
-                      tsd-kind-get-signature
-                      tsd-parent-kind-interface
-                      tsd-is-inherited
-                      tsd-is-external
-                    "
+                    class="tsd-kind-get-signature tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
                   >
-                    <a href="nexwidget.RootPart.html#parentNode" class="tsd-kind-icon"
+                    <a
+                      href="nexwidget.RootPart.html#parentNode"
+                      class="tsd-kind-icon"
                       >parent<wbr />Node</a
                     >
                   </li>
                   <li
-                    class="
-                      tsd-kind-get-signature
-                      tsd-parent-kind-interface
-                      tsd-is-inherited
-                      tsd-is-external
-                    "
+                    class="tsd-kind-get-signature tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
                   >
-                    <a href="nexwidget.RootPart.html#startNode" class="tsd-kind-icon"
+                    <a
+                      href="nexwidget.RootPart.html#startNode"
+                      class="tsd-kind-icon"
                       >start<wbr />Node</a
                     >
                   </li>
                   <li
-                    class="
-                      tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external
-                    "
+                    class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external"
                   >
-                    <a href="nexwidget.RootPart.html#__setValue" class="tsd-kind-icon"
+                    <a
+                      href="nexwidget.RootPart.html#__setValue"
+                      class="tsd-kind-icon"
                       >_$set<wbr />Value</a
                     >
                   </li>
-                  <li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-                    <a href="nexwidget.RootPart.html#setConnected" class="tsd-kind-icon"
+                  <li
+                    class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"
+                  >
+                    <a
+                      href="nexwidget.RootPart.html#setConnected"
+                      class="tsd-kind-icon"
                       >set<wbr />Connected</a
                     >
                   </li>
@@ -795,20 +981,28 @@
         <h2>Legend</h2>
         <div class="tsd-legend-group">
           <ul class="tsd-legend">
-            <li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+            <li class="tsd-kind-function">
+              <span class="tsd-kind-icon">Function</span>
+            </li>
             <li class="tsd-kind-function tsd-has-type-parameter">
               <span class="tsd-kind-icon">Function with type parameter</span>
             </li>
-            <li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+            <li class="tsd-kind-type-alias">
+              <span class="tsd-kind-icon">Type alias</span>
+            </li>
             <li class="tsd-kind-type-alias tsd-has-type-parameter">
               <span class="tsd-kind-icon">Type alias with type parameter</span>
             </li>
           </ul>
           <ul class="tsd-legend">
-            <li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+            <li class="tsd-kind-interface">
+              <span class="tsd-kind-icon">Interface</span>
+            </li>
           </ul>
           <ul class="tsd-legend">
-            <li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+            <li class="tsd-kind-class">
+              <span class="tsd-kind-icon">Class</span>
+            </li>
           </ul>
         </div>
         <h2>Settings</h2>
@@ -823,7 +1017,10 @@
       </div>
     </footer>
     <div class="container tsd-generator">
-      <p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+      <p>
+        Generated using
+        <a href="https://typedoc.org/" target="_blank">TypeDoc</a>
+      </p>
     </div>
     <div class="overlay"></div>
     <script src="../assets/main.js"></script>
