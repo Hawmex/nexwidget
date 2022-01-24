@@ -5,7 +5,7 @@ declare global {
 }
 
 export class CSSResult {
-  #styleSheet: CSSStyleSheet;
+  readonly #styleSheet: CSSStyleSheet;
 
   constructor(strings: TemplateStringsArray) {
     this.#styleSheet = new CSSStyleSheet();
@@ -17,4 +17,5 @@ export class CSSResult {
   }
 }
 
-export const css = (strings: TemplateStringsArray) => new CSSResult(strings).styleSheet;
+export const css = (strings: TemplateStringsArray) =>
+  new CSSResult(strings).styleSheet;

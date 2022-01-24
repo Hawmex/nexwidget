@@ -1,33 +1,49 @@
-import { noChange, nothing, render, RootPart, TemplateResult } from 'lit-html/lit-html.js';
-import { Nexbounce } from 'nexbounce/nexbounce.js';
+import {
+  noChange,
+  nothing,
+  render,
+  RootPart,
+  TemplateResult,
+} from 'lit-html/lit-html.js';
+import { Debouncer } from 'nexbounce/nexbounce.js';
 
 export * from 'lit-html/lit-html.js';
 export * from './lib/add-pending-task.js';
 export * from './lib/css-tag.js';
 
 export type Constructor<T = {}> = new (...args: any[]) => T;
-export type WidgetAnimation = { keyframes: Keyframe[]; options?: KeyframeAnimationOptions } | null;
+
+export type WidgetAnimation = {
+  readonly keyframes: Keyframe[];
+  readonly options?: KeyframeAnimationOptions;
+} | null;
+
 export type WidgetAttributeType = 'string' | 'number' | 'boolean';
-export type WidgetTemplate = TemplateResult | string | number | typeof nothing | typeof noChange;
-export type WidgetReactives<T extends typeof Nexwidget> = (keyof T['prototype'] & string)[];
+
+export type WidgetTemplate =
+  | TemplateResult
+  | string
+  | number
+  | typeof nothing
+  | typeof noChange;
+
+export type WidgetReactives<T extends typeof Nexwidget> =
+  (keyof T['prototype'] & string)[];
 
 export type WidgetAttributes<T extends typeof Nexwidget> = {
-  key: keyof T['prototype'] & string;
-  type: WidgetAttributeType;
+  readonly key: keyof T['prototype'] & string;
+  readonly type: WidgetAttributeType;
 }[];
 
-declare global {
-  interface AddEventListenerOptions {
-    signal?: AbortSignal;
-  }
-}
-
 export class Nexwidget extends HTMLElement {
-  static #reactives = new WeakMap<typeof Nexwidget, Set<string>>([[Nexwidget, new Set()]]);
-
-  static #attributes = new WeakMap<typeof Nexwidget, Map<string, WidgetAttributeType>>([
-    [Nexwidget, new Map()],
+  static readonly #reactives = new WeakMap<typeof Nexwidget, Set<string>>([
+    [Nexwidget, new Set()],
   ]);
+
+  static readonly #attributes = new WeakMap<
+    typeof Nexwidget,
+    Map<string, WidgetAttributeType>
+  >([[Nexwidget, new Map()]]);
 
   static get styles(): CSSStyleSheet[] {
     return [];
@@ -66,7 +82,8 @@ export class Nexwidget extends HTMLElement {
       const SuperClass = <typeof Nexwidget>Reflect.getPrototypeOf(Class);
       const isSuperClassEnsured = Nexwidget.#reactives.has(SuperClass);
 
-      if (!isSuperClassEnsured && SuperClass !== Nexwidget) Nexwidget.#ensureReactives(SuperClass);
+      if (!isSuperClassEnsured && SuperClass !== Nexwidget)
+        Nexwidget.#ensureReactives(SuperClass);
 
       Nexwidget.#reactives.set(Class, Nexwidget.#reactives.get(SuperClass)!);
     }
@@ -79,20 +96,24 @@ export class Nexwidget extends HTMLElement {
       const SuperClass = <typeof Nexwidget>Reflect.getPrototypeOf(Class);
       const isSuperClassEnsured = Nexwidget.#attributes.has(SuperClass);
 
-      if (!isSuperClassEnsured && SuperClass !== Nexwidget) Nexwidget.#ensureAttributes(SuperClass);
+      if (!isSuperClassEnsured && SuperClass !== Nexwidget)
+        Nexwidget.#ensureAttributes(SuperClass);
 
       Nexwidget.#attributes.set(Class, Nexwidget.#attributes.get(SuperClass)!);
     }
   }
 
-  static registerAs<T extends typeof Nexwidget, K extends keyof HTMLElementTagNameMap>(
-    this: T & (new () => HTMLElementTagNameMap[K]),
-    tagName: K,
-  ) {
+  static registerAs<
+    T extends typeof Nexwidget,
+    K extends keyof HTMLElementTagNameMap,
+  >(this: T & (new () => HTMLElementTagNameMap[K]), tagName: K) {
     customElements.define(tagName, this);
   }
 
-  static createReactives<T extends typeof Nexwidget>(this: T, reactives: WidgetReactives<T>) {
+  static createReactives<T extends typeof Nexwidget>(
+    this: T,
+    reactives: WidgetReactives<T>,
+  ) {
     Nexwidget.#ensureReactives(this);
 
     const reactivesSet = new Set(reactives);
@@ -101,13 +122,17 @@ export class Nexwidget extends HTMLElement {
       const descriptor = Reflect.getOwnPropertyDescriptor(this.prototype, key);
       const internalKey = !descriptor?.get ? Symbol(key) : null;
 
-      Nexwidget.#reactives.set(this, new Set([...Nexwidget.#reactives.get(this)!, key]));
+      Nexwidget.#reactives.set(
+        this,
+        new Set([...Nexwidget.#reactives.get(this)!, key]),
+      );
 
       Reflect.defineProperty(this.prototype, key, {
         configurable: true,
         enumerable: true,
         get() {
-          if (internalKey !== null) return (<{ [key: symbol]: unknown }>this)[internalKey];
+          if (internalKey !== null)
+            return (<{ [key: symbol]: unknown }>this)[internalKey];
           else return descriptor!.get!.call(this);
         },
         set(value) {
@@ -124,15 +149,23 @@ export class Nexwidget extends HTMLElement {
     });
   }
 
-  static createAttributes<T extends typeof Nexwidget>(this: T, attributes: WidgetAttributes<T>) {
+  static createAttributes<T extends typeof Nexwidget>(
+    this: T,
+    attributes: WidgetAttributes<T>,
+  ) {
     Nexwidget.#ensureAttributes(this);
 
-    const attributesMap = new Map(attributes.map(({ key, type }) => [key, type]));
+    const attributesMap = new Map(
+      attributes.map(({ key, type }) => [key, type]),
+    );
 
     attributesMap.forEach((type, key) => {
       const descriptor = Reflect.getOwnPropertyDescriptor(this.prototype, key);
 
-      Nexwidget.#attributes.set(this, new Map([...Nexwidget.#attributes.get(this)!, [key, type]]));
+      Nexwidget.#attributes.set(
+        this,
+        new Map([...Nexwidget.#attributes.get(this)!, [key, type]]),
+      );
 
       Reflect.defineProperty(this.prototype, key, {
         configurable: true,
@@ -149,8 +182,8 @@ export class Nexwidget extends HTMLElement {
     });
   }
 
-  #renderRoot = this.attachShadow({ mode: 'open' });
-  #renderDebouncer = new Nexbounce();
+  readonly #renderRoot = this.attachShadow({ mode: 'open' });
+  readonly #renderDebouncer = new Debouncer();
 
   #isRenderEnabled = false;
   #isMounted = false;
@@ -160,7 +193,9 @@ export class Nexwidget extends HTMLElement {
   #removedController?: AbortController;
   #unmountedController?: AbortController;
 
-  #slotObserver = new MutationObserver(this.slotChangedCallback.bind(this));
+  readonly #slotObserver = new MutationObserver(
+    this.slotChangedCallback.bind(this),
+  );
 
   #animation?: Animation;
 
@@ -191,14 +226,17 @@ export class Nexwidget extends HTMLElement {
   #adoptStyles() {
     const { styles } = <typeof Nexwidget>this.constructor;
 
-    (<{ adoptedStyleSheets: CSSStyleSheet[] } & ShadowRoot>this.#renderRoot).adoptedStyleSheets = [
-      ...styles,
-    ];
+    (<{ adoptedStyleSheets: CSSStyleSheet[] } & ShadowRoot>(
+      this.#renderRoot
+    )).adoptedStyleSheets = [...styles];
   }
 
   //@ts-ignore
   #getPropertyValueFromAttribute(key: string) {
-    const type = Nexwidget.#attributes.get(<typeof Nexwidget>this.constructor)!.get(key)!;
+    const type = Nexwidget.#attributes
+      .get(<typeof Nexwidget>this.constructor)!
+      .get(key)!;
+
     const attributeKey = Nexwidget.#camelToKebab(key);
 
     switch (type) {
@@ -224,17 +262,22 @@ export class Nexwidget extends HTMLElement {
 
   //@ts-ignore
   #setAttributeFromProperty(key: string, value: Object) {
-    const type = Nexwidget.#attributes.get(<typeof Nexwidget>this.constructor)!.get(key)!;
+    const type = Nexwidget.#attributes
+      .get(<typeof Nexwidget>this.constructor)!
+      .get(key)!;
+
     const attributeKey = Nexwidget.#camelToKebab(key);
 
-    if (value === undefined) throw new TypeError(`Attribute value cannot be undefined.`);
+    if (value === undefined)
+      throw new TypeError(`Attribute value cannot be undefined.`);
     else if (value !== null && typeof value !== type)
       throw new TypeError(`Attribute value doesn't match its type.`);
     else
       switch (type) {
         case 'boolean':
           if (value) this.setAttribute(attributeKey, '');
-          else if (value === null) throw new TypeError(`Boolean attribute cannot be null.`);
+          else if (value === null)
+            throw new TypeError(`Boolean attribute cannot be null.`);
           else this.removeAttribute(attributeKey);
           break;
 
@@ -252,7 +295,9 @@ export class Nexwidget extends HTMLElement {
   #render() {
     this.#renderDebouncer.enqueue(() => {
       if (this.#isRenderEnabled) {
-        this.#rootPart = render(this.template, this.#renderRoot, { host: this });
+        this.#rootPart = render(this.template, this.#renderRoot, {
+          host: this,
+        });
 
         requestAnimationFrame(() => {
           this.updatedCallback();
@@ -333,7 +378,10 @@ export class Nexwidget extends HTMLElement {
     this.#animation?.cancel();
 
     if (this.mountAnimation !== null)
-      this.#animation = this.animate(this.mountAnimation.keyframes, this.mountAnimation.options);
+      this.#animation = this.animate(
+        this.mountAnimation.keyframes,
+        this.mountAnimation.options,
+      );
 
     this.#unmountedController = new AbortController();
   }

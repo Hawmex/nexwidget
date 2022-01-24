@@ -1,11 +1,12 @@
 import { AsyncDirective, directive } from 'lit-html/async-directive.js';
 import { ChildPart, noChange } from 'lit-html/lit-html.js';
-import { Nexbounce } from 'nexbounce/nexbounce.js';
+import { Debouncer } from 'nexbounce/nexbounce.js';
 import { addPendingTask } from '../lib/add-pending-task.js';
 
 export class LazyloadDirective extends AsyncDirective {
+  readonly #renderDebouncer = new Debouncer();
+
   #latestValue?: HTMLElement;
-  #renderDebouncer = new Nexbounce();
   #part?: ChildPart;
 
   render(widgetImport: Promise<unknown>, value: HTMLElement) {
@@ -20,7 +21,10 @@ export class LazyloadDirective extends AsyncDirective {
     return noChange;
   }
 
-  override update(part: ChildPart, [widgetImport, value]: [Promise<unknown>, HTMLElement]) {
+  override update(
+    part: ChildPart,
+    [widgetImport, value]: [Promise<unknown>, HTMLElement],
+  ) {
     this.#part = part;
 
     return this.render(widgetImport, value);

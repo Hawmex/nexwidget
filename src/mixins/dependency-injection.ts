@@ -2,18 +2,20 @@ import { Constructor, Nexwidget } from '../nexwidget.js';
 
 export interface NexwidgetDependencyKeyMap {}
 
-type DependencyRequestEventDetails<K extends keyof NexwidgetDependencyKeyMap> = {
-  key: K;
-  value?: NexwidgetDependencyKeyMap[K];
-};
+type DependencyRequestEventDetails<K extends keyof NexwidgetDependencyKeyMap> =
+  {
+    readonly key: K;
+    value?: NexwidgetDependencyKeyMap[K];
+  };
 
-type DependencyRequestEvent<K extends keyof NexwidgetDependencyKeyMap> = CustomEvent<
-  DependencyRequestEventDetails<K>
->;
+type DependencyRequestEvent<K extends keyof NexwidgetDependencyKeyMap> =
+  CustomEvent<DependencyRequestEventDetails<K>>;
 
 declare global {
   interface HTMLElementEventMap {
-    'dependency-request': DependencyRequestEvent<keyof NexwidgetDependencyKeyMap>;
+    'dependency-request': DependencyRequestEvent<
+      keyof NexwidgetDependencyKeyMap
+    >;
   }
 }
 
@@ -23,23 +25,31 @@ export declare class WithDependencyConsumerInterface {
   ): NexwidgetDependencyKeyMap[K];
 }
 
-export const WithDependencyConsumer = <T extends Constructor<Nexwidget>>(Base: T) => {
+export const WithDependencyConsumer = <T extends Constructor<Nexwidget>>(
+  Base: T,
+) => {
   class WithDependencyConsumer extends Base {
     requestDependency<K extends keyof NexwidgetDependencyKeyMap>(key: K) {
-      const dependencyRequest = new CustomEvent<DependencyRequestEventDetails<K>>(
-        'dependency-request',
-        { detail: { key }, composed: true, bubbles: true },
-      );
+      const dependencyRequest = new CustomEvent<
+        DependencyRequestEventDetails<K>
+      >('dependency-request', {
+        detail: { key },
+        composed: true,
+        bubbles: true,
+      });
 
       this.dispatchEvent(dependencyRequest);
 
       //@ts-ignore
-      if (Object.hasOwn(dependencyRequest.detail, 'value')) return dependencyRequest.detail.value!;
+      if (Object.hasOwn(dependencyRequest.detail, 'value'))
+        return dependencyRequest.detail.value!;
       else throw new RangeError(`No such dependency is provided.`);
     }
   }
 
-  return <Constructor<WithDependencyConsumerInterface> & T>WithDependencyConsumer;
+  return <Constructor<WithDependencyConsumerInterface> & T>(
+    WithDependencyConsumer
+  );
 };
 
 export declare class WithDependencyProviderInterface {
@@ -49,14 +59,18 @@ export declare class WithDependencyProviderInterface {
   ): void;
 }
 
-export const WithDependencyProvider = <T extends Constructor<Nexwidget>>(Base: T) => {
+export const WithDependencyProvider = <T extends Constructor<Nexwidget>>(
+  Base: T,
+) => {
   class WithDependencyProvider extends Base {
-    #dependencies = new Map<
+    readonly #dependencies = new Map<
       keyof NexwidgetDependencyKeyMap,
       NexwidgetDependencyKeyMap[keyof NexwidgetDependencyKeyMap]
     >();
 
-    #handleRequest(event: DependencyRequestEvent<keyof NexwidgetDependencyKeyMap>) {
+    #handleRequest(
+      event: DependencyRequestEvent<keyof NexwidgetDependencyKeyMap>,
+    ) {
       const { key } = event.detail;
 
       if (this.#dependencies.has(key)) {
@@ -75,11 +89,17 @@ export const WithDependencyProvider = <T extends Constructor<Nexwidget>>(Base: T
     override addedCallback() {
       super.addedCallback();
 
-      this.addEventListener('dependency-request', this.#handleRequest.bind(this), {
-        signal: this.removedSignal,
-      });
+      this.addEventListener(
+        'dependency-request',
+        this.#handleRequest.bind(this),
+        {
+          signal: this.removedSignal,
+        },
+      );
     }
   }
 
-  return <Constructor<WithDependencyProviderInterface> & T>WithDependencyProvider;
+  return <Constructor<WithDependencyProviderInterface> & T>(
+    WithDependencyProvider
+  );
 };

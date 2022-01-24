@@ -1,18 +1,25 @@
-import { addPendingTask, AddPendingTaskEvent } from '../lib/add-pending-task.js';
+import {
+  addPendingTask,
+  AddPendingTaskEvent,
+} from '../lib/add-pending-task.js';
 import { Constructor, Nexwidget } from '../nexwidget.js';
 
 export declare class WithPendingTaskEmitterInterface {
   addPendingTask<T>(task: Promise<T>): Promise<T>;
 }
 
-export const WithPendingTaskEmitter = <T extends Constructor<Nexwidget>>(Base: T) => {
+export const WithPendingTaskEmitter = <T extends Constructor<Nexwidget>>(
+  Base: T,
+) => {
   class WithPendingTaskEmitter extends Base {
     addPendingTask<T>(task: Promise<T>) {
       return addPendingTask(this, task);
     }
   }
 
-  return <Constructor<WithPendingTaskEmitterInterface> & T>WithPendingTaskEmitter;
+  return <Constructor<WithPendingTaskEmitterInterface> & T>(
+    WithPendingTaskEmitter
+  );
 };
 
 export declare class WithPendingTaskHandlerInterface {
@@ -20,7 +27,9 @@ export declare class WithPendingTaskHandlerInterface {
   set hasPendingTask(v: boolean);
 }
 
-export const WithPendingTaskHandler = <T extends Constructor<Nexwidget>>(Base: T) => {
+export const WithPendingTaskHandler = <T extends Constructor<Nexwidget>>(
+  Base: T,
+) => {
   interface WithPendingTaskHandler {
     get hasPendingTask(): boolean;
     set hasPendingTask(v: boolean);
@@ -28,11 +37,13 @@ export const WithPendingTaskHandler = <T extends Constructor<Nexwidget>>(Base: T
 
   class WithPendingTaskHandler extends Base {
     static {
-      (<typeof Nexwidget & typeof WithPendingTaskHandler>this).createAttributes([
-        { key: 'hasPendingTask', type: 'boolean' },
-      ]);
+      (<typeof Nexwidget & typeof WithPendingTaskHandler>this).createAttributes(
+        [{ key: 'hasPendingTask', type: 'boolean' }],
+      );
 
-      (<typeof Nexwidget & typeof WithPendingTaskHandler>this).createReactives(['hasPendingTask']);
+      (<typeof Nexwidget & typeof WithPendingTaskHandler>this).createReactives([
+        'hasPendingTask',
+      ]);
     }
 
     #pendingTaskCount = 0;
@@ -50,11 +61,17 @@ export const WithPendingTaskHandler = <T extends Constructor<Nexwidget>>(Base: T
     override addedCallback() {
       super.addedCallback();
 
-      this.addEventListener('pending-task', this.#handlePendingTask.bind(this), {
-        signal: this.removedSignal,
-      });
+      this.addEventListener(
+        'pending-task',
+        this.#handlePendingTask.bind(this),
+        {
+          signal: this.removedSignal,
+        },
+      );
     }
   }
 
-  return <Constructor<WithPendingTaskHandlerInterface> & T>WithPendingTaskHandler;
+  return <Constructor<WithPendingTaskHandlerInterface> & T>(
+    WithPendingTaskHandler
+  );
 };
