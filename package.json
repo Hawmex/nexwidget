@@ -37,7 +37,7 @@
   },
   "homepage": "https://github.com/Hawmex/nexwidget#readme",
   "dependencies": {
-    "lit-html": "^2.1.1",
+    "lit-html": "^2.1.2",
     "nexbounce": "^7.0.1"
   },
   "devDependencies": {
